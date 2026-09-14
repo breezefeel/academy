@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B2048">
+<title>Re:Al 움직임 · 패시브 스트레칭 전문가 과정 | 리얼무브먼트</title>
+<meta name="description" content="PAR 컨셉 기반 패시브 스트레칭 Supine/Prone 실습. 10월 11일 리얼무브먼트 약수점. 얼리버드 9/27까지.">
+<link rel="icon" href="리얼무브먼트_링크_로고.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B2048;
+    --navy-2: #14305F;
+    --navy-soft: rgba(11, 32, 72, 0.08);
+    --sand: #F6E4C4;
+    --sand-2: #EAD4A8;
+    --ink: #0B2048;
+    --mute: #4A5A78;
+    --crimson: #DC143C;
+    --crimson-deep: #B01030;
+    --line: rgba(11, 32, 72, 0.12);
+    --white: #FFFBF0;
+    --focus: #2A6FA8;
+    --ok: #1F7A5C;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-t: env(safe-area-inset-top, 0px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    color: var(--ink);
+    font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    background: var(--sand);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  button { font-family: inherit; border: 0; background: none; cursor: pointer; }
+  .display { font-family: Outfit, Pretendard, sans-serif; letter-spacing: -0.03em; }
+
+  /* ── top ── */
+  .top {
+    position: sticky; top: 0; z-index: 50;
+    padding-top: var(--safe-t);
+    background: rgba(11, 32, 72, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(246, 228, 196, 0.12);
+  }
+  .top-inner {
+    max-width: 920px; margin: 0 auto;
+    padding: 12px 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--sand);
+  }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 50%;
+    overflow: hidden; background: #fff; flex: none;
+  }
+  .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+  .brand-name { font-size: 14px; font-weight: 800; letter-spacing: -0.03em; }
+  .brand-sub { font-size: 11px; font-weight: 600; color: rgba(246,228,196,.7); margin-top: 1px; }
+  .top-cta {
+    flex: none;
+    display: inline-flex; align-items: center;
+    padding: 9px 14px;
+    background: var(--crimson);
+    color: #fff;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: -0.02em;
+    transition: background .2s, transform .2s;
+  }
+  .top-cta:hover { background: var(--crimson-deep); transform: translateY(-1px); }
+
+  /* ── hero ── */
+  .hero {
+    position: relative;
+    min-height: min(92vh, 760px);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    color: var(--sand);
+    overflow: hidden;
+    background: var(--navy);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 15%, rgba(220,20,60,.28), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 10% 80%, rgba(42,111,168,.35), transparent 50%),
+      linear-gradient(165deg, #071530 0%, #0B2048 42%, #163868 100%);
+  }
+  .hero-flow {
+    position: absolute; inset: -10% -5%;
+    opacity: .22;
+    background:
+      repeating-linear-gradient(
+        -18deg,
+        transparent 0 28px,
+        rgba(246,228,196,.08) 28px 29px
+      );
+    animation: flowDrift 22s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes flowDrift {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-40px, 24px, 0); }
+  }
+  .hero-orb {
+    position: absolute;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(246,228,196,.16), transparent 68%);
+    right: -80px; top: -60px;
+    animation: orbPulse 7s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes orbPulse {
+    from { transform: scale(1); opacity: .7; }
+    to { transform: scale(1.12); opacity: 1; }
+  }
+  .hero-copy {
+    position: relative; z-index: 1;
+    max-width: 920px; width: 100%;
+    margin: 0 auto;
+    padding: 48px 20px 40px;
+  }
+  .hero-kicker {
+    display: inline-block;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(246,228,196,.78);
+    margin-bottom: 14px;
+    animation: rise .7s ease both;
+  }
+  .hero h1 {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: clamp(34px, 8vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 14px;
+    animation: rise .75s .08s ease both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #fff;
+    border-bottom: 3px solid var(--crimson);
+  }
+  .hero-lead {
+    max-width: 34em;
+    font-size: clamp(15px, 2.4vw, 18px);
+    font-weight: 500;
+    color: rgba(246,228,196,.88);
+    word-break: keep-all;
+    margin-bottom: 22px;
+    animation: rise .75s .16s ease both;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 10px;
+    margin-bottom: 26px;
+    animation: rise .75s .22s ease both;
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 12px;
+    background: rgba(246,228,196,.1);
+    border: 1px solid rgba(246,228,196,.18);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .chip strong { color: #fff; font-weight: 800; }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    animation: rise .75s .28s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 12px 20px;
+    font-size: 14px; font-weight: 800;
+    letter-spacing: -0.02em;
+    transition: transform .2s, background .2s, color .2s, border-color .2s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--crimson); color: #fff; }
+  .btn-primary:hover { background: var(--crimson-deep); }
+  .btn-ghost {
+    background: transparent; color: var(--sand);
+    border: 1px solid rgba(246,228,196,.35);
+  }
+  .btn-ghost:hover { border-color: var(--sand); background: rgba(246,228,196,.08); }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ── layout ── */
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+  section {
+    padding: 56px 0;
+  }
+  .sec-label {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 10px;
+  }
+  .sec-title {
+    font-size: clamp(24px, 4.5vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.25;
+    word-break: keep-all;
+    margin-bottom: 12px;
+  }
+  .sec-desc {
+    font-size: 15.5px;
+    color: var(--mute);
+    word-break: keep-all;
+    max-width: 38em;
+    margin-bottom: 28px;
+  }
+  .reveal {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ── info strip ── */
+  .info-strip {
+    margin-top: -28px;
+    position: relative; z-index: 2;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    box-shadow: 0 18px 40px rgba(11,32,72,.12);
+  }
+  .info-item {
+    background: #FFFBF0;
+    padding: 18px 16px;
+  }
+  .info-item .k {
+    font-size: 11px; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--mute); margin-bottom: 6px;
+  }
+  .info-item .v {
+    font-size: 15px; font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.35;
+  }
+  .info-item .v em {
+    font-style: normal; color: var(--crimson);
+  }
+
+  /* ── map / tree ── */
+  .map {
+    background:
+      linear-gradient(180deg, rgba(11,32,72,.03), transparent 40%),
+      var(--sand);
+  }
+  .tree {
+    display: grid; gap: 14px;
+  }
+  .branch {
+    border: 1px solid var(--line);
+    background: rgba(255,251,240,.72);
+    padding: 18px 16px 16px;
+  }
+  .branch-h {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .branch-h h3 {
+    font-size: 16px; font-weight: 800; letter-spacing: -0.03em;
+  }
+  .branch-h span {
+    font-size: 11px; font-weight: 700; color: var(--mute);
+    letter-spacing: .04em;
+  }
+  .leaf-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  .leaf {
+    padding: 12px 12px;
+    border: 1px solid var(--line);
+    background: #FFFBF0;
+    font-size: 13.5px; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .leaf small {
+    display: block;
+    margin-top: 4px;
+    font-size: 11.5px; font-weight: 600;
+    color: var(--mute);
+  }
+  .leaf.is-off {
+    opacity: .55;
+  }
+  .leaf.is-on {
+    border-color: var(--crimson);
+    background: linear-gradient(135deg, rgba(220,20,60,.08), rgba(246,228,196,.5));
+    box-shadow: inset 0 0 0 1px rgba(220,20,60,.15);
+    animation: highlightPulse 2.4s ease-in-out infinite;
+  }
+  .leaf.is-on .tag {
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 3px 7px;
+    background: var(--crimson);
+    color: #fff;
+    font-size: 10px; font-weight: 800;
+    letter-spacing: .04em;
+  }
+  @keyframes highlightPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+  .nest {
+    margin-top: 8px;
+    padding-left: 10px;
+    border-left: 2px solid rgba(220,20,60,.35);
+    display: grid; gap: 6px;
+  }
+  .nest .leaf { font-size: 13px; }
+  .pos-track {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 14px;
+  }
+  .pos-step {
+    flex: 1; min-width: 120px;
+    padding: 10px 12px;
+    background: var(--navy);
+    color: var(--sand);
+    font-size: 12.5px; font-weight: 700;
+    text-align: center;
+  }
+  .pos-step.is-focus {
+    background: var(--crimson);
+  }
+  .pos-step span {
+    display: block;
+    font-size: 10.5px; font-weight: 600;
+    opacity: .72; margin-top: 2px;
+  }
+  .map-note {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: var(--navy);
+    color: var(--sand);
+    font-size: 14px; font-weight: 600;
+    word-break: keep-all;
+  }
+  .map-note strong { color: #fff; }
+
+  /* ── PAR ── */
+  .par-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .par-card {
+    padding: 20px 16px;
+    background: var(--navy);
+    color: var(--sand);
+    min-height: 150px;
+  }
+  .par-card .letter {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 42px; font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .par-card .name {
+    font-size: 14px; font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .par-card p {
+    font-size: 12.5px; font-weight: 500;
+    color: rgba(246,228,196,.78);
+    word-break: keep-all;
+  }
+  .par-card.is-p {
+    background: linear-gradient(160deg, #0B2048, #1A3A72);
+    outline: 2px solid var(--crimson);
+    outline-offset: 0;
+  }
+  .flow-line {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700;
+  }
+  .flow-pill {
+    padding: 8px 12px;
+    background: #FFFBF0;
+    border: 1px solid var(--line);
+  }
+  .flow-pill.is-hot {
+    background: var(--crimson);
+    color: #fff;
+    border-color: var(--crimson);
+  }
+  .flow-arrow { color: var(--mute); font-weight: 800; }
+
+  /* ── curriculum ── */
+  .prac-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .prac {
+    position: relative;
+    padding: 22px 18px 18px;
+    background: #FFFBF0;
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .prac::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--crimson);
+  }
+  .prac .num {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+  .prac h3 {
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .prac p {
+    font-size: 13.5px; color: var(--mute);
+    word-break: keep-all;
+  }
+
+  /* ── diff ── */
+  .diff-list {
+    display: grid; gap: 12px;
+  }
+  .diff {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 18px 16px;
+    background: rgba(255,251,240,.8);
+    border: 1px solid var(--line);
+  }
+  .diff .n {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: var(--crimson);
+    line-height: 1;
+  }
+  .diff h3 {
+    font-size: 16px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+    word-break: keep-all;
+  }
+  .diff p {
+    font-size: 14px; color: var(--mute);
+    word-break: keep-all;
+  }
+
+  /* ── concept ── */
+  .concept {
+    background: var(--navy);
+    color: var(--sand);
+  }
+  .concept .sec-label { color: #F0A0B0; }
+  .concept .sec-title { color: #fff; }
+  .concept .sec-desc { color: rgba(246,228,196,.78); }
+  .q-box {
+    padding: 22px 20px;
+    background: rgba(246,228,196,.08);
+    border-left: 3px solid var(--crimson);
+    margin-bottom: 16px;
+  }
+  .q-box .q {
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    word-break: keep-all;
+  }
+  .q-box .a {
+    font-size: 15px; font-weight: 500;
+    color: rgba(246,228,196,.88);
+    word-break: keep-all;
+  }
+  .q-box .a strong { color: #fff; font-weight: 800; }
+  .eval-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 10px;
+    align-items: stretch;
+    margin-top: 18px;
+  }
+  .eval-card {
+    padding: 16px;
+    background: rgba(246,228,196,.1);
+    border: 1px solid rgba(246,228,196,.16);
+  }
+  .eval-card h4 {
+    font-size: 14px; font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .eval-card p {
+    font-size: 13px; color: rgba(246,228,196,.75);
+    word-break: keep-all;
+  }
+  .eval-mid {
+    display: flex; align-items: center; justify-content: center;
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: .08em;
+    color: #F0A0B0;
+    writing-mode: horizontal-tb;
+  }
+
+  /* ── price ── */
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .price {
+    padding: 22px 16px;
+    border: 1px solid var(--line);
+    background: #FFFBF0;
+    text-align: center;
+  }
+  .price.is-best {
+    border-color: var(--crimson);
+    background: linear-gradient(180deg, rgba(220,20,60,.08), #FFFBF0 55%);
+    transform: translateY(-4px);
+  }
+  .price .label {
+    font-size: 12px; font-weight: 800;
+    letter-spacing: .04em;
+    color: var(--mute);
+    margin-bottom: 10px;
+  }
+  .price.is-best .label { color: var(--crimson); }
+  .price .amt {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 6px;
+  }
+  .price .amt small {
+    font-size: 14px; font-weight: 700;
+  }
+  .price .note {
+    font-size: 12.5px; color: var(--mute);
+    word-break: keep-all;
+  }
+  .deadline {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 16px 18px;
+    background: var(--navy);
+    color: var(--sand);
+    margin-bottom: 22px;
+  }
+  .deadline strong { color: #fff; }
+  .deadline .btn { background: var(--crimson); color: #fff; min-height: 42px; padding: 10px 16px; }
+
+  /* ── footer cta ── */
+  .final {
+    padding: 64px 0 calc(72px + var(--safe-b));
+    text-align: center;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(220,20,60,.12), transparent 60%),
+      var(--sand);
+  }
+  .final h2 {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+    margin-bottom: 10px;
+  }
+  .final p {
+    color: var(--mute);
+    font-size: 15px;
+    word-break: keep-all;
+    margin-bottom: 22px;
+  }
+  .final-actions {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  }
+  .foot {
+    padding: 20px 18px calc(20px + var(--safe-b));
+    text-align: center;
+    font-size: 12px; color: var(--mute);
+    border-top: 1px solid var(--line);
+  }
+
+  /* sticky mobile apply */
+  .mob-bar {
+    display: none;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 10px 14px calc(10px + var(--safe-b));
+    background: rgba(11,32,72,.96);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(246,228,196,.12);
+  }
+  .mob-bar .btn {
+    width: 100%;
+    background: var(--crimson); color: #fff;
+  }
+
+  @media (max-width: 780px) {
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .par-grid { grid-template-columns: 1fr; }
+    .prac-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr; }
+    .price.is-best { transform: none; }
+    .eval-row { grid-template-columns: 1fr; }
+    .eval-mid { writing-mode: horizontal-tb; padding: 4px 0; }
+    .mob-bar { display: block; }
+    .final { padding-bottom: calc(96px + var(--safe-b)); }
+    .top-cta { display: none; }
+  }
+  @media (max-width: 480px) {
+    .hero-copy { padding: 36px 16px 32px; }
+    .chip { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="#top" aria-label="리얼무브먼트">
+      <span class="brand-mark"><img src="리얼무브먼트_링크_로고.png" alt=""></span>
+      <span>
+        <div class="brand-name">REAL MOVEMENT</div>
+        <div class="brand-sub">Re:Al 움직임 전문가 과정</div>
+      </span>
+    </a>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <a href="전문가과정_통합.html" style="color:rgba(246,228,196,.85);font-size:12px;font-weight:800;">전체 과정</a>
+      <a class="top-cta" href="http://pf.kakao.com/_nVSxdn/chat" target="_blank" rel="noopener noreferrer">신청 문의</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="과정 소개">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-flow" aria-hidden="true"></div>
+    <div class="hero-orb" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <div class="hero-kicker display">Expert Course · Passive Stretching</div>
+      <h1>움직임의 시작,<br><em>패시브 스트레칭</em></h1>
+      <p class="hero-lead">
+        PAR 시퀀스 전체 안에서 Supine·Prone 패시브 스트레칭 4가지를 하루 만에 실습합니다.
+        강사도, 에스테티션도 바로 적용할 수 있는 플로우입니다.
+      </p>
+      <div class="hero-meta">
+        <span class="chip"><strong>10.11</strong> 일 · 10:00–17:00</span>
+        <span class="chip"><strong>약수점</strong> 리얼무브먼트</span>
+        <span class="chip"><strong>얼리버드</strong> 9/27까지</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#apply">수강 신청하기</a>
+        <a class="btn btn-ghost" href="#map">전체 과정 맵 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap info-strip reveal">
+    <div class="info-grid" aria-label="핵심 정보">
+      <div class="info-item">
+        <div class="k">일시</div>
+        <div class="v">10월 11일<br>오전 10시 – 오후 5시</div>
+      </div>
+      <div class="info-item">
+        <div class="k">장소</div>
+        <div class="v">리얼무브먼트<br>약수점</div>
+      </div>
+      <div class="info-item">
+        <div class="k">정가</div>
+        <div class="v">30만원</div>
+      </div>
+      <div class="info-item">
+        <div class="k">얼리버드</div>
+        <div class="v"><em>27만원</em><br>동반 시 25만원</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 전체 맵 -->
+  <section class="map" id="map">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-label">Curriculum Map</div>
+        <h2 class="sec-title">전문가 과정의 전체 구조</h2>
+        <p class="sec-desc">
+          먼저 전체를 보고, 이번 과정에서 <strong>무엇을 하는지</strong>를 명확히 합니다.
+          이번 모집은 운동 관리 · 움직임 과정 중 <strong>패시브 스트레칭 (Supine / Prone)</strong>입니다.
+        </p>
+      </div>
+
+      <div class="tree reveal">
+        <article class="branch">
+          <div class="branch-h">
+            <h3>수기 / 기기 관리</h3>
+            <span>Manual · Device</span>
+          </div>
+          <div class="leaf-row">
+            <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
+            <div class="leaf is-off">IFC 얼굴교정 과정<small>Face Palpation · 시퀀스</small></div>
+          </div>
+        </article>
+
+        <article class="branch">
+          <div class="branch-h">
+            <h3>운동 관리</h3>
+            <span>Movement Care</span>
+          </div>
+          <div class="leaf is-on">
+            <span class="tag">이번 과정</span>
+            움직임 과정 · Re:Al
+            <small>PAR · 자세교정 · 기능운동</small>
+            <div class="nest">
+              <div class="leaf is-on">
+                <span class="tag">실습 범위</span>
+                패시브 스트레칭 · Supine / Prone
+                <small>상지 · 하지 4파트 실습</small>
+              </div>
+              <div class="leaf is-off">자세교정 / 생활습관</div>
+              <div class="leaf is-off">기능운동</div>
+            </div>
+          </div>
+
+          <div class="pos-track" aria-label="포지션 진행">
+            <div class="pos-step is-focus">Supine / Prone<span>이번 과정</span></div>
+            <div class="pos-step">Quadruped / Sitting<span>다음 단계</span></div>
+            <div class="pos-step">Standing<span>기능으로 연결</span></div>
+          </div>
+        </article>
+      </div>
+
+      <p class="map-note reveal">
+        포지션은 <strong>누운 자세 → 네발·앉기 → 서기</strong>로 하중을 올리며 진행합니다.
+        이번 하루 과정은 그중 <strong>가장 안전한 시작점, Supine/Prone 패시브 스트레칭</strong>에 집중합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- PAR -->
+  <section id="par">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-label">PAR Concept</div>
+        <h2 class="sec-title">P · A · R, 움직임의 공통 언어</h2>
+        <p class="sec-desc">
+          Passive에서 시작해 Active, Resistive로 이어지는 시퀀스입니다.
+          스트레칭은 단순 이완이 아니라, <strong>P-ROM 평가와 안전한 움직임의 첫 단계</strong>입니다.
+        </p>
+      </div>
+
+      <div class="par-grid reveal">
+        <article class="par-card is-p">
+          <div class="letter">P</div>
+          <div class="name">Passive</div>
+          <p>강사가 움직임을 유도합니다. 통증·ROM을 확인하며 가동성을 회복합니다.</p>
+        </article>
+        <article class="par-card">
+          <div class="letter">A</div>
+          <div class="name">Active</div>
+          <p>회원이 스스로 움직입니다. 자세·생활습관 인지와 능동 가동으로 연결합니다.</p>
+        </article>
+        <article class="par-card">
+          <div class="letter">R</div>
+          <div class="name">Resistive</div>
+          <p>저항을 더해 근막경선·기능 패턴을 강화하고 일상에 필요한 힘으로 확장합니다.</p>
+        </article>
+      </div>
+
+      <div class="reveal">
+        <div class="sec-label" style="margin-top:8px">Sequence Overview</div>
+        <h3 class="sec-title" style="font-size:22px">움직임 전체 시퀀스 개요</h3>
+        <div class="flow-line" style="margin-bottom:14px">
+          <span class="flow-pill is-hot">P Stretching</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-pill">AA / A-ROM</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-pill">자세·생활습관</span>
+          <span class="flow-arrow">→</span>
+          <span class="flow-pill">R 기능운동</span>
+        </div>
+        <p class="sec-desc" style="margin-bottom:0">
+          관절마다 P → AA → A를 마친 뒤 다음 관절로 진행하고,
+          PAR이 끝나면 생활습관·자세 교정과 기능운동으로 이어집니다.
+          <strong>오늘은 이 흐름의 입구, Passive Stretching을 깊게 다룹니다.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- practice -->
+  <section id="practice" style="background:rgba(11,32,72,.03)">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-label">Practice</div>
+        <h2 class="sec-title">패시브 스트레칭 4가지 실습</h2>
+        <p class="sec-desc">
+          Supine · Prone 각각 상지/하지. 말단에서 근위로 연결하는 플로우로 배웁니다.
+        </p>
+      </div>
+      <div class="prac-grid reveal">
+        <article class="prac">
+          <div class="num">01 · SUPINE</div>
+          <h3>하지 Lower</h3>
+          <p>발 → 발목 → 무릎 → 고관절. 중력 부하를 최소화한 상태에서 하체 가동성을 엽니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">02 · SUPINE</div>
+          <h3>상지 Upper</h3>
+          <p>손가락 → 손목 → 팔꿈치 → 어깨. 누운 자세에서 상지 시퀀스를 연결합니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">03 · PRONE</div>
+          <h3>하지 Lower</h3>
+          <p>엎드린 자세에서 하체 후방 조직을 다루며, Supine과 대비되는 접근을 익힙니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">04 · PRONE</div>
+          <h3>상지 Upper</h3>
+          <p>엎드린 자세의 상지·체간 연결. 베드 위에서도 안정적으로 진행 가능한 포지션입니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- diff -->
+  <section id="diff">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-label">Why Different</div>
+        <h2 class="sec-title">다른 패시브 스트레칭과의 차별점</h2>
+        <p class="sec-desc">현장에서 오래 쓸 수 있는 기술이어야 합니다. 그래서 세 가지를 기준으로 설계했습니다.</p>
+      </div>
+      <div class="diff-list reveal">
+        <article class="diff">
+          <div class="n">01</div>
+          <div>
+            <h3>강사가 크게 힘들이지 않는 자세</h3>
+            <p>시술자 몸의 부담을 줄인 포지션으로, 하루 종일 반복해도 지속 가능한 테크닉입니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">02</div>
+          <div>
+            <h3>동작을 연결한 플로우 시퀀스</h3>
+            <p>단편 동작이 아니라 다양한 움직임을 이어서, 평가와 중재가 한 흐름으로 이어집니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">03</div>
+          <div>
+            <h3>베드 위에서 가능 — 에스테티션도 OK</h3>
+            <p>매트뿐 아니라 베드 환경에서도 적용할 수 있어, 운동 지도자뿐 아니라 피부·바디 케어 현장에도 맞습니다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- concept -->
+  <section class="concept" id="concept">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-label">My Concept</div>
+        <h2 class="sec-title">수동적으로 받을까,<br>움직이는 게 좋을까?</h2>
+        <p class="sec-desc">둘 중 하나를 고르는 질문이 아닙니다.</p>
+      </div>
+
+      <div class="q-box reveal">
+        <div class="q">중요한 것은 “무엇을”이 아니라 “누구에게, 어떤 순서로”입니다.</div>
+        <div class="a">
+          수동(Passive)과 능동(Active)은 대립이 아니라 <strong>연속된 중재 선택지</strong>입니다.
+          그 순서를 결정하는 기준은 <strong>평가</strong>에서 나옵니다.
+          통증·ROM·동작 패턴을 보고, 지금 이 회원에게 안전한 입구가 Passive인지 Active인지를 가릅니다.
+        </div>
+      </div>
+
+      <div class="eval-row reveal">
+        <div class="eval-card">
+          <h4>평가가 먼저</h4>
+          <p>History · Inspection · Movement · Palpation으로 원인과 수준을 좁힙니다.</p>
+        </div>
+        <div class="eval-mid">THEN</div>
+        <div class="eval-card">
+          <h4>순서와 대상</h4>
+          <p>같은 기법도 회원마다 타이밍이 다릅니다. Passive → Active → Resistive의 진입점을 조정합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- apply -->
+  <section id="apply">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="sec-label">Enrollment</div>
+        <h2 class="sec-title">수강료 · 얼리버드</h2>
+        <p class="sec-desc">얼리버드는 <strong>9월 27일까지 신청 완료</strong> 기준입니다. 동반 수강 시 추가 할인이 적용됩니다.</p>
+      </div>
+
+      <div class="price-grid reveal">
+        <article class="price">
+          <div class="label">정가</div>
+          <div class="amt">30<small>만원</small></div>
+          <div class="note">일반 신청</div>
+        </article>
+        <article class="price is-best">
+          <div class="label">얼리버드</div>
+          <div class="amt">27<small>만원</small></div>
+          <div class="note">9/27까지 신청 완료</div>
+        </article>
+        <article class="price">
+          <div class="label">얼리버드 + 동반</div>
+          <div class="amt">25<small>만원</small></div>
+          <div class="note">1인 기준 · 동반 수강 시</div>
+        </article>
+      </div>
+
+      <div class="deadline reveal">
+        <div>
+          <div style="font-size:13px;opacity:.75;margin-bottom:4px">장소 · 일정</div>
+          <strong>리얼무브먼트 약수점</strong> · 10월 11일 10:00–17:00
+        </div>
+        <a class="btn" href="http://pf.kakao.com/_nVSxdn/chat" target="_blank" rel="noopener noreferrer">카카오로 신청 문의</a>
+      </div>
+
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:10px">
+        <a class="btn btn-primary" href="https://naver.me/x2YstInq" target="_blank" rel="noopener noreferrer">약수점 위치 보기</a>
+        <a class="btn" href="https://talk.naver.com/profile/c/real_movement_y" target="_blank" rel="noopener noreferrer" style="border:1px solid var(--line);background:#FFFBF0">네이버톡톡 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap reveal">
+      <h2>안전한 움직임의 입구를<br>함께 열어보세요</h2>
+      <p>평가로 순서를 정하고, Passive Stretching으로 시작합니다.<br>하루 실습으로 Supine·Prone 4파트를 가져가실 수 있습니다.</p>
+      <div class="final-actions">
+        <a class="btn btn-primary" href="http://pf.kakao.com/_nVSxdn/chat" target="_blank" rel="noopener noreferrer">지금 신청 문의</a>
+        <a class="btn" href="전문가과정_통합.html" style="border:1px solid var(--line);background:#FFFBF0">전문가 과정 전체 보기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  REAL MOVEMENT · Re:Al 움직임 전문가 과정 · Passive Stretching
+</footer>
+
+<div class="mob-bar" aria-label="빠른 신청">
+  <a class="btn" href="http://pf.kakao.com/_nVSxdn/chat" target="_blank" rel="noopener noreferrer">카카오로 신청 문의</a>
+</div>
+
+<script>
+  (function () {
+    var nodes = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      nodes.forEach(function (n) { n.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function (n) { io.observe(n); });
+  })();
+</script>
+</body>
+</html>
