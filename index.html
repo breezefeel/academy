@@ -2,454 +2,1904 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>리얼무브먼트 체험 부스 안내 — 작전이음길</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B2048">
+<title>전문가 과정 | 평가 → 수기·기기 → 움직임 | 미카닥</title>
+<meta name="description" content="평가로 원인을 찾고, 손(도구/기기)으로 풀고, 움직임으로 지킵니다. CMT · IFC · Re:Al 중 필요한 과정을 선택하세요.">
+
+<!-- Open Graph / 카카오톡·SNS 공유 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="미카닥 박준규 전문가 과정">
+<meta property="og:title" content="전문가 과정 | 평가 → 수기·기기 → 움직임 | 미카닥">
+<meta property="og:description" content="평가로 원인을 찾고, 손(도구/기기)으로 풀고, 움직임으로 지킵니다. CMT · IFC · Re:Al 중 필요한 과정을 선택하세요.">
+<meta property="og:image" content="https://breezefeel.github.io/academy/profile-photo.png">
+<meta property="og:url" content="https://breezefeel.github.io/academy/전문가과정_통합.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="https://breezefeel.github.io/academy/profile-photo.png">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  @page {
-    size: A4;
-    margin: 14mm 16mm;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --ink: #1a1f1c;
-    --muted: #5a635c;
-    --line: #d8ddd8;
-    --accent: #1f6b4a;
-    --accent-soft: #e8f3ed;
-    --paper: #fafbf9;
+    --navy: #0B2048;
+    --navy-2: #122A58;
+    --sand: #F6E4C4;
+    --cream: #F3EDE2;
+    --ink: #0B2048;
+    --mute: #4A5A78;
+    --crimson: #DC143C;
+    --crimson-deep: #B01030;
+    --line: rgba(11, 32, 72, 0.12);
+    --white: #FFFBF0;
+    --ok: #1F7A5C;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-t: env(safe-area-inset-top, 0px);
   }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     color: var(--ink);
-    background: #e8ebe7;
-    line-height: 1.45;
+    font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    background: var(--sand);
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+    transition: background-color .35s ease;
   }
+  body.tab-cmt { background: #D7E2F3; }
+  body.tab-ifc { background: #F8DDE3; }
+  body.tab-real { background: #F3E4C4; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  button { font-family: inherit; border: 0; background: none; cursor: pointer; color: inherit; }
 
-  .toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 12px 16px;
-    background: rgba(255,255,255,.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #dce0dc;
+  /* header */
+  .top {
+    position: sticky; top: 0; z-index: 60;
+    padding-top: var(--safe-t);
+    background: rgba(11, 32, 72, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(246, 228, 196, 0.12);
   }
-
-  .toolbar button {
-    appearance: none;
-    border: none;
-    cursor: pointer;
-    font: 700 14px/1 inherit;
-    padding: 11px 18px;
-    border-radius: 10px;
-    background: var(--accent);
-    color: #fff;
+  .top-inner {
+    max-width: 960px; margin: 0 auto;
+    padding: 10px 16px 0;
   }
-
-  .toolbar button.secondary {
-    background: #fff;
-    color: var(--ink);
-    border: 1px solid #c9d0c9;
-  }
-
-  .toolbar span {
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .sheet-wrap {
-    padding: 24px 16px 40px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .sheet {
-    width: 210mm;
-    min-height: 297mm;
-    background: var(--paper);
-    padding: 16mm 17mm;
-    box-shadow: 0 12px 40px rgba(0,0,0,.12);
-  }
-
-  header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    align-items: end;
-    padding-bottom: 14px;
-    border-bottom: 2.5px solid var(--ink);
-  }
-
-  .eyebrow {
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-
-  h1 {
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-  }
-
-  .meta-box {
-    text-align: right;
-    font-size: 12.5px;
-    color: var(--muted);
-  }
-
-  .meta-box strong {
-    display: block;
-    color: var(--ink);
-    font-size: 15px;
-    font-weight: 800;
-    margin-bottom: 2px;
-  }
-
-  .lead {
-    margin-top: 14px;
-    font-size: 13.5px;
-    color: var(--muted);
-  }
-
-  .grid {
-    margin-top: 16px;
-    display: grid;
-    grid-template-columns: 1.15fr .85fr;
-    gap: 12px;
-  }
-
-  .card {
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 14px 14px 12px;
-    background: #fff;
-  }
-
-  .card h2 {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .04em;
-    color: var(--accent);
+  .brand-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
     margin-bottom: 10px;
   }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    color: var(--sand);
+  }
+  .brand-name { font-size: 14px; font-weight: 800; letter-spacing: -0.03em; }
+  .brand-sub { font-size: 11px; font-weight: 600; color: rgba(246,228,196,.7); margin-top: 1px; }
+  .kakao-mini {
+    flex: none;
+    padding: 8px 12px;
+    background: var(--crimson);
+    color: #fff;
+    font-size: 12px; font-weight: 800;
+  }
 
-  .kv {
+  .tabs {
     display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 6px 10px;
-    font-size: 13px;
+    grid-template-columns: 1.1fr repeat(3, 1fr);
+    gap: 6px;
+    padding-bottom: 10px;
+  }
+  .tab {
+    min-height: 42px;
+    padding: 8px 6px;
+    border: 1px solid rgba(246, 228, 196, 0.28);
+    color: rgba(246, 228, 196, 0.72);
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.02em;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .tab[data-tab="home"] { font-family: Pretendard, sans-serif; font-size: 12.5px; letter-spacing: -0.02em; }
+  .tab.is-active {
+    background: rgba(246, 228, 196, 0.12);
+    border-color: var(--sand);
+    color: #fff;
+  }
+  .tab:hover { color: #fff; border-color: rgba(246,228,196,.55); }
+
+  /* panels */
+  .panel { display: none; }
+  .panel.is-active { display: block; animation: panelIn .35s ease; }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
   }
 
-  .kv dt {
-    color: var(--muted);
-    font-weight: 600;
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  section { padding: 48px 0; }
+  .sec-label {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 10px;
   }
-
-  .kv dd {
-    font-weight: 700;
-  }
-
-  .people {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .people li {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: baseline;
-    font-size: 13px;
-    padding-bottom: 8px;
-    border-bottom: 1px dashed var(--line);
-  }
-
-  .people li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .people .role {
-    color: var(--muted);
-    font-weight: 600;
-    font-size: 12px;
-    text-align: right;
-  }
-
-  .programs {
-    margin-top: 12px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .program {
-    border-radius: 12px;
-    padding: 14px;
-    background: var(--accent-soft);
-    border: 1px solid #cfe4d8;
-  }
-
-  .program.alt {
-    background: #fff;
-    border-color: var(--line);
-  }
-
-  .program .tag {
-    display: inline-block;
-    font-size: 10px;
+  .sec-title {
+    font-size: clamp(24px, 4.6vw, 34px);
     font-weight: 800;
-    letter-spacing: .06em;
-    color: var(--accent);
-    margin-bottom: 6px;
+    letter-spacing: -0.04em;
+    line-height: 1.25;
+    word-break: keep-all;
+    margin-bottom: 12px;
+  }
+  .sec-desc {
+    font-size: 15.5px;
+    color: var(--mute);
+    word-break: keep-all;
+    max-width: 40em;
+    margin-bottom: 24px;
   }
 
-  .program h3 {
-    font-size: 16px;
-    font-weight: 900;
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 46px; padding: 11px 18px;
+    font-size: 14px; font-weight: 800;
     letter-spacing: -0.02em;
-    margin-bottom: 6px;
+    transition: transform .2s, background .2s, border-color .2s;
   }
-
-  .program p {
-    font-size: 12.5px;
-    color: var(--muted);
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--crimson); color: #fff; }
+  .btn-primary:hover { background: var(--crimson-deep); }
+  .btn-ghost {
+    border: 1px solid rgba(246,228,196,.4);
+    color: var(--sand);
   }
-
-  .price {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: 900;
+  .btn-light {
+    background: var(--white);
+    border: 1px solid var(--line);
     color: var(--ink);
   }
+  .btn-sm { min-height: 42px; padding: 10px 14px; font-size: 13px; }
+  .btn:disabled { opacity: .55; cursor: default; transform: none; }
 
-  .booth {
-    margin-top: 12px;
+  /* HOME hero */
+  .home-hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--sand);
+    min-height: min(78vh, 640px);
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .home-hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 88% 12%, rgba(220,20,60,.22), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 10% 90%, rgba(42,111,168,.28), transparent 50%),
+      repeating-linear-gradient(-18deg, transparent 0 28px, rgba(246,228,196,.05) 28px 29px);
+    animation: drift 20s linear infinite;
+  }
+  @keyframes drift {
+    from { transform: translate3d(0,0,0); }
+    to { transform: translate3d(-28px, 16px, 0); }
+  }
+  .home-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 960px; width: 100%;
+    margin: 0 auto;
+    padding: 40px 16px 36px;
+  }
+  .hero-intro {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 22px;
+    animation: rise .7s ease both;
+  }
+  .hero-logo {
+    width: 96px; height: 96px; border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 2px rgba(246,228,196,.35);
+    background: #5a6570;
+  }
+  .hero-logo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+  }
+  .intro-name {
+    font-size: 20px; font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+  .intro-cred {
+    margin-top: 4px;
+    font-size: 13.5px; font-weight: 600;
+    color: rgba(246,228,196,.82);
+    word-break: keep-all;
+  }
+  .intro-badges {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 10px;
+  }
+  .intro-badges span {
+    padding: 5px 9px;
+    border: 1px solid rgba(246,228,196,.28);
+    background: rgba(246,228,196,.08);
+    font-size: 11px; font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--sand);
+  }
+  .intro-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12.5px; font-weight: 800;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,.45);
+  }
+  .hero-kicker {
+    font-size: 12px; font-weight: 800;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: rgba(246,228,196,.72);
+    margin-bottom: 12px;
+    animation: rise .7s .05s ease both;
+  }
+  .home-hero h1 {
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+    word-break: keep-all;
+    margin-bottom: 16px;
+    animation: rise .75s .1s ease both;
+  }
+  .concept-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+    max-width: 40em;
+    margin: 0 0 18px;
+    padding: 14px 16px;
+    border: 1px solid rgba(246,228,196,.22);
+    background: rgba(246,228,196,.06);
+    animation: rise .75s .16s ease both;
+  }
+  .concept-line .step {
+    font-size: clamp(14px, 2.8vw, 16px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+    word-break: keep-all;
+  }
+  .concept-line .arrow {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(246,228,196,.55);
+  }
+  .hero-lead {
+    max-width: 34em;
+    font-size: 15.5px;
+    color: rgba(246,228,196,.88);
+    word-break: keep-all;
+    margin-bottom: 22px;
+    animation: rise .75s .22s ease both;
+  }
+  .hero-actions {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    animation: rise .75s .28s ease both;
+  }
+  @media (max-width: 560px) {
+    .hero-intro { grid-template-columns: 76px 1fr; gap: 12px; }
+    .hero-logo { width: 76px; height: 76px; }
+    .intro-name { font-size: 18px; }
+    .concept-line { padding: 12px 14px; }
+    .concept-line .arrow { display: none; }
+    .concept-line .step {
+      width: 100%;
+      padding-left: 12px;
+      position: relative;
+    }
+    .concept-line .step::before {
+      content: "";
+      position: absolute; left: 0; top: .45em;
+      width: 6px; height: 6px;
+      background: var(--crimson);
+    }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* why / effect */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .why-card {
+    padding: 20px 16px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+  .why-card .n {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: .08em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+  .why-card h3 {
+    font-size: 16px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    word-break: keep-all;
+  }
+  .why-card p {
+    font-size: 13.5px; color: var(--mute);
+    word-break: keep-all;
+  }
+
+  .effect-box {
+    margin-top: 18px;
+    padding: 22px 18px;
+    background: var(--navy);
+    color: var(--sand);
+  }
+  .effect-box h3 {
+    font-size: 18px; font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.03em;
+  }
+  .effect-box p {
+    font-size: 14.5px;
+    color: rgba(246,228,196,.86);
+    word-break: keep-all;
+  }
+  .effect-box strong { color: #fff; }
+
+  /* choose */
+  .choose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .choose-card {
+    text-align: left;
+    padding: 22px 16px;
+    background: var(--navy);
+    color: var(--sand);
+    border: 1px solid rgba(246,228,196,.2);
+    transition: transform .2s, border-color .2s, background .2s;
+    width: 100%;
+  }
+  .choose-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--sand);
+    background: var(--navy-2);
+  }
+  .choose-card .mark {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    min-width: 76px;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(246,228,196,.45);
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 16px; font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .choose-card h3 {
+    font-size: 16px; font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+  }
+  .choose-card p {
+    font-size: 13px;
+    color: rgba(246,228,196,.78);
+    word-break: keep-all;
+    margin-bottom: 14px;
+    min-height: 3.2em;
+  }
+  .choose-card .go {
+    font-size: 13px; font-weight: 800;
+    color: #fff;
+  }
+  .choose-hint-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .choose-hint {
+    margin: 0;
+    flex: 1;
+    min-width: 0;
+    font-size: 13.5px;
+    color: var(--mute);
+    word-break: keep-all;
+  }
+  .choose-consult {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 64px;
+    min-height: 40px;
+    padding: 8px 14px;
+    background: var(--crimson);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .choose-consult:hover { background: var(--crimson-deep); }
+
+  /* detail panels */
+  .detail-hero {
+    background: var(--navy);
+    color: var(--sand);
+    padding: 36px 0 28px;
+  }
+  .detail-hero .mark {
+    display: inline-flex;
+    padding: 8px 14px;
+    border: 1px solid rgba(246,228,196,.4);
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .detail-hero h1 {
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+    margin-bottom: 10px;
+  }
+  .detail-hero p {
+    max-width: 36em;
+    font-size: 15px;
+    color: rgba(246,228,196,.86);
+    word-break: keep-all;
+  }
+  .badge-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 16px;
+  }
+  .badge {
+    display: inline-flex;
+    padding: 5px 10px;
+    font-size: 11px; font-weight: 800;
+    background: rgba(246,228,196,.12);
+    border: 1px solid rgba(246,228,196,.2);
+  }
+  .badge-hot { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+
+  .facts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
+    margin-bottom: 20px;
   }
-
-  .booth .item {
-    text-align: center;
+  .fact {
+    padding: 14px 12px;
+    background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 10px 8px;
-    background: #fff;
   }
-
-  .booth .item b {
-    display: block;
-    font-size: 14px;
-    font-weight: 900;
-    margin-bottom: 2px;
-  }
-
-  .booth .item span {
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .note {
-    margin-top: 14px;
-    border-left: 3px solid var(--accent);
-    padding: 10px 12px;
-    background: #fff;
-    font-size: 12.5px;
-  }
-
-  .note strong {
-    color: var(--accent);
-  }
-
-  .checklist {
-    margin-top: 12px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 12px 14px;
-    background: #fff;
-  }
-
-  .checklist h2 {
-    font-size: 12px;
-    font-weight: 800;
+  .fact .k {
+    font-size: 11px; font-weight: 800;
+    color: var(--mute);
     letter-spacing: .04em;
-    color: var(--accent);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+  }
+  .fact .v {
+    font-size: 13.5px; font-weight: 700;
+    word-break: keep-all;
+  }
+  .bullets {
+    list-style: none;
+    display: grid; gap: 8px;
+    margin-bottom: 20px;
+  }
+  .bullets li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 14.5px;
+    color: var(--mute);
+    word-break: keep-all;
+  }
+  .bullets li::before {
+    content: "";
+    position: absolute; left: 0; top: .55em;
+    width: 7px; height: 7px;
+    background: var(--crimson);
+  }
+  .actions {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .note {
+    padding: 12px 14px;
+    background: rgba(11,32,72,.05);
+    border-left: 3px solid var(--navy);
+    font-size: 13px;
+    color: var(--mute);
+    word-break: keep-all;
+  }
+  .note a {
+    color: var(--crimson);
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
-  .checklist ul {
-    list-style: none;
+  .nest {
+    display: grid; gap: 8px;
+    margin-bottom: 18px;
+  }
+  .nest-item {
+    padding: 14px;
+    border: 1px solid var(--line);
+    background: var(--white);
+    font-size: 14px; font-weight: 700;
+  }
+  .nest-item small {
+    display: block; margin-top: 4px;
+    font-size: 12.5px; font-weight: 600; color: var(--mute);
+  }
+  .nest-item.is-hot {
+    border-color: var(--crimson);
+    background: linear-gradient(135deg, rgba(220,20,60,.08), rgba(246,228,196,.4));
+  }
+  .nest-item .mini {
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 2px 7px;
+    background: var(--crimson);
+    color: #fff;
+    font-size: 10px; font-weight: 800;
+  }
+
+  .fit-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px 16px;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .fit {
+    padding: 16px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+  .fit h3 {
+    font-size: 14px; font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .fit p {
+    font-size: 13px; color: var(--mute);
+    word-break: keep-all;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .pillars.is-3 { grid-template-columns: repeat(3, 1fr); }
+  .pillar {
+    padding: 18px 16px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--crimson);
+  }
+  .pillar .n {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: .1em;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+  .pillar h3 {
+    font-size: 16px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    word-break: keep-all;
+  }
+  .pillar p {
+    font-size: 13.5px; color: var(--mute);
+    word-break: keep-all;
+  }
+  .pillar ul {
+    list-style: none;
+    margin-top: 10px;
+    display: grid; gap: 6px;
+  }
+  .pillar li {
+    position: relative;
+    padding-left: 12px;
+    font-size: 13px;
+    color: var(--mute);
+    word-break: keep-all;
+  }
+  .pillar li::before {
+    content: "";
+    position: absolute; left: 0; top: .5em;
+    width: 5px; height: 5px;
+    background: var(--navy);
+  }
+
+  .enroll {
+    margin-top: 8px;
+    padding: 22px 18px;
+    background: rgba(11,32,72,.04);
+    border: 1px solid var(--line);
+  }
+  .enroll h3 {
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .enroll > p {
+    font-size: 13.5px;
+    color: var(--mute);
+    word-break: keep-all;
+    margin-bottom: 14px;
+  }
+  .enroll + .enroll { margin-top: 16px; }
+
+  .foot {
+    padding: 18px 16px calc(18px + var(--safe-b));
+    text-align: center;
     font-size: 12px;
-    color: var(--muted);
-  }
-
-  .checklist li::before {
-    content: "☐ ";
-    color: var(--accent);
-    font-weight: 700;
-  }
-
-  footer {
-    margin-top: 16px;
-    padding-top: 10px;
+    color: var(--mute);
     border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    font-size: 11px;
-    color: var(--muted);
   }
 
-  footer b { color: var(--ink); }
+  @media (max-width: 780px) {
+    .why-grid, .choose-grid, .facts, .fit-grid, .pillars, .pillars.is-3 { grid-template-columns: 1fr; }
+    .tabs { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .tab { font-size: 11.5px; min-height: 40px; padding: 7px 2px; }
+    .tab[data-tab="home"] { font-size: 11px; }
+    .kakao-mini { display: none; }
+    .choose-card p { min-height: 0; }
+    .leaf-parts { grid-template-columns: 1fr; }
+  }
 
-  @media print {
-    body { background: #fff; }
-    .toolbar { display: none !important; }
-    .sheet-wrap { padding: 0; }
-    .sheet {
-      width: auto;
-      min-height: auto;
-      box-shadow: none;
-      padding: 0;
-    }
+  /* ── curriculum map (탭 간 위치 안내) ── */
+  .tree {
+    display: grid; gap: 14px;
+    margin-bottom: 22px;
+  }
+  .branch {
+    border: 1px solid var(--line);
+    background: var(--white);
+    padding: 18px 16px 16px;
+  }
+  .branch-h {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .branch-h h3 { font-size: 16px; font-weight: 800; letter-spacing: -0.03em; }
+  .branch-h span { font-size: 11px; font-weight: 700; color: var(--mute); letter-spacing: .04em; }
+  .leaf-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  .leaf {
+    padding: 12px 12px;
+    border: 1px solid var(--line);
+    background: var(--white);
+    font-size: 13.5px; font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .leaf small { display: block; margin-top: 4px; font-size: 11.5px; font-weight: 600; color: var(--mute); }
+  .leaf.is-off { opacity: .55; }
+  .leaf.is-on {
+    border-color: var(--crimson);
+    background: linear-gradient(135deg, rgba(220,20,60,.08), rgba(246,228,196,.5));
+    box-shadow: inset 0 0 0 1px rgba(220,20,60,.15);
+  }
+  .leaf.is-on .tag {
+    display: inline-block; margin-bottom: 6px; padding: 3px 7px;
+    background: var(--crimson); color: #fff;
+    font-size: 10px; font-weight: 800; letter-spacing: .04em;
+  }
+  .leaf-parts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .leaf-parts .leaf {
+    font-size: 13px;
+    background: rgba(255,255,255,.7);
+  }
+  .pos-track { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .pos-step {
+    flex: 1; min-width: 120px; padding: 10px 12px;
+    background: var(--navy); color: var(--sand);
+    font-size: 12.5px; font-weight: 700; text-align: center;
+  }
+  .pos-step.is-focus { background: var(--crimson); }
+  .pos-step span { display: block; font-size: 10.5px; font-weight: 600; opacity: .72; margin-top: 2px; }
+  .map-note {
+    padding: 14px 16px; background: var(--navy); color: var(--sand);
+    font-size: 14px; font-weight: 600; word-break: keep-all; margin-bottom: 22px;
+  }
+  .map-note strong { color: #fff; }
+
+  /* ── PAR 카드 ── */
+  .par-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px;
+  }
+  .par-card { padding: 20px 16px; background: var(--navy); color: var(--sand); min-height: 140px; }
+  .par-card .letter {
+    font-family: Outfit, Pretendard, sans-serif; font-size: 38px; font-weight: 800;
+    line-height: 1; color: #fff; margin-bottom: 8px;
+  }
+  .par-card .name { font-size: 14px; font-weight: 800; margin-bottom: 8px; }
+  .par-card p { font-size: 12.5px; font-weight: 500; color: rgba(246,228,196,.78); word-break: keep-all; }
+  .par-card.is-p { background: linear-gradient(160deg, #0B2048, #1A3A72); outline: 2px solid var(--crimson); outline-offset: 0; }
+  .flow-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; }
+  .flow-pill { padding: 8px 12px; background: var(--white); border: 1px solid var(--line); }
+  .flow-pill.is-hot { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+  .flow-arrow { color: var(--mute); font-weight: 800; }
+
+  /* ── 실습/차별점 카드 ── */
+  .prac-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 22px; }
+  .prac { position: relative; padding: 22px 18px 18px; background: var(--white); border: 1px solid var(--line); overflow: hidden; }
+  .prac::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--crimson); }
+  .prac .num { font-family: Outfit, Pretendard, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--crimson); margin-bottom: 8px; }
+  .prac h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
+  .prac p { font-size: 13.5px; color: var(--mute); word-break: keep-all; }
+
+  .diff-list { display: grid; gap: 12px; margin-bottom: 22px; }
+  .diff {
+    display: grid; grid-template-columns: 46px 1fr; gap: 14px; align-items: start;
+    padding: 18px 16px; background: var(--white); border: 1px solid var(--line);
+  }
+  .diff .n { font-family: Outfit, Pretendard, sans-serif; font-size: 26px; font-weight: 800; color: var(--crimson); line-height: 1; }
+  .diff h3 { font-size: 15.5px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; word-break: keep-all; }
+  .diff p { font-size: 13.5px; color: var(--mute); word-break: keep-all; }
+
+  /* ── 컨셉 인용 박스 ── */
+  .concept-box { background: var(--navy); color: var(--sand); padding: 28px 20px; margin-bottom: 22px; }
+  .concept-box .sec-label { color: #F0A0B0; margin-bottom: 8px; }
+  .concept-box .sec-title { color: #fff; font-size: 21px; margin-bottom: 14px; }
+  .q-box { padding: 20px 18px; background: rgba(246,228,196,.08); border-left: 3px solid var(--crimson); margin-bottom: 16px; }
+  .q-box .q { font-size: 16.5px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 10px; word-break: keep-all; }
+  .q-box .a { font-size: 14px; font-weight: 500; color: rgba(246,228,196,.88); word-break: keep-all; }
+  .q-box .a strong { color: #fff; font-weight: 800; }
+  .eval-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: stretch; }
+  .eval-card { padding: 16px; background: rgba(246,228,196,.1); border: 1px solid rgba(246,228,196,.16); }
+  .eval-card h4 { font-size: 14px; font-weight: 800; margin-bottom: 6px; }
+  .eval-card p { font-size: 13px; color: rgba(246,228,196,.75); word-break: keep-all; }
+  .eval-mid { display: flex; align-items: center; justify-content: center; font-family: Outfit, Pretendard, sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #F0A0B0; }
+
+  /* ── 가격 카드 / 마감 배너 ── */
+  .price-grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .price { padding: 20px 14px; border: 1px solid var(--line); background: var(--white); text-align: center; }
+  .price.is-best { border-color: var(--crimson); background: linear-gradient(180deg, rgba(220,20,60,.08), var(--white) 55%); }
+  .price .p-label { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--mute); margin-bottom: 10px; }
+  .price.is-best .p-label { color: var(--crimson); }
+  .price .amt { font-family: Outfit, Pretendard, sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 6px; }
+  .price .amt small { font-size: 13px; font-weight: 700; }
+  .price .p-note { font-size: 12.5px; color: var(--mute); word-break: keep-all; }
+  .deadline {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 16px; background: var(--navy); color: var(--sand); margin-bottom: 18px;
+  }
+  .deadline strong { color: #fff; }
+
+  /* ── 신청 폼 ── */
+  .apply {
+    margin-top: 8px; padding: 22px 18px;
+    background: var(--white); border: 1px solid var(--line);
+  }
+  .apply h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; }
+  .apply .apply-desc { font-size: 13px; color: var(--mute); margin-bottom: 16px; word-break: keep-all; }
+  .apply-form { display: grid; gap: 12px; }
+  .f-row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+  .f-field { display: grid; gap: 6px; }
+  .f-field.is-wide { grid-column: 1 / -1; }
+  .f-field label { font-size: 12.5px; font-weight: 800; color: var(--ink); }
+  .f-field .req { color: var(--crimson); }
+  .f-field input[type="text"],
+  .f-field input[type="tel"],
+  .f-field select,
+  .f-field textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .phone-split {
+    display: grid;
+    grid-template-columns: 58px auto minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 6px;
+  }
+  .f-field .phone-split input {
+    width: 100%;
+    padding: 11px 8px;
+    border: 1px solid var(--line);
+    background: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+  .f-field .phone-split .phone-head {
+    background: #efe6d4;
+    font-weight: 800;
+    cursor: default;
+  }
+  .phone-dash { color: var(--mute); font-weight: 700; }
+  .f-field textarea { resize: vertical; min-height: 72px; }
+  .f-field input:focus,
+  .f-field select:focus,
+  .f-field textarea:focus,
+  .phone-split input:focus {
+    outline: 2px solid var(--navy);
+    outline-offset: 1px;
+  }
+  .f-consent {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12.5px; color: var(--mute); word-break: keep-all;
+    padding-top: 4px;
+  }
+  .f-consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; }
+  .f-submit-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .f-status { font-size: 12.5px; color: var(--mute); }
+  .apply-success {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 18px 16px;
+    background: rgba(31,122,92,.08);
+    border: 1px solid rgba(31,122,92,.35);
+  }
+  .apply-success .dot {
+    flex: none; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--ok); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800;
+  }
+  .apply-success strong { display: block; color: var(--ok); font-size: 14.5px; margin-bottom: 2px; }
+  .apply-success p { font-size: 13px; color: var(--mute); word-break: keep-all; }
+  .apply-error {
+    display: none;
+    padding: 12px 14px; margin-top: 4px;
+    background: rgba(220,20,60,.08); border-left: 3px solid var(--crimson);
+    font-size: 12.5px; color: var(--crimson-deep); word-break: keep-all;
+  }
+  .apply-error.is-show { display: block; }
+  /* ── 스크롤 reveal ── */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 780px) {
+    .par-grid, .prac-grid, .price-grid, .eval-row, .f-row { grid-template-columns: 1fr; }
+    .leaf-row { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
-  <div class="toolbar">
-    <button type="button" onclick="window.print()">A4 PDF로 저장 / 인쇄</button>
-    <button type="button" class="secondary" onclick="window.print()">인쇄 대화상자 열기</button>
-    <span>대상: 「PDF로 저장」 또는 「Microsoft Print to PDF」 선택 · 용지 A4 · 여백 기본</span>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand-row">
+      <a class="brand" href="#home" data-nav="home">
+        <span>
+          <div class="brand-name">미카닥 전문가 과정</div>
+          <div class="brand-sub">CMT · IFC · Re:Al</div>
+        </span>
+      </a>
+      <a class="kakao-mini" href="http://pf.kakao.com/_nVSxdn/chat" target="_blank" rel="noopener noreferrer">상담</a>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="과정 탭">
+      <button type="button" class="tab is-active" role="tab" aria-selected="true" data-tab="home" id="tab-home">컨셉</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-tab="cmt" id="tab-cmt">CMT</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-tab="ifc" id="tab-ifc">IFC</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-tab="real" id="tab-real">Re:Al</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══════ HOME / CONCEPT ═══════ -->
+<div class="panel is-active" id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+  <section class="home-hero">
+    <div class="home-hero-inner">
+      <div class="hero-intro">
+        <div class="hero-logo"><img src="https://breezefeel.github.io/academy/profile-photo.png" alt="미카닥 박준규"></div>
+        <div>
+          <div class="intro-name">미카닥 박준규</div>
+          <div class="intro-cred">움직임을 해석하는 미국 카이로프랙터 · 물리치료사</div>
+          <div class="intro-badges">
+            <span>20년+ 근골격</span>
+            <span>DC · PT</span>
+            <span>미국 · 한국 면허</span>
+          </div>
+          <a class="intro-link" href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+        </div>
+      </div>
+      <div class="hero-kicker">Core Concept</div>
+      <h1>테크닉도 중요하지만,<br>회원 상태에 맞는 선택이 더 중요합니다</h1>
+      <p class="concept-line" aria-label="핵심 흐름">
+        <span class="step">평가로 원인을 찾고</span>
+        <span class="arrow" aria-hidden="true">→</span>
+        <span class="step">손으로 풀고</span>
+        <span class="arrow" aria-hidden="true">→</span>
+        <span class="step">움직임으로 지킵니다.</span>
+      </p>
+      <p class="hero-lead">
+        같은 기술도 누구에게, 어떤 순서로 쓰느냐에 따라 결과가 달라집니다.
+        세 과정은 같은 임상 언어 안에서 "지금 이 회원에게 맞는 시작점"을 고르는 선택지입니다.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#why">어떤 흐름인가</a>
+        <a class="btn btn-ghost" href="#choose">과정 고르기</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-label">Why This Works</div>
+      <h2 class="sec-title">PAR 흐름이 설득력 있는 이유</h2>
+      <p class="sec-desc">
+        "수동적 케어가 좋을까, 움직임이 좋을까?"는 둘 중 하나를 고르는 질문이 아닙니다.<br>
+        <strong>누구에게, 어떤 순서로</strong> 적용할지가 핵심이고, 그 기준은 평가에서 나옵니다.
+      </p>
+      <div class="why-grid">
+        <article class="why-card">
+          <div class="n">01</div>
+          <h3>원인을 알아야, 적합한 선택을 할 수 있다</h3>
+          <p>같은 스트레칭·도수라도, 평가 없이 들어가면 효과가 들쑥날쑥합니다. 먼저 원인을 좁히면 CMT·IFC·Re:Al 중 어디가 시작점인지가 분명해집니다.</p>
+        </article>
+        <article class="why-card">
+          <div class="n">02</div>
+          <h3>움직임만으로는 시작부터 막힐 수 있다</h3>
+          <p>통증·가동성이 막혀 있으면 Active부터 진행하기 어렵습니다. Passive로 움직일 수 있는 상태를 만들고 단계적으로 운동하는 것이 안전합니다.</p>
+        </article>
+        <article class="why-card">
+          <div class="n">03</div>
+          <h3>풀기만으로는 유지가 안 된다</h3>
+          <p>수기·기기로 조직을 열어도, 움직임·습관이 그대로면 다시 굳습니다. '푼 다음'을 진행해야 반복되지 않습니다.</p>
+        </article>
+      </div>
+
+      <div class="effect-box">
+        <h3>회원이 인식하는 수업의 변화</h3>
+        <p>
+          회원은 단순히 "오늘 뭘 받았는지"보다
+          <strong>"왜 이 순서로 하는지"</strong>를 이해하게 됩니다.</br>
+          본인의 몸 상태를 인지하면 자연스럽게 강사에 대한 신뢰가 생기고, 숙제·자세·운동이 납득되며,
+          재발 패턴을 스스로 조절하는 쪽으로 옮겨 갑니다.
+          강사·테라피스트에게는 <strong>같은 언어로 평가→중재→유지</strong>를 설명할 수 있는 체계가 됩니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="choose" style="background:rgba(11,32,72,.04); padding-bottom:56px;">
+    <div class="wrap">
+      <div class="sec-label">Choose One</div>
+      <h2 class="sec-title">나에게 필요한 시작점을 고르세요</h2>
+      <p class="sec-desc">큰 틀을 이해했다면 세부 과정은 탭에서 확인하면 됩니다. 목표에 맞는 카드를 눌러보세요.</p>
+
+      <div class="choose-grid">
+        <button type="button" class="choose-card" data-go="cmt">
+          <span class="mark">CMT</span>
+          <h3>연부조직/관절을 손으로 다루는 치료</h3>
+          <p>의료인·의료기사가 평가부터 도수치료까지 판단력을 키울 때.</p>
+          <span class="go">CMT 상세 보기 →</span>
+        </button>
+        <button type="button" class="choose-card" data-go="ifc">
+          <span class="mark">IFC</span>
+          <h3>얼굴·윤곽을 수기로</h3>
+          <p>비수술 얼굴 비대칭·축소를 해부→촉진→시퀀스로 배울 때.</p>
+          <span class="go">IFC 상세 보기 →</span>
+        </button>
+        <button type="button" class="choose-card" data-go="real">
+          <span class="mark">Re:Al</span>
+          <h3>움직임으로 유지·확장</h3>
+          <p>패시브부터 자세·기능운동까지, 치료 이후를 설계할 때.</p>
+          <span class="go">Re:Al 상세 보기 →</span>
+        </button>
+      </div>
+      <div class="choose-hint-row">
+        <p class="choose-hint">선택에서 막히면 상담을 통해 현재 직무와 목표만 말씀해 주세요. 시작점을 같이 고민해드립니다.</p>
+        <a class="choose-consult" href="https://pf.kakao.com/_nVSxdn/chat" target="_blank" rel="noopener noreferrer">상담</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════ CMT ═══════ -->
+<div class="panel" id="panel-cmt" role="tabpanel" aria-labelledby="tab-cmt" hidden>
+  <div class="detail-hero">
+    <div class="wrap">
+      <div class="mark">CMT</div>
+      <h1>CMT 도수치료 과정</h1>
+      <p>평가로 근골격계 문제의 원인을 가른 뒤, 연부조직과 관절을 순서대로 다루며 임상 판단력과 치료 테크닉을 완성해갑니다.</p>
+      <div class="badge-row">
+        <span class="badge badge-hot">의료인 · 의료기사만</span>
+        <span class="badge">수기 / 도구</span>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="sec-label" style="margin-top:0">Curriculum Map</div>
+      <h2 class="sec-title" style="font-size:22px">전문가 과정 전체에서 CMT의 위치</h2>
+      <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. CMT는 그중 손(도구)으로 연부조직·관절을 치료하는 축입니다.</p>
+
+      <div class="tree">
+        <article class="branch">
+          <div class="branch-h">
+            <h3>수기 / 도구 · 기기</h3>
+            <span>Manual · Device</span>
+          </div>
+          <div class="leaf-row">
+            <div class="leaf is-on">
+              <span class="tag">이 과정</span>
+              CMT 도수치료 과정
+              <small>Fascia → Muscle → Joint</small>
+            </div>
+            <div class="leaf is-off">IFC 얼굴교정 과정<small>Face 해부학 → 촉진 → 수기·괄사·고주파</small></div>
+          </div>
+        </article>
+        <article class="branch">
+          <div class="branch-h">
+            <h3>운동 관리</h3>
+            <span>Movement Care</span>
+          </div>
+          <div class="leaf-row">
+            <div class="leaf is-off">Re:Al 움직임 과정<small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="sec-label">Concept</div>
+      <h3 class="sec-title" style="font-size:22px">크게 두 파트로 배웁니다</h3>
+      <p class="sec-desc">부위(골반·흉추·허리·경추)마다 같은 순서로 들어가되, 핵심은 연부조직 치료와 관절 치료입니다.</p>
+
+      <div class="pillars">
+        <article class="pillar">
+          <div class="n">AXIS 01</div>
+          <h3>연부조직 치료</h3>
+          <p>근막(Fascia)·근육(Muscle)의 긴장·유착·트리거를 풀어 조직 활주와 순환을 회복합니다.</p>
+          <ul>
+            <li>Fascia → Muscle 순으로 접근</li>
+            <li>통증·ROM을 확인하며 안전하게 진행</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <div class="n">AXIS 02</div>
+          <h3>관절 치료</h3>
+          <p>관절낭 긴장·저가동성·부동에 대한 수동 기술로 가동성과 정렬을 보조합니다.</p>
+          <ul>
+            <li>연부조직 이후 Joint로 연결</li>
+            <li>부위별 평가 → 교정 → 재평가</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="sec-label">Why Different</div>
+      <h3 class="sec-title" style="font-size:22px">CMT를 선택하는 이유</h3>
+      <div class="diff-list">
+        <article class="diff">
+          <div class="n">01</div>
+          <div>
+            <h3>미국 DC · 한국 PT 면허 강사진</h3>
+            <p>두 나라 면허를 모두 가진 강사진이 임상 근거와 실전 테크닉을 함께 전달합니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">02</div>
+          <div>
+            <h3>골반 → 허리 → 흉추 → 경추</h3>
+            <p>부위별로 나눠 배우고 마지막에 종합하는 구조라, 임상 판단력이 단계적으로 쌓입니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">03</div>
+          <div>
+            <h3>재수강 가능</h3>
+            <p>세션당 2만원(대관비)만으로 재수강할 수 있어, 놓친 부위를 다시 채울 수 있습니다.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="fit-grid">
+        <div class="fit">
+          <h3>이런 분께</h3>
+          <p>도수·카이로 테크닉을 평가와 함께 체계화하고 싶은 의료인·의료기사</p>
+        </div>
+        <div class="fit">
+          <h3>Re:Al과 함께라면</h3>
+          <p>CMT + Re:Al 움직임 정규과정 통합 신청 시 278만원 → 222만원(20%↓). 신청 폼에서 "통합과정 희망"을 선택해 주세요.</p>
+        </div>
+      </div>
+
+      <div class="enroll">
+        <h3>일정 · 모집</h3>
+        <p>신청서 제출 후 개별 연락으로 세부 일정·등록 절차를 안내드립니다. 정원은 입금 완료 순으로 마감됩니다.</p>
+        <div class="facts">
+          <div class="fact"><div class="k">일정</div><div class="v">매년 3월(상반기) / 9월(하반기) 시작 · 8시간씩 6일</div></div>
+          <div class="fact"><div class="k">장소</div><div class="v">삼육보건대학교 (서울 동대문구)</div></div>
+          <div class="fact"><div class="k">수강료</div><div class="v">150만 · 얼리 135만 · 신졸/동반 120만</div></div>
+        </div>
+        <p class="note" style="margin-bottom:0">얼리버드는 <strong>수업 시작 1개월 전까지 신청 완료</strong> 기준입니다. 신졸·3인 동반 신청 시 각 120만원(20%↓)이 적용됩니다.</p>
+      </div>
+
+      <div class="apply">
+        <h3>신청 정보 입력</h3>
+        <p class="apply-desc">아래 정보를 입력해 주시면 확인 후 개별 연락드립니다. (구글 설문지로 이동하지 않습니다)</p>
+        <form class="apply-form" data-course="CMT 도수치료 과정" data-course-code="cmt" data-success="apply-success-cmt" data-error="apply-error-cmt">
+          <div class="f-row">
+            <div class="f-field">
+              <label for="cmt-name">이름 <span class="req">*</span></label>
+              <input type="text" id="cmt-name" name="name" required autocomplete="name">
+            </div>
+            <div class="f-field">
+              <label for="cmt-phone-mid">연락처 <span class="req">*</span></label>
+              <div class="phone-split">
+                <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                <span class="phone-dash" aria-hidden="true">-</span>
+                <input class="phone-mid" id="cmt-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                <span class="phone-dash" aria-hidden="true">-</span>
+                <input class="phone-tail" id="cmt-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                <input type="hidden" name="phone" class="phone-full" value="">
+              </div>
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-field">
+              <label for="cmt-role">소속 <span class="req">*</span></label>
+              <select id="cmt-role" name="role" required>
+                <option value="">선택해 주세요</option>
+                <option value="의사·한의사">의사·한의사</option>
+                <option value="물리치료사">물리치료사</option>
+                <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                <option value="에스테티션">에스테티션</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <div class="f-field">
+              <label for="cmt-type">신청 유형 <span class="req">*</span></label>
+              <select id="cmt-type" name="applyType" required>
+                <option value="">선택해 주세요</option>
+                <option value="상반기">상반기</option>
+                <option value="하반기">하반기</option>
+              </select>
+            </div>
+          </div>
+          <div class="f-field is-wide">
+            <label style="display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;">
+              <input type="checkbox" name="bundle" value="희망" style="width:16px;height:16px;">
+              CMT + Re:Al 통합과정도 함께 신청하고 싶어요 (278만 → 222만)
+            </label>
+          </div>
+          <div class="f-field is-wide">
+            <label for="cmt-note">문의사항</label>
+            <textarea id="cmt-note" name="note" placeholder="궁금한 점을 남겨주시면 함께 안내드립니다"></textarea>
+          </div>
+          <label class="f-consent">
+            <input type="checkbox" name="consent" required>
+            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다. 안내 완료 후 즉시 파기됩니다. <span class="req">*</span></span>
+          </label>
+          <div class="f-submit-row">
+            <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
+            <span class="f-status"></span>
+          </div>
+          <div class="apply-error" id="apply-error-cmt">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+        </form>
+        <div class="apply-success" id="apply-success-cmt" hidden>
+          <span class="dot">✓</span>
+          <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button type="button" class="btn btn-light btn-sm" data-go="home">컨셉으로 돌아가기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════ IFC ═══════ -->
+<div class="panel" id="panel-ifc" role="tabpanel" aria-labelledby="tab-ifc" hidden>
+  <div class="detail-hero">
+    <div class="wrap">
+      <div class="mark">IFC</div>
+      <h1>IFC 얼굴교정 과정</h1>
+      <p>얼굴 해부학과 촉진으로 핵심 포인트를 찾고, 수기·괄사·고주파로 변화를 만듭니다.</p>
+      <div class="badge-row">
+        <span class="badge">누구나</span>
+        <span class="badge">수기 / 도구 / 기기 관리</span>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="sec-label" style="margin-top:0">Curriculum Map</div>
+      <h2 class="sec-title" style="font-size:22px">전문가 과정 전체에서 IFC의 위치</h2>
+      <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. IFC는 그중 손(도구/기기)으로 얼굴 비대칭 교정·축소를 다루는 축입니다.</p>
+
+      <div class="tree">
+        <article class="branch">
+          <div class="branch-h">
+            <h3>수기 / 도구 · 기기</h3>
+            <span>Manual · Device</span>
+          </div>
+          <div class="leaf-row">
+            <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
+            <div class="leaf is-on">
+              <span class="tag">이 과정</span>
+              IFC 얼굴교정 과정
+              <small>Face 해부학 → 촉진 → 수기·괄사·고주파</small>
+            </div>
+          </div>
+        </article>
+        <article class="branch">
+          <div class="branch-h">
+            <h3>운동 관리</h3>
+            <span>Movement Care</span>
+          </div>
+          <div class="leaf-row">
+            <div class="leaf is-off">Re:Al 움직임 과정<small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="sec-label">Concept</div>
+      <h3 class="sec-title" style="font-size:22px">얼굴도 평가 → 수기/기기 → 운동으로</h3>
+      <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 다루며, 이론과 도구를 함께 익히는 것이 특장점입니다.</p>
+
+      <div class="pillars is-3">
+        <article class="pillar">
+          <div class="n">01</div>
+          <h3>얼굴 해부학</h3>
+          <p>표정·대화 중 입 모양 변화까지 읽어, 문제 층을 정확히 가늠하는 기초입니다.</p>
+        </article>
+        <article class="pillar">
+          <div class="n">02</div>
+          <h3>촉진법</h3>
+          <p>회원이 핵심 포인트를 인식하게 만드는 평가. 상담과 티켓팅의 신뢰 기반이 됩니다.</p>
+        </article>
+        <article class="pillar">
+          <div class="n">03</div>
+          <h3>수기/괄사/고주파 시퀀스</h3>
+          <p>Fascia · Muscle · 간질액 테크닉을 표층→심층으로 연결하는 메인 시퀀스입니다.</p>
+        </article>
+      </div>
+
+      <div class="sec-label">Why Different</div>
+      <h3 class="sec-title" style="font-size:22px">IFC를 선택하는 이유</h3>
+      <div class="diff-list">
+        <article class="diff">
+          <div class="n">01</div>
+          <div>
+            <h3>오프라인 전 온라인 이론 제공</h3>
+            <p>현장 실습 전에 이론을 미리 학습해, 실습 시간을 손 감각을 익히는 데 온전히 씁니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">02</div>
+          <div>
+            <h3>해부학 → 촉진 → 축소 순서로 난이도 설계</h3>
+            <p>난이도는 있지만 순서대로 따라오면 되는 구조라 처음 배우는 분도 진입할 수 있습니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">03</div>
+          <div>
+            <h3>수기 + 도구(괄사·인디바)</h3>
+            <p>괄사로 수기 시퀀스를 보완하고, 인디바 고주파로 수기만으로 어려운 구간을 안전하게 확장합니다.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="fit-grid">
+        <div class="fit">
+          <h3>이런 분께</h3>
+          <p>얼굴 케어·바디 현장에서 평가 기반 수기·기기 시퀀스를 배우고 싶은 분</p>
+        </div>
+        <div class="fit">
+          <h3>구성</h3>
+          <p>얼굴 해부학 · 촉진법 · 수기 시퀀스(이론) + 괄사 · 인디바 고주파(도구 실습)</p>
+        </div>
+      </div>
+
+      <div class="enroll">
+        <h3>일정 · 모집</h3>
+        <p>정원은 입금 완료 순입니다. 신청 정보만으로는 자리가 확정되지 않으며, 안내에 따라 입금해야 접수가 완료됩니다.</p>
+        <div class="facts">
+          <div class="fact"><div class="k">일정</div><div class="v">매년 4월(상반기) / 11월(하반기) 시작 · 6시간씩 3일</div></div>
+          <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
+          <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 180만</div></div>
+        </div>
+      </div>
+
+      <div class="apply">
+        <h3>신청 정보 입력</h3>
+        <p class="apply-desc">아래 정보를 입력해 주시면 확인 후 개별 연락드립니다. (구글 설문지로 이동하지 않습니다)</p>
+        <form class="apply-form" data-course="IFC 얼굴교정 과정 · 제11기" data-course-code="ifc" data-success="apply-success-ifc" data-error="apply-error-ifc">
+          <div class="f-row">
+            <div class="f-field">
+              <label for="ifc-name">이름 <span class="req">*</span></label>
+              <input type="text" id="ifc-name" name="name" required autocomplete="name">
+            </div>
+            <div class="f-field">
+              <label for="ifc-phone-mid">연락처 <span class="req">*</span></label>
+              <div class="phone-split">
+                <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                <span class="phone-dash" aria-hidden="true">-</span>
+                <input class="phone-mid" id="ifc-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                <span class="phone-dash" aria-hidden="true">-</span>
+                <input class="phone-tail" id="ifc-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                <input type="hidden" name="phone" class="phone-full" value="">
+              </div>
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-field">
+              <label for="ifc-role">소속 <span class="req">*</span></label>
+              <select id="ifc-role" name="role" required>
+                <option value="">선택해 주세요</option>
+                <option value="의사·한의사">의사·한의사</option>
+                <option value="물리치료사">물리치료사</option>
+                <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                <option value="에스테티션">에스테티션</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <div class="f-field">
+              <label for="ifc-type">신청 유형 <span class="req">*</span></label>
+              <select id="ifc-type" name="applyType" required>
+                <option value="">선택해 주세요</option>
+                <option value="상반기">상반기</option>
+                <option value="하반기">하반기</option>
+              </select>
+            </div>
+          </div>
+          <div class="f-field is-wide">
+            <label for="ifc-note">문의사항</label>
+            <textarea id="ifc-note" name="note" placeholder="궁금한 점을 남겨주시면 함께 안내드립니다"></textarea>
+          </div>
+          <label class="f-consent">
+            <input type="checkbox" name="consent" required>
+            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다. 안내 완료 후 즉시 파기됩니다. <span class="req">*</span></span>
+          </label>
+          <div class="f-submit-row">
+            <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
+            <span class="f-status"></span>
+          </div>
+          <div class="apply-error" id="apply-error-ifc">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+        </form>
+        <div class="apply-success" id="apply-success-ifc" hidden>
+          <span class="dot">✓</span>
+          <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button type="button" class="btn btn-light btn-sm" data-go="home">컨셉으로 돌아가기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════ Re:Al ═══════ -->
+<div class="panel" id="panel-real" role="tabpanel" aria-labelledby="tab-real" hidden>
+  <div class="detail-hero">
+    <div class="wrap">
+      <div class="mark">Re:Al</div>
+      <h1>Re:Alignment 움직임 과정</h1>
+      <p>재:정렬하다. 잘 풀어낸 몸을 잘 쓸 수 있도록, <strong style="color:#fff">PAR</strong>과 <strong style="color:#fff">포지션</strong> 두 축으로 구분해 진행합니다.</p>
+      <div class="badge-row">
+        <span class="badge">누구나</span>
+        <span class="badge">운동 관리</span>
+        <span class="badge badge-hot">원데이 클래스 모집중</span>
+      </div>
+    </div>
   </div>
 
-  <div class="sheet-wrap">
-    <article class="sheet">
-      <header>
-        <div>
-          <div class="eyebrow">REAL MOVEMENT · EVENT BOOTH</div>
-          <h1>리얼무브먼트<br>체험 부스 안내</h1>
-        </div>
-        <div class="meta-box">
-          <strong>2025. 9. 12 (토)</strong>
-          오전 10:00 – 오후 5:00<br>
-          작전이음길 · 안전 ZONE
-        </div>
-      </header>
+  <section>
+    <div class="wrap">
+      <div class="sec-label" style="margin-top:0">Curriculum Map</div>
+      <h2 class="sec-title" style="font-size:22px">전문가 과정 전체에서 Re:Al의 위치</h2>
+      <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. Re:Al은 그중 움직임으로 유지·강화하는 축입니다.</p>
 
-      <p class="lead">
-        행사 참가자가 부스를 바로 이해할 수 있도록 정리한 운영·참여 안내입니다.
-        위치는 안전 ZONE이며, 옆에는 의용소방대가 있습니다.
+      <div class="tree">
+        <article class="branch">
+          <div class="branch-h">
+            <h3>수기 / 도구 · 기기</h3>
+            <span>Manual · Device</span>
+          </div>
+          <div class="leaf-row">
+            <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
+            <div class="leaf is-off">IFC 얼굴교정 과정<small>Face 해부학 → 촉진 → 수기·괄사·고주파</small></div>
+          </div>
+        </article>
+        <article class="branch">
+          <div class="branch-h">
+            <h3>운동 관리</h3>
+            <span>Movement Care</span>
+          </div>
+          <div class="leaf is-on">
+            <span class="tag">이 과정</span>
+            Re:Al 움직임 과정
+            <small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small>
+          </div>
+          <div class="leaf-parts" aria-label="PAR 구성">
+            <div class="leaf">패시브 스트레칭<small>Supine / Prone</small></div>
+            <div class="leaf">자세교정 / 생활습관<small>Active</small></div>
+            <div class="leaf">기능운동<small>Resistive</small></div>
+          </div>
+          <div class="pos-track" aria-label="포지션 진행">
+            <div class="pos-step is-focus">Supine / Prone<span>가장 안전한 자세</span></div>
+            <div class="pos-step">Quadruped / Sitting<span>중력 부하를 적용해가는 자세</span></div>
+            <div class="pos-step">Standing<span>기능으로 연결</span></div>
+          </div>
+        </article>
+      </div>
+      <p class="map-note">
+        포지션은 <strong>누운 자세 → 네발·앉기 → 서기</strong>로 하중을 올리며 진행합니다.
+        정규과정은 PAR 전체(P → AA/A → R)를 다룹니다.
       </p>
 
-      <div class="grid">
-        <section class="card">
-          <h2>행사 개요</h2>
-          <dl class="kv">
-            <dt>일시</dt>
-            <dd>9월 12일(토) 10:00–17:00</dd>
-            <dt>장소</dt>
-            <dd>작전이음길 · 안전 ZONE</dd>
-            <dt>옆 부스</dt>
-            <dd>의용소방대</dd>
-            <dt>대상</dt>
-            <dd>누구나 참여 가능</dd>
-            <dt>대기</dt>
-            <dd>당일 예약지 작성 순으로 진행</dd>
-            <dt>결제</dt>
-            <dd>현금 · 계좌 · 카드</dd>
-          </dl>
-        </section>
+      <div class="sec-label">PAR × Position</div>
+      <h3 class="sec-title" style="font-size:22px">PAR × Position으로 나눕니다</h3>
+      <p class="sec-desc">무엇을 할지(PAR)와 어떤 자세에서 할지(Position)를 구분해, 회원 상태에 맞는 시작점을 고릅니다.</p>
 
-        <section class="card">
-          <h2>참여 인력 · 역할</h2>
-          <ul class="people">
-            <li>
-              <span><b>이상민</b> 원장</span>
-              <span class="role">스트레칭 · 체조 · 상식</span>
-            </li>
-            <li>
-              <span><b>박은규</b> 치료사</span>
-              <span class="role">스트레칭 · 체조 · 상식</span>
-            </li>
-            <li>
-              <span><b>이유주</b> 매니저</span>
-              <span class="role">안내 · 결제 · 예약지</span>
-            </li>
-          </ul>
-        </section>
+      <div class="par-grid">
+        <article class="par-card is-p">
+          <div class="letter">P</div>
+          <div class="name">Passive</div>
+          <p>강사가 움직임을 유도합니다. 통증·ROM을 확인하며 가동성을 회복합니다.</p>
+        </article>
+        <article class="par-card">
+          <div class="letter">A</div>
+          <div class="name">Active</div>
+          <p>회원이 스스로 움직입니다. 자세·생활습관 인지와 능동 가동으로 연결합니다.</p>
+        </article>
+        <article class="par-card">
+          <div class="letter">R</div>
+          <div class="name">Resistive</div>
+          <p>저항을 더해 근막경선·기능 패턴을 강화하고 일상에 필요한 힘으로 확장합니다.</p>
+        </article>
       </div>
 
-      <div class="programs">
-        <section class="program">
-          <div class="tag">MAIN PROGRAM</div>
-          <h3>패시브 스트레칭</h3>
-          <p>10분 진행. 전문가가 도와주는 수동 스트레칭 체험.</p>
-          <div class="price">5,000원</div>
-        </section>
-        <section class="program alt">
-          <div class="tag">OPEN SESSION</div>
-          <h3>건강 체조 · 건강 상식</h3>
-          <p>매 1~2시간마다 진행. 누구나 들으며 따라할 수 있습니다.</p>
-          <div class="price" style="font-size:14px;font-weight:800;color:var(--muted);">무료 · 현장 안내</div>
-        </section>
+      <div class="flow-line" style="margin-bottom:22px">
+        <span class="flow-pill is-hot">P Stretching</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-pill">AA / A-ROM</span>
+        <span class="flow-arrow">→</span>        
+        <span class="flow-pill">R 기능운동</span>
       </div>
 
-      <div class="booth">
-        <div class="item"><b>천막 3×3m</b><span>부스 공간</span></div>
-        <div class="item"><b>책상 1800</b><span>안내·결제 데스크</span></div>
-        <div class="item"><b>우레탄 바닥</b><span>앞 놀이터 · 데모 공간</span></div>
+      <div class="sec-label">Practice · 원데이 클래스</div>
+      <h3 class="sec-title" style="font-size:22px">패시브 스트레칭 4가지 실습</h3>
+      <p class="sec-desc">Supine · Prone 각각 상지/하지. 말단에서 근위로 연결하는 플로우로 배웁니다.</p>
+      <div class="prac-grid">
+        <article class="prac">
+          <div class="num">01 · SUPINE</div>
+          <h3>하지 Lower</h3>
+          <p>발 → 발목 → 무릎 → 고관절. 중력 부하를 최소화한 상태에서 하체 가동성을 엽니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">02 · SUPINE</div>
+          <h3>상지 Upper</h3>
+          <p>손가락 → 손목 → 팔꿈치 → 어깨. 누운 자세에서 상지 시퀀스를 연결합니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">03 · PRONE</div>
+          <h3>하지 Lower</h3>
+          <p>엎드린 자세에서 하체 후방 조직을 다루며, Supine과 대비되는 접근을 익힙니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">04 · PRONE</div>
+          <h3>상지 Upper</h3>
+          <p>엎드린 자세의 상지·체간 연결. 베드 위에서도 안정적으로 진행 가능한 포지션입니다.</p>
+        </article>
       </div>
 
-      <div class="note">
-        <strong>참여 방법</strong> —
-        부스 앞 예약지에 이름을 적고 대기합니다.
-        작성 순서대로 스트레칭 체험을 진행하며, 안내·결제는 이유주 매니저가 담당합니다.
+      <div class="sec-label">Why Different</div>
+      <h3 class="sec-title" style="font-size:22px">다른 패시브 스트레칭과의 차별점</h3>
+      <div class="diff-list">
+        <article class="diff">
+          <div class="n">01</div>
+          <div>
+            <h3>강사가 크게 힘들이지 않는 자세</h3>
+            <p>시술자 몸의 부담을 줄인 포지션으로, 하루 종일 반복해도 지속 가능한 테크닉입니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">02</div>
+          <div>
+            <h3>동작을 연결한 플로우 시퀀스</h3>
+            <p>단편 동작이 아니라 다양한 움직임을 이어서, 평가와 중재가 한 흐름으로 이어집니다.</p>
+          </div>
+        </article>
+        <article class="diff">
+          <div class="n">03</div>
+          <div>
+            <h3>베드 위에서 가능 — 에스테티션도 OK</h3>
+            <p>매트뿐 아니라 베드 환경에서도 적용할 수 있어, 운동 지도자뿐 아니라 피부·바디 케어 현장에도 맞습니다.</p>
+          </div>
+        </article>
       </div>
 
-      <section class="checklist">
-        <h2>현장 준비 체크 (내부용)</h2>
-        <ul>
-          <li>현수막 / 배너 / 가격 안내판</li>
-          <li>예약지 · 펜 · 명함 · QR</li>
-          <li>스트레칭 매트 · 타월 · 소독</li>
-          <li>카드기 · 계좌 QR · 잔돈</li>
-          <li>의자 · 물 · 쓰레기봉투</li>
-          <li>체조·상식 타임테이블</li>
-          <li>초상권·촬영 안내 문구</li>
-          <li>응급 연락 · 소방대 위치 숙지</li>
-        </ul>
-      </section>
+      <div class="concept-box">
+        <div class="sec-label">My Concept</div>
+        <h3 class="sec-title">수동적으로 받을까, 움직이는 게 좋을까?</h3>
+        <div class="q-box">
+          <div class="q">중요한 것은 "무엇을"이 아니라 "누구에게, 어떤 순서로"입니다.</div>
+          <div class="a">
+            수동(Passive)과 능동(Active)은 대립이 아니라 <strong>연속된 중재 선택지</strong>입니다.
+            그 순서를 결정하는 기준은 <strong>평가</strong>에서 나옵니다.
+            통증·ROM·동작 패턴을 보고, 지금 이 회원에게 안전한 시작점이 Passive인지 Active인지를 가릅니다.
+          </div>
+        </div>
+        <div class="eval-row">
+          <div class="eval-card">
+            <h4>평가가 먼저</h4>
+            <p>History · Inspection · Movement · Palpation으로 원인과 수준을 좁힙니다.</p>
+          </div>
+          <div class="eval-mid">THEN</div>
+          <div class="eval-card">
+            <h4>순서와 대상</h4>
+            <p>같은 기법도 회원마다 타이밍이 다릅니다. Passive → Active → Resistive의 진입점을 조정합니다.</p>
+          </div>
+        </div>
+      </div>
 
-      <footer>
-        <div>리얼무브먼트 체험 부스 · 작전이음길</div>
-        <div>문의·현장 안내: <b>이유주 매니저</b></div>
-      </footer>
-    </article>
-  </div>
+      <div class="fit-grid">
+        <div class="fit">
+          <h3>이런 분께</h3>
+          <p>트레이너·필라테스·에스테티션 등, 움직임을 단계적으로 가이드하고 싶은 분</p>
+        </div>
+        <div class="fit">
+          <h3>특장점</h3>
+          <p>강사 부담이 적은 자세 · 플로우 시퀀스 · 베드 위에도 적용 가능</p>
+        </div>
+      </div>
 
-  <script>
-    // 인쇄 시 파일명 힌트 (브라우저에 따라 다를 수 있음)
-    document.title = '리얼무브먼트_체험부스_안내_작전이음길_0912';
-  </script>
+      <div class="sec-label">Enrollment</div>
+      <h3 class="sec-title" style="font-size:22px">일정 · 모집</h3>
+      <p class="sec-desc">원데이 클래스로 움직임 케어를 시작하거나, 정규 과정으로 PAR 전체 시퀀스를 배워보세요.</p>
+
+      <div class="enroll">
+        <h3>① 원데이 클래스 · 패시브 스트레칭</h3>
+        <p>10월 11일 · 10:00–17:00 · 리얼무브먼트 약수점</p>
+        <div class="price-grid">
+          <article class="price">
+            <div class="p-label">정가</div>
+            <div class="amt">30<small>만원</small></div>
+            <div class="p-note">일반 신청</div>
+          </article>
+          <article class="price is-best">
+            <div class="p-label">얼리버드</div>
+            <div class="amt">27<small>만원</small></div>
+            <div class="p-note">9/27까지 신청 완료</div>
+          </article>
+          <article class="price">
+            <div class="p-label">얼리버드 + 동반</div>
+            <div class="amt">25<small>만원</small></div>
+            <div class="p-note">1인 기준 · 동반 수강 시</div>
+          </article>
+        </div>
+        <div class="deadline">
+          <div><div style="font-size:12.5px;opacity:.75;margin-bottom:4px">얼리버드 마감</div><strong>9월 27일까지 신청 완료</strong></div>
+          <a class="btn btn-primary btn-sm" href="#real-apply">지금 신청하기</a>
+        </div>
+      </div>
+
+      <div class="enroll">
+        <h3>② 정규 과정 · PAR 전체</h3>
+        <p>PAR(P·A·R) 전체 시퀀스를 3회에 걸쳐 익힙니다.</p>
+        <div class="facts">
+          <div class="fact"><div class="k">일정</div><div class="v">매년 6월 (하반기) / 12월 (상반기) 시작 - 3회(6시간씩)</div></div>
+          <div class="fact"><div class="k">장소</div><div class="v">리얼무브먼트 약수점</div></div>
+          <div class="fact"><div class="k">수강료</div><div class="v">128만 → 108만</div></div>
+        </div>
+        <p class="note" style="margin-bottom:0">CMT와 함께 통합 신청 시 278만원 → 222만원(20%↓)이 적용됩니다. CMT 탭의 신청 폼에서 "통합과정 희망"을 선택해 주세요.</p>
+      </div>
+
+      <div class="apply" id="real-apply">
+        <h3>신청 정보 입력</h3>
+        <p class="apply-desc">아래 정보를 입력해 주시면 확인 후 개별 연락드립니다. (구글 설문지로 이동하지 않습니다)</p>
+        <form class="apply-form" data-course="Re:Al 움직임 과정" data-course-code="real" data-success="apply-success-real" data-error="apply-error-real">
+          <div class="f-row">
+            <div class="f-field">
+              <label for="real-name">이름 <span class="req">*</span></label>
+              <input type="text" id="real-name" name="name" required autocomplete="name">
+            </div>
+            <div class="f-field">
+              <label for="real-phone-mid">연락처 <span class="req">*</span></label>
+              <div class="phone-split">
+                <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                <span class="phone-dash" aria-hidden="true">-</span>
+                <input class="phone-mid" id="real-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                <span class="phone-dash" aria-hidden="true">-</span>
+                <input class="phone-tail" id="real-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                <input type="hidden" name="phone" class="phone-full" value="">
+              </div>
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-field">
+              <label for="real-role">소속 <span class="req">*</span></label>
+              <select id="real-role" name="role" required>
+                <option value="">선택해 주세요</option>
+                <option value="의사·한의사">의사·한의사</option>
+                <option value="물리치료사">물리치료사</option>
+                <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                <option value="에스테티션">에스테티션</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <div class="f-field">
+              <label for="real-type">신청 유형 <span class="req">*</span></label>
+              <select id="real-type" name="applyType" required>
+                <option value="">선택해 주세요</option>
+                <option value="상반기">상반기</option>
+                <option value="하반기">하반기</option>
+                <option value="원데이 클래스">원데이 클래스</option>
+              </select>
+            </div>
+          </div>
+          <div class="f-field is-wide">
+            <label for="real-note">문의사항</label>
+            <textarea id="real-note" name="note" placeholder="궁금한 점을 남겨주시면 함께 안내드립니다"></textarea>
+          </div>
+          <label class="f-consent">
+            <input type="checkbox" name="consent" required>
+            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다. 안내 완료 후 즉시 파기됩니다. <span class="req">*</span></span>
+          </label>
+          <div class="f-submit-row">
+            <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
+            <span class="f-status"></span>
+          </div>
+          <div class="apply-error" id="apply-error-real">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+        </form>
+        <div class="apply-success" id="apply-success-real" hidden>
+          <span class="dot">✓</span>
+          <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <button type="button" class="btn btn-light btn-sm" data-go="home">컨셉으로 돌아가기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="foot">
+  미카닥 박준규 · 전문가 과정 · CMT · IFC · Re:Al
+</footer>
+
+<script>
+(function () {
+  // ── 탭 라우팅 ──
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var panels = {
+    home: document.getElementById('panel-home'),
+    cmt: document.getElementById('panel-cmt'),
+    ifc: document.getElementById('panel-ifc'),
+    real: document.getElementById('panel-real')
+  };
+
+  function show(name, push) {
+    if (!panels[name]) name = 'home';
+    document.body.classList.remove('tab-home', 'tab-cmt', 'tab-ifc', 'tab-real');
+    document.body.classList.add('tab-' + name);
+    Object.keys(panels).forEach(function (key) {
+      var on = key === name;
+      panels[key].classList.toggle('is-active', on);
+      panels[key].hidden = !on;
+    });
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-tab') === name;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    window.scrollTo(0, 0);
+    if (push !== false) {
+      var hash = name === 'home' ? '#home' : '#' + name;
+      if (location.hash !== hash) history.pushState({ tab: name }, '', hash);
+    }
+  }
+
+  function fromHash() {
+    var h = (location.hash || '#home').replace('#', '');
+    if (h === 'why' || h === 'choose') {
+      show('home', false);
+      setTimeout(function () {
+        var el = document.getElementById(h);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+      return;
+    }
+    if (h === 'real-apply') {
+      show('real', false);
+      setTimeout(function () {
+        var el = document.getElementById(h);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+      return;
+    }
+    show(h, false);
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { show(t.getAttribute('data-tab')); });
+  });
+
+  document.querySelectorAll('[data-go]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(el.getAttribute('data-go'));
+    });
+  });
+
+  document.querySelectorAll('[data-nav]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      show(el.getAttribute('data-nav'));
+    });
+  });
+
+  window.addEventListener('hashchange', fromHash);
+  window.addEventListener('popstate', fromHash);
+  fromHash();
+
+  // ── 스크롤 reveal ──
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (n) { io.observe(n); });
+  } else {
+    revealEls.forEach(function (n) { n.classList.add('in'); });
+  }
+
+  function digitsOnly(value) {
+    return String(value || '').replace(/\D/g, '');
+  }
+
+  function syncPhoneSplit(wrap) {
+    var mid = wrap.querySelector('.phone-mid');
+    var tail = wrap.querySelector('.phone-tail');
+    var full = wrap.querySelector('.phone-full');
+    if (!mid || !tail || !full) return;
+    var m = digitsOnly(mid.value).slice(0, 4);
+    var t = digitsOnly(tail.value).slice(0, 4);
+    if (mid.value !== m) mid.value = m;
+    if (tail.value !== t) tail.value = t;
+    full.value = (m.length === 4 && t.length === 4) ? ('010-' + m + '-' + t) : '';
+  }
+
+  document.querySelectorAll('.phone-split').forEach(function (wrap) {
+    var mid = wrap.querySelector('.phone-mid');
+    var tail = wrap.querySelector('.phone-tail');
+    if (!mid || !tail) return;
+
+    mid.addEventListener('input', function () {
+      var d = digitsOnly(mid.value);
+      mid.value = d.slice(0, 4);
+      if (d.length > 4) {
+        tail.value = (digitsOnly(tail.value) + d.slice(4)).slice(0, 4);
+        tail.focus();
+      } else if (d.length === 4) {
+        tail.focus();
+      }
+      syncPhoneSplit(wrap);
+    });
+
+    tail.addEventListener('input', function () {
+      tail.value = digitsOnly(tail.value).slice(0, 4);
+      syncPhoneSplit(wrap);
+    });
+
+    tail.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !tail.value) {
+        e.preventDefault();
+        mid.focus();
+        mid.value = mid.value.slice(0, -1);
+        syncPhoneSplit(wrap);
+      }
+    });
+
+    wrap.addEventListener('paste', function (e) {
+      var text = (e.clipboardData || window.clipboardData).getData('text');
+      var d = digitsOnly(text);
+      if (d.length < 4) return;
+      e.preventDefault();
+      if (d.indexOf('010') === 0) d = d.slice(3);
+      mid.value = d.slice(0, 4);
+      tail.value = d.slice(4, 8);
+      syncPhoneSplit(wrap);
+      if (mid.value.length === 4) tail.focus();
+    });
+  });
+
+  // ── 신청 폼 전송: 시트 저장 + 과정별 알림톡 ──
+  // code.gs.txt 의 submitAcademyApply 분기. 웹 앱을 다시 배포해야 합니다.
+  var APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwVJSc6rY5tcBSB1VaRi4DBEXGyUBr1ADFfs6QEA9Z9bu0G-0mdMAv374-MdPVYMnSaeQ/exec';
+
+  document.querySelectorAll('.apply-form').forEach(function (form) {
+    var successBox = document.getElementById(form.getAttribute('data-success'));
+    var errorBox = document.getElementById(form.getAttribute('data-error'));
+    var statusEl = form.querySelector('.f-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (errorBox) errorBox.classList.remove('is-show');
+
+      var phoneWrap = form.querySelector('.phone-split');
+      if (phoneWrap) syncPhoneSplit(phoneWrap);
+      var phoneEl = form.querySelector('.phone-full');
+      var payload = {
+        action: 'submitAcademyApply',
+        course: form.getAttribute('data-course') || '',
+        courseCode: form.getAttribute('data-course-code') || '',
+        name: (form.querySelector('[name="name"]') || {}).value || '',
+        phone: phoneEl ? phoneEl.value : '',
+        role: (form.querySelector('[name="role"]') || {}).value || '',
+        applyType: (form.querySelector('[name="applyType"]') || {}).value || '',
+        bundle: (form.querySelector('[name="bundle"]') && form.querySelector('[name="bundle"]').checked) ? '희망' : '',
+        note: (form.querySelector('[name="note"]') || {}).value || '',
+        page: location.href,
+        submittedAt: new Date().toISOString()
+      };
+
+      submitBtn.disabled = true;
+      if (statusEl) statusEl.textContent = '전송 중…';
+
+      fetch(APPLY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      }).then(function (res) { return res.text(); }).then(function (text) {
+        var data = {};
+        try { data = JSON.parse(text || '{}'); } catch (err) { data = {}; }
+        if (data.ok === true || data.result === 'success') {
+          form.hidden = true;
+          if (successBox) successBox.hidden = false;
+          if (statusEl) statusEl.textContent = '';
+          return;
+        }
+        throw new Error(data.message || '접수 실패');
+      }).catch(function () {
+        submitBtn.disabled = false;
+        if (statusEl) statusEl.textContent = '';
+        if (errorBox) errorBox.classList.add('is-show');
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
