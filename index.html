@@ -503,6 +503,7 @@
   .fact .v {
     font-size: 13.5px; font-weight: 700;
     word-break: keep-all;
+    line-height: 1.45;
   }
   .bullets {
     list-style: none;
@@ -656,6 +657,127 @@
   }
   .enroll + .enroll { margin-top: 16px; }
 
+  .field-block { margin: 8px 0 22px; }
+  .field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 14px 0 16px;
+  }
+  .field-shot {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--line);
+    background: #efe6d4;
+    cursor: zoom-in;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    font: inherit;
+    color: inherit;
+  }
+  .field-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    display: block;
+  }
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+    align-items: stretch;
+  }
+  .voice {
+    margin: 0;
+    padding: 16px 14px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--crimson);
+  }
+  .voice p {
+    font-size: 13.5px;
+    color: var(--ink);
+    word-break: keep-all;
+    margin-bottom: 10px;
+  }
+  .voice footer {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--mute);
+  }
+  .bio-card {
+    padding: 16px;
+    background: var(--navy);
+    color: var(--sand);
+  }
+  .bio-card .bio-k {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #F0A0B0;
+    margin-bottom: 8px;
+  }
+  .bio-card p {
+    font-size: 13.5px;
+    word-break: keep-all;
+    margin-bottom: 10px;
+    color: rgba(246,228,196,.9);
+  }
+  .bio-card a {
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+  }
+  .field-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  .field-lightbox[hidden] { display: none !important; }
+  .field-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background: rgba(11, 32, 72, .88);
+    cursor: pointer;
+  }
+  .field-lightbox-panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 860px);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  .field-lightbox-panel img {
+    width: 100%;
+    max-height: calc(90vh - 48px);
+    object-fit: contain;
+    background: #0B2048;
+  }
+  .field-lightbox-close {
+    border: 0;
+    background: #fff;
+    color: var(--navy);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+
   .foot {
     padding: 18px 16px calc(18px + var(--safe-b));
     text-align: center;
@@ -756,8 +878,8 @@
   .flow-arrow { color: var(--mute); font-weight: 800; }
 
   /* ── 실습/차별점 카드 ── */
-  .prac-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 22px; }
-  .prac { position: relative; padding: 22px 18px 18px; background: var(--white); border: 1px solid var(--line); overflow: hidden; }
+  .prac-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 22px; align-items: stretch; }
+  .prac { position: relative; padding: 22px 18px 18px; background: var(--white); border: 1px solid var(--line); overflow: hidden; min-width: 0; }
   .prac::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--crimson); }
   .prac .num { font-family: Outfit, Pretendard, sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--crimson); margin-bottom: 8px; }
   .prac h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
@@ -787,10 +909,10 @@
   .eval-mid { display: flex; align-items: center; justify-content: center; font-family: Outfit, Pretendard, sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .08em; color: #F0A0B0; }
 
   /* ── 가격 카드 / 마감 배너 ── */
-  .price-grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 10px; margin-bottom: 16px; }
-  .price { padding: 20px 14px; border: 1px solid var(--line); background: var(--white); text-align: center; }
+  .price-grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 10px; margin-bottom: 16px; align-items: stretch; }
+  .price { padding: 20px 14px; border: 1px solid var(--line); background: var(--white); text-align: center; min-width: 0; }
   .price.is-best { border-color: var(--crimson); background: linear-gradient(180deg, rgba(220,20,60,.08), var(--white) 55%); }
-  .price .p-label { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--mute); margin-bottom: 10px; }
+  .price .p-label { font-size: 12px; font-weight: 800; letter-spacing: .04em; color: var(--mute); margin-bottom: 10px; word-break: keep-all; }
   .price.is-best .p-label { color: var(--crimson); }
   .price .amt { font-family: Outfit, Pretendard, sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 6px; }
   .price .amt small { font-size: 13px; font-weight: 700; }
@@ -857,6 +979,19 @@
     outline: 2px solid var(--navy);
     outline-offset: 1px;
   }
+  .f-field select.is-open-menu {
+    height: auto;
+    min-height: 0;
+    padding: 6px;
+    z-index: 8;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(11, 32, 72, 0.16);
+  }
+  .f-field select.is-open-menu option {
+    padding: 9px 8px;
+    white-space: normal;
+    word-break: keep-all;
+  }
   .f-consent {
     display: flex; align-items: flex-start; gap: 8px;
     font-size: 12.5px; color: var(--mute); word-break: keep-all;
@@ -891,8 +1026,20 @@
   .reveal.in { opacity: 1; transform: none; }
 
   @media (max-width: 780px) {
-    .par-grid, .prac-grid, .price-grid, .eval-row, .f-row { grid-template-columns: 1fr; }
+    .par-grid, .eval-row, .f-row { grid-template-columns: 1fr; }
     .leaf-row { grid-template-columns: 1fr; }
+    .prac-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .field-grid { gap: 6px; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .prac { padding: 16px 12px 14px; }
+    .prac h3 { font-size: 15px; }
+    .prac p { font-size: 12.5px; }
+    .price-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+    .price { padding: 14px 6px; }
+    .price .p-label { font-size: 11px; margin-bottom: 6px; letter-spacing: 0; }
+    .price .amt { font-size: 20px; }
+    .price .amt small { font-size: 11px; }
+    .price .p-note { font-size: 11px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -1139,11 +1286,46 @@
         </div>
       </div>
 
+      <div class="field-block">
+        <div class="sec-label">Field · Voice</div>
+        <h3 class="sec-title" style="font-size:22px">현장 · 후기</h3>
+        <p class="sec-desc">실제 강의·실습 현장과, 교육을 들은 분들의 이야기입니다.</p>
+        <div class="field-grid">
+          <button type="button" class="field-shot" data-full="academy-photos/cmt-01.jpg" aria-label="CMT 강의실 크게 보기">
+            <img src="academy-photos/cmt-01.jpg" alt="치료대에서 진행하는 CMT 이론 강의" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/cmt-02.jpg" aria-label="CMT 경추 실습 크게 보기">
+            <img src="academy-photos/cmt-02.jpg" alt="경추 도수 실습 중인 CMT 수업" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/cmt-03.jpg" aria-label="CMT 하지 시연 크게 보기">
+            <img src="academy-photos/cmt-03.jpg" alt="하지 정렬을 시연하는 CMT 실습" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/cmt-04.jpg" aria-label="촉진 실습 크게 보기">
+            <img src="academy-photos/cmt-04.jpg" alt="베드 주위로 모여 촉진을 배우는 현장" width="640" height="480" loading="lazy">
+          </button>
+        </div>
+        <div class="voice-grid">
+          <blockquote class="voice">
+            <p>학교에서 배운 이론이 실제 임상 현장에서 어떻게 적용되는지 이해할 수 있었습니다. 실습 중심 교육 덕분에 임상 자신감이 생겼습니다.</p>
+            <footer>고윤호 · 전문가 교육</footer>
+          </blockquote>
+          <blockquote class="voice">
+            <p>실제로 임상에서 사용될 만한 내용으로 구성해 주셔서, 현장에 나갔을 때 적응이 쉬울 것 같습니다.</p>
+            <footer>박준수 · 전문가 교육</footer>
+          </blockquote>
+        </div>
+        <aside class="bio-card">
+          <div class="bio-k">강사 약력</div>
+          <p>미카닥 박준규 · 미국 California DC · 한국 물리치료사. 현 CMT 임상도수치료 아카데미 부회장, 대한자세교정 통합연구학회 학회장. University of Bridgeport DC · 한서대 · 대전대. 저서 Palpation 임상 가이드.</p>
+          <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+        </aside>
+      </div>
+
       <div class="enroll">
         <h3>일정 · 모집</h3>
         <p>신청서 제출 후 개별 연락으로 세부 일정·등록 절차를 안내드립니다. 정원은 입금 완료 순으로 마감됩니다.</p>
         <div class="facts">
-          <div class="fact"><div class="k">일정</div><div class="v">매년 3월(상반기) / 9월(하반기) 시작 · 8시간씩 6일</div></div>
+          <div class="fact"><div class="k">일정</div><div class="v">매년 3월 / 9월 시작<br>8시간씩 6일 진행</div></div>
           <div class="fact"><div class="k">장소</div><div class="v">삼육보건대학교 (서울 동대문구)</div></div>
           <div class="fact"><div class="k">수강료</div><div class="v">150만 · 얼리 135만 · 신졸/동반 120만</div></div>
         </div>
@@ -1187,8 +1369,8 @@
               <label for="cmt-type">신청 유형 <span class="req">*</span></label>
               <select id="cmt-type" name="applyType" required>
                 <option value="">선택해 주세요</option>
-                <option value="상반기">상반기</option>
-                <option value="하반기">하반기</option>
+                <option value="상반기">상반기: 3월 시작</option>
+                <option value="하반기">하반기: 9월 시작</option>
               </select>
             </div>
           </div>
@@ -1328,11 +1510,46 @@
         </div>
       </div>
 
+      <div class="field-block">
+        <div class="sec-label">Field · Voice</div>
+        <h3 class="sec-title" style="font-size:22px">현장 · 후기</h3>
+        <p class="sec-desc">학회·실습 현장과, 교육을 들은 분들의 이야기입니다.</p>
+        <div class="field-grid">
+          <button type="button" class="field-shot" data-full="academy-photos/ifc-01.jpg" aria-label="IFC 실습 크게 보기">
+            <img src="academy-photos/ifc-01.jpg" alt="얼굴 촉진 실습이 진행되는 IFC 강의실" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/ifc-02.jpg" aria-label="IFC 강의 크게 보기">
+            <img src="academy-photos/ifc-02.jpg" alt="스크린 앞에서 진행하는 국제얼굴교정학회 강의" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/ifc-03.jpg" aria-label="얼굴 운동 클래스 크게 보기">
+            <img src="academy-photos/ifc-03.jpg" alt="매트 위에서 얼굴 운동을 함께 익히는 클래스" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/ifc-04.jpg" aria-label="소그룹 교육 크게 보기">
+            <img src="academy-photos/ifc-04.jpg" alt="소그룹으로 기기·수기 시퀀스를 설명하는 현장" width="640" height="480" loading="lazy">
+          </button>
+        </div>
+        <div class="voice-grid">
+          <blockquote class="voice">
+            <p>작은 얼굴 관리를 받고 있는데 턱선과 두피에 효과가 정말 좋아요. 불편한 부분을 생활 치료로 관리하는 방법도 친절하게 설명해 주셨습니다.</p>
+            <footer>최OO · 얼굴 케어</footer>
+          </blockquote>
+          <blockquote class="voice">
+            <p>어려운 부분을 질문하면 강사분이 친절하게 알려주셔서 좋았습니다. 참여한 프로그램 중 만족도가 가장 높았습니다.</p>
+            <footer>이연주 · 전문가 교육</footer>
+          </blockquote>
+        </div>
+        <aside class="bio-card">
+          <div class="bio-k">강사 약력</div>
+          <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 현 IFC 국제얼굴교정학회 학회장. 얼굴 해부학·촉진·수기 시퀀스를 학회 교육과 실습으로 이어 갑니다.</p>
+          <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+        </aside>
+      </div>
+
       <div class="enroll">
         <h3>일정 · 모집</h3>
         <p>정원은 입금 완료 순입니다. 신청 정보만으로는 자리가 확정되지 않으며, 안내에 따라 입금해야 접수가 완료됩니다.</p>
         <div class="facts">
-          <div class="fact"><div class="k">일정</div><div class="v">매년 4월(상반기) / 11월(하반기) 시작 · 6시간씩 3일</div></div>
+          <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>6시간씩 3일 진행</div></div>
           <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
           <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 180만</div></div>
         </div>
@@ -1375,8 +1592,8 @@
               <label for="ifc-type">신청 유형 <span class="req">*</span></label>
               <select id="ifc-type" name="applyType" required>
                 <option value="">선택해 주세요</option>
-                <option value="상반기">상반기</option>
-                <option value="하반기">하반기</option>
+                <option value="상반기">상반기: 4월 시작</option>
+                <option value="하반기">하반기: 11월 시작</option>
               </select>
             </div>
           </div>
@@ -1547,6 +1764,58 @@
         </article>
       </div>
 
+      <div class="sec-label">Practice · AA / A</div>
+      <h3 class="sec-title" style="font-size:22px">A / AA 자세 및 생활습관 교정</h3>
+      <p class="sec-desc">푼 몸을 스스로 움직이고, 긴장을 알아채게 하는 단계입니다. 통증 없이 가동만 남으면 AA로 열고, 움직임이 되면 A-ROM으로 확인한 뒤 생활 자세로 연결합니다.</p>
+      <div class="prac-grid">
+        <article class="prac">
+          <div class="num">01 · AA</div>
+          <h3>Assisted Active</h3>
+          <p>통증은 없는데 ROM이 남을 때. CIE · Hold &amp; Relax · Pull &amp; Push로 해당 관절을 회원과 함께 회복합니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">02 · A</div>
+          <h3>A-ROM</h3>
+          <p>통증 없이 스스로 움직이는지 확인합니다. Active Stretching 시행 자체가 능동 가동범위와 움직임 질을 보는 평가입니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">03 · HABIT</div>
+          <h3>생활습관</h3>
+          <p>편안한 호흡 · 긴장 자각 · 자기 조절. 바른 형태가 목표가 아니라, 불필요한 긴장을 스스로 줄이는 것이 목표입니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">04 · POSTURE</div>
+          <h3>자세 교정</h3>
+          <p>호흡 위에 등척성 정렬을 얹습니다. 엉덩이 → 발 → 무릎 → 척추 → 어깨 → 손끝. 누운 자리에서 일상에 가져갈 인지를 만듭니다.</p>
+        </article>
+      </div>
+
+      <div class="sec-label">Practice · R</div>
+      <h3 class="sec-title" style="font-size:22px">R 기능운동</h3>
+      <p class="sec-desc">저항을 더해 근막경선을 따라 힘을 쌓고, 실제로 쓰는 동작으로 옮깁니다. 밸런스를 잡으며 천천히, 가능하면 거울로 스스로를 봅니다.</p>
+      <div class="prac-grid">
+        <article class="prac">
+          <div class="num">01 · BASIC</div>
+          <h3>근막경선 저항</h3>
+          <p>굴곡 → 신전 → 회전 → 외전 → 내전. 하지·상지 경선을 따라 관절 순으로 저항을 더합니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">02 · SUPINE</div>
+          <h3>Sit-up 분절</h3>
+          <p>전방 경선. 상체·하체를 나눠 올린 뒤 정식 Sit-up으로 연결합니다. 한 번에 말아 올리지 않습니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">03 · PRONE</div>
+          <h3>Superman 분절</h3>
+          <p>후방 경선. 허리만 젖히지 않고 경추부터 분절 순으로 듭니다. 대각선·접영·회전으로 확장합니다.</p>
+        </article>
+        <article class="prac">
+          <div class="num">04 · LIFE</div>
+          <h3>일상 동작</h3>
+          <p>보행·계단·들어올리기처럼 실제로 필요한 힘을, 통증 없는 범위에서 반복합니다. 기초 체력이 유지를 가릅니다.</p>
+        </article>
+      </div>
+
       <div class="concept-box">
         <div class="sec-label">My Concept</div>
         <h3 class="sec-title">수동적으로 받을까, 움직이는 게 좋을까?</h3>
@@ -1580,6 +1849,41 @@
           <h3>특장점</h3>
           <p>강사 부담이 적은 자세 · 플로우 시퀀스 · 베드 위에도 적용 가능</p>
         </div>
+      </div>
+
+      <div class="field-block">
+        <div class="sec-label">Field · Voice</div>
+        <h3 class="sec-title" style="font-size:22px">현장 · 후기</h3>
+        <p class="sec-desc">리얼무브먼트에서 실제로 쓰는 움직임 지도와, 교육을 들은 분들의 이야기입니다.</p>
+        <div class="field-grid">
+          <button type="button" class="field-shot" data-full="academy-photos/real-01.jpg" aria-label="패시브 스트레칭 실습 크게 보기">
+            <img src="academy-photos/real-01.jpg" alt="누운 자세에서 상지·하지 스트레칭을 실습하는 현장" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/real-02.jpg" aria-label="기능운동 시연 크게 보기">
+            <img src="academy-photos/real-02.jpg" alt="런지 동작으로 기능운동을 시연하는 모습" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/real-03.jpg" aria-label="메디신볼 운동 크게 보기">
+            <img src="academy-photos/real-03.jpg" alt="메디신볼을 이용한 움직임 훈련" width="640" height="480" loading="lazy">
+          </button>
+          <button type="button" class="field-shot" data-full="academy-photos/real-04.jpg" aria-label="움직임 큐잉 크게 보기">
+            <img src="academy-photos/real-04.jpg" alt="거울 앞에서 움직임을 큐잉하는 현장" width="640" height="480" loading="lazy">
+          </button>
+        </div>
+        <div class="voice-grid">
+          <blockquote class="voice">
+            <p>촉진, 스트레칭, 임상적 내용까지 좋은 강의를 해주셔서 너무 좋았습니다.</p>
+            <footer>권혁제 · 전문가 교육</footer>
+          </blockquote>
+          <blockquote class="voice">
+            <p>학교 수업만으로는 접하기 어려웠던 실제 현장 경험을 할 수 있어 의미 있는 시간이었습니다. 실무에서 쓰는 방식과 흐름을 직접 경험했습니다.</p>
+            <footer>김예진 · 전문가 교육</footer>
+          </blockquote>
+        </div>
+        <aside class="bio-card">
+          <div class="bio-k">강사 약력</div>
+          <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 리얼무브먼트에서 PAR 움직임 시퀀스를 현장 그대로 지도합니다. 현 대한자세교정 통합연구학회 학회장.</p>
+          <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+        </aside>
       </div>
 
       <div class="sec-label">Enrollment</div>
@@ -1616,7 +1920,7 @@
         <h3>② 정규 과정 · PAR 전체</h3>
         <p>PAR(P·A·R) 전체 시퀀스를 3회에 걸쳐 익힙니다.</p>
         <div class="facts">
-          <div class="fact"><div class="k">일정</div><div class="v">매년 6월 (하반기) / 12월 (상반기) 시작 - 3회(6시간씩)</div></div>
+          <div class="fact"><div class="k">일정</div><div class="v">매년 6월 / 12월 시작<br>6시간씩 3일 진행</div></div>
           <div class="fact"><div class="k">장소</div><div class="v">리얼무브먼트 약수점</div></div>
           <div class="fact"><div class="k">수강료</div><div class="v">128만 → 108만</div></div>
         </div>
@@ -1660,9 +1964,9 @@
               <label for="real-type">신청 유형 <span class="req">*</span></label>
               <select id="real-type" name="applyType" required>
                 <option value="">선택해 주세요</option>
-                <option value="상반기">상반기</option>
-                <option value="하반기">하반기</option>
-                <option value="원데이 클래스">원데이 클래스</option>
+                <option value="하반기">6월 시작</option>
+                <option value="상반기">12월 시작</option>
+                <option value="원데이 클래스">원데이 클래스: 26년 10월 11일 10시 시작</option>
               </select>
             </div>
           </div>
@@ -1695,6 +1999,14 @@
 <footer class="foot">
   미카닥 박준규 · 전문가 과정 · CMT · IFC · Re:Al
 </footer>
+
+<div id="fieldLightbox" class="field-lightbox" hidden>
+  <button type="button" class="field-lightbox-backdrop" aria-label="사진 닫기"></button>
+  <div class="field-lightbox-panel">
+    <button type="button" class="field-lightbox-close">닫기</button>
+    <img alt="">
+  </div>
+</div>
 
 <script>
 (function () {
@@ -1800,6 +2112,43 @@
     full.value = (m.length === 4 && t.length === 4) ? ('010-' + m + '-' + t) : '';
   }
 
+  function collapseSelect(select) {
+    if (!select) return;
+    select.size = 1;
+    select.classList.remove('is-open-menu');
+  }
+
+  function collapseAllSelectMenus(except) {
+    document.querySelectorAll('select.is-open-menu').forEach(function (el) {
+      if (el !== except) collapseSelect(el);
+    });
+  }
+
+  function openSelectMenu(select) {
+    if (!select) return;
+    collapseAllSelectMenus(select);
+    if (select.scrollIntoView) select.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    select.size = Math.max(select.options.length, 2);
+    select.classList.add('is-open-menu');
+    select.focus();
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'SELECT' || t.tagName === 'OPTION')) return;
+    collapseAllSelectMenus();
+  });
+
+  function openRoleAfterPhone(wrap) {
+    var form = wrap.closest('form');
+    var tail = wrap.querySelector('.phone-tail');
+    if (!form || !tail || digitsOnly(tail.value).length !== 4) return;
+    var role = form.querySelector('select[name="role"]');
+    if (!role) return;
+    tail.blur();
+    openSelectMenu(role);
+  }
+
   document.querySelectorAll('.phone-split').forEach(function (wrap) {
     var mid = wrap.querySelector('.phone-mid');
     var tail = wrap.querySelector('.phone-tail');
@@ -1810,16 +2159,19 @@
       mid.value = d.slice(0, 4);
       if (d.length > 4) {
         tail.value = (digitsOnly(tail.value) + d.slice(4)).slice(0, 4);
-        tail.focus();
-      } else if (d.length === 4) {
-        tail.focus();
+        syncPhoneSplit(wrap);
+        if (tail.value.length === 4) openRoleAfterPhone(wrap);
+        else tail.focus();
+        return;
       }
+      if (d.length === 4) tail.focus();
       syncPhoneSplit(wrap);
     });
 
     tail.addEventListener('input', function () {
       tail.value = digitsOnly(tail.value).slice(0, 4);
       syncPhoneSplit(wrap);
+      if (tail.value.length === 4) openRoleAfterPhone(wrap);
     });
 
     tail.addEventListener('keydown', function (e) {
@@ -1840,19 +2192,48 @@
       mid.value = d.slice(0, 4);
       tail.value = d.slice(4, 8);
       syncPhoneSplit(wrap);
-      if (mid.value.length === 4) tail.focus();
+      if (tail.value.length === 4) openRoleAfterPhone(wrap);
+      else if (mid.value.length === 4) tail.focus();
     });
   });
 
   // ── 신청 폼 전송: 시트 저장 + 과정별 알림톡 ──
-  // code.gs.txt 의 submitAcademyApply 분기. 웹 앱을 다시 배포해야 합니다.
+  // 운영 시트(CONFIG.SHEET_ID)의 '전문가과정' 탭. 시트 ID를 바꾼 뒤 웹 앱을 다시 배포해야 합니다.
   var APPLY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwVJSc6rY5tcBSB1VaRi4DBEXGyUBr1ADFfs6QEA9Z9bu0G-0mdMAv374-MdPVYMnSaeQ/exec';
+
+  function postApplyJson(body) {
+    return fetch(APPLY_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(body)
+    }).then(function (res) { return res.text(); }).then(function (text) {
+      var data = {};
+      try { data = JSON.parse(text || '{}'); } catch (err) { data = {}; }
+      return data;
+    });
+  }
+
+  function applyResponseOk(data) {
+    return !!(data && (data.ok === true || data.result === 'success'));
+  }
 
   document.querySelectorAll('.apply-form').forEach(function (form) {
     var successBox = document.getElementById(form.getAttribute('data-success'));
     var errorBox = document.getElementById(form.getAttribute('data-error'));
     var statusEl = form.querySelector('.f-status');
     var submitBtn = form.querySelector('button[type="submit"]');
+    var roleSelect = form.querySelector('select[name="role"]');
+    var typeSelect = form.querySelector('select[name="applyType"]');
+    if (roleSelect && typeSelect) {
+      roleSelect.addEventListener('change', function () {
+        collapseSelect(roleSelect);
+        if (!roleSelect.value) return;
+        openSelectMenu(typeSelect);
+      });
+      typeSelect.addEventListener('change', function () {
+        collapseSelect(typeSelect);
+      });
+    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -1878,20 +2259,31 @@
       submitBtn.disabled = true;
       if (statusEl) statusEl.textContent = '전송 중…';
 
-      fetch(APPLY_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      }).then(function (res) { return res.text(); }).then(function (text) {
-        var data = {};
-        try { data = JSON.parse(text || '{}'); } catch (err) { data = {}; }
-        if (data.ok === true || data.result === 'success') {
-          form.hidden = true;
-          if (successBox) successBox.hidden = false;
-          if (statusEl) statusEl.textContent = '';
-          return;
-        }
-        throw new Error(data.message || '접수 실패');
+      postApplyJson(payload).then(function (data) {
+        if (applyResponseOk(data)) return data;
+        var summary = '[전문가과정] ' + (payload.course || '') +
+          (payload.role ? ' · ' + payload.role : '') +
+          (payload.applyType ? ' · ' + payload.applyType : '') +
+          (payload.bundle ? ' · 통합과정 희망' : '') +
+          (payload.note ? '\n' + payload.note : '');
+        return postApplyJson({
+          action: 'submitConsult',
+          name: payload.name,
+          phone: String(payload.phone || '').replace(/\D/g, ''),
+          flow: 'expert',
+          summaryText: summary,
+          adminSummaryText: summary,
+          inquiry: payload.note || undefined,
+          submittedAt: payload.submittedAt,
+          page: payload.page
+        }).then(function (fb) {
+          if (applyResponseOk(fb)) return fb;
+          throw new Error((data && data.message) || (fb && fb.message) || '접수 실패');
+        });
+      }).then(function () {
+        form.hidden = true;
+        if (successBox) successBox.hidden = false;
+        if (statusEl) statusEl.textContent = '';
       }).catch(function () {
         submitBtn.disabled = false;
         if (statusEl) statusEl.textContent = '';
@@ -1899,6 +2291,37 @@
       });
     });
   });
+
+  (function initFieldLightbox() {
+    var modal = document.getElementById('fieldLightbox');
+    if (!modal) return;
+    var img = modal.querySelector('img');
+    var closeBtn = modal.querySelector('.field-lightbox-close');
+    var backdrop = modal.querySelector('.field-lightbox-backdrop');
+    function close() {
+      modal.hidden = true;
+      if (img) { img.removeAttribute('src'); img.alt = ''; }
+      document.body.style.overflow = '';
+    }
+    function open(src, alt) {
+      if (!src || !img) return;
+      img.src = src;
+      img.alt = alt || '현장 사진';
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    }
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.field-shot');
+      if (!btn) return;
+      open(btn.getAttribute('data-full'), (btn.querySelector('img') || {}).alt);
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (backdrop) backdrop.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  })();
 })();
 </script>
 </body>
