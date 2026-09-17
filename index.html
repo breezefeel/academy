@@ -164,6 +164,15 @@
   }
   .btn-sm { min-height: 42px; padding: 10px 14px; font-size: 13px; }
   .btn:disabled { opacity: .55; cursor: default; transform: none; }
+  .btn-done,
+  .btn-done:hover,
+  .btn-done:disabled {
+    background: var(--ok);
+    color: #fff;
+    opacity: 1;
+    cursor: default;
+    transform: none;
+  }
 
   /* HOME hero */
   .home-hero {
@@ -999,7 +1008,9 @@
   }
   .f-consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; }
   .f-submit-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .f-status { font-size: 12.5px; color: var(--mute); }
+  .f-status { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
+  .f-status.is-wait { color: var(--ink); font-weight: 800; }
+  .apply-success[hidden] { display: none !important; }
   .apply-success {
     display: flex; align-items: flex-start; gap: 10px;
     padding: 18px 16px;
@@ -1390,7 +1401,7 @@
           </label>
           <div class="f-submit-row">
             <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
-            <span class="f-status"></span>
+            <span class="f-status" aria-live="polite"></span>
           </div>
           <div class="apply-error" id="apply-error-cmt">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
         </form>
@@ -1607,7 +1618,7 @@
           </label>
           <div class="f-submit-row">
             <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
-            <span class="f-status"></span>
+            <span class="f-status" aria-live="polite"></span>
           </div>
           <div class="apply-error" id="apply-error-ifc">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
         </form>
@@ -1980,7 +1991,7 @@
           </label>
           <div class="f-submit-row">
             <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
-            <span class="f-status"></span>
+            <span class="f-status" aria-live="polite"></span>
           </div>
           <div class="apply-error" id="apply-error-real">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
         </form>
@@ -2224,6 +2235,46 @@
     var submitBtn = form.querySelector('button[type="submit"]');
     var roleSelect = form.querySelector('select[name="role"]');
     var typeSelect = form.querySelector('select[name="applyType"]');
+    var waitTimer = null;
+    var APPLY_ETA_SEC = 15;
+
+    function clearWait() {
+      if (waitTimer) {
+        clearInterval(waitTimer);
+        waitTimer = null;
+      }
+      if (statusEl) {
+        statusEl.textContent = '';
+        statusEl.classList.remove('is-wait');
+      }
+    }
+
+    function startWait() {
+      clearWait();
+      var left = APPLY_ETA_SEC;
+      if (statusEl) statusEl.classList.add('is-wait');
+      function paint() {
+        if (!statusEl) return;
+        statusEl.textContent = left > 0 ? ('예상 ' + left + '초') : '처리 중…';
+      }
+      paint();
+      waitTimer = setInterval(function () {
+        left -= 1;
+        paint();
+      }, 1000);
+    }
+
+    function markDone() {
+      clearWait();
+      submitBtn.disabled = true;
+      submitBtn.textContent = '신청 완료';
+      submitBtn.classList.remove('btn-primary');
+      submitBtn.classList.add('btn-done');
+      form.querySelectorAll('input, select, textarea, button').forEach(function (el) {
+        el.disabled = true;
+      });
+      if (successBox) successBox.hidden = false;
+    }
     if (roleSelect && typeSelect) {
       roleSelect.addEventListener('change', function () {
         collapseSelect(roleSelect);
@@ -2257,7 +2308,7 @@
       };
 
       submitBtn.disabled = true;
-      if (statusEl) statusEl.textContent = '전송 중…';
+      startWait();
 
       postApplyJson(payload).then(function (data) {
         if (applyResponseOk(data)) return data;
@@ -2281,12 +2332,10 @@
           throw new Error((data && data.message) || (fb && fb.message) || '접수 실패');
         });
       }).then(function () {
-        form.hidden = true;
-        if (successBox) successBox.hidden = false;
-        if (statusEl) statusEl.textContent = '';
+        markDone();
       }).catch(function () {
+        clearWait();
         submitBtn.disabled = false;
-        if (statusEl) statusEl.textContent = '';
         if (errorBox) errorBox.classList.add('is-show');
       });
     });
