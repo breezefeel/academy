@@ -119,7 +119,7 @@
   }
 
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
-  section { padding: 48px 0; }
+  section { padding: 48px 0; scroll-margin-top: 120px; }
   .sec-label {
     font-family: Outfit, Pretendard, sans-serif;
     font-size: 12px; font-weight: 700;
@@ -373,6 +373,40 @@
     word-break: keep-all;
   }
   .effect-box strong { color: #fff; }
+  .gain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 22px;
+  }
+  .effect-box .gain-grid h3 { font-size: 15px; margin-bottom: 8px; }
+  .effect-box .gain-grid p { font-size: 13.5px; }
+
+  .scene {
+    margin-bottom: 32px;
+    padding: 22px 18px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--crimson);
+  }
+  .scene .q {
+    font-size: 18px; font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 8px 0 12px;
+    word-break: keep-all;
+  }
+  .scene p {
+    font-size: 14.5px; color: var(--mute);
+    word-break: keep-all;
+  }
+  .scene p + p { margin-top: 10px; }
+
+  .field-grid.is-home {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 4px;
+  }
+  .voice-grid.is-3 { grid-template-columns: repeat(3, 1fr); }
+  .fit.is-out { background: #efe6d4; }
+  .fit.is-out h3 { color: var(--mute); }
 
   /* choose */
   .choose-grid {
@@ -796,7 +830,8 @@
   }
 
   @media (max-width: 780px) {
-    .why-grid, .choose-grid, .facts, .fit-grid, .pillars, .pillars.is-3 { grid-template-columns: 1fr; }
+    .why-grid, .choose-grid, .facts, .fit-grid, .pillars, .pillars.is-3,
+    .gain-grid, .field-grid.is-home, .voice-grid.is-3 { grid-template-columns: 1fr; }
     .tabs { grid-template-columns: repeat(4, 1fr); gap: 4px; }
     .tab { font-size: 11.5px; min-height: 40px; padding: 7px 2px; }
     .tab[data-tab="home"] { font-size: 11px; }
@@ -1108,7 +1143,7 @@
       </p>
       <p class="hero-lead">
         같은 기술도 누구에게, 어떤 순서로 쓰느냐에 따라 결과가 달라집니다.
-        세 과정은 같은 임상 언어 안에서 "지금 이 회원에게 맞는 시작점"을 고르는 선택지입니다.
+        테크닉을 더하는 교육이 아니라, 지금 이 회원에게 맞는 시작점을 고르는 교육입니다.
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#why">어떤 흐름인가</a>
@@ -1117,8 +1152,17 @@
     </div>
   </section>
 
-  <section id="why">
+    <section id="why">
     <div class="wrap">
+      <div class="sec-label">In the Room</div>
+      <h2 class="sec-title">현장에서 자주 받는 질문입니다</h2>
+      <div class="scene">
+        <p>강의실과 센터에서, 테크닉을 물은 뒤에 결국 이 질문이 나옵니다.</p>
+        <p class="q">“이 회원은 손으로 풀어야 할까요, 움직이게 해야 할까요?”</p>
+        <p>통증은 줄었는데 다시 굳는 경우, 얼굴은 만지는데 어디부터인지 설명이 안 되는 경우, 움직임만 넣으면 시작부터 아픈 경우. 테크닉이 부족해서가 아니라, 순서를 고르는 기준이 없어서입니다.</p>
+        <p>그 기준은 평가에서 나옵니다. 원인을 좁히면 손(CMT·IFC)으로 풀지, 움직임(Re:Al)으로 지킬지가 분명해집니다.</p>
+      </div>
+
       <div class="sec-label">Why This Works</div>
       <h2 class="sec-title">PAR 흐름이 설득력 있는 이유</h2>
       <p class="sec-desc">
@@ -1129,38 +1173,113 @@
         <article class="why-card">
           <div class="n">01</div>
           <h3>원인을 알아야, 적합한 선택을 할 수 있다</h3>
-          <p>같은 스트레칭·도수라도, 평가 없이 들어가면 효과가 들쑥날쑥합니다. 먼저 원인을 좁히면 CMT·IFC·Re:Al 중 어디가 시작점인지가 분명해집니다.</p>
+          <p>같은 스트레칭·도수라도, 평가 없이 들어가면 효과가 들쑥날쑥합니다. 먼저 원인을 좁히면 CMT·IFC·Re:Al 중 어디가 시작점인지가 분명해집니다. 그래서 수업이 “오늘 뭘 할지”가 아니라, 지금 이 회원에게 맞는 시작점을 고르는 일이 됩니다.</p>
         </article>
         <article class="why-card">
           <div class="n">02</div>
           <h3>움직임만으로는 시작부터 막힐 수 있다</h3>
-          <p>통증·가동성이 막혀 있으면 Active부터 진행하기 어렵습니다. Passive로 움직일 수 있는 상태를 만들고 단계적으로 운동하는 것이 안전합니다.</p>
+          <p>통증·가동성이 막혀 있으면 Active부터 진행하기 어렵습니다. Passive로 움직일 수 있는 상태를 만들고 단계적으로 운동하는 것이 안전합니다. 그래서 교육에서는 움직이기 전에, 먼저 움직일 수 있는 상태를 만드는 손을 같이 봅니다.</p>
         </article>
         <article class="why-card">
           <div class="n">03</div>
           <h3>풀기만으로는 유지가 안 된다</h3>
-          <p>수기·기기로 조직을 열어도, 움직임·습관이 그대로면 다시 굳습니다. '푼 다음'을 진행해야 반복되지 않습니다.</p>
+          <p>수기·기기로 조직을 열어도, 움직임·습관이 그대로면 다시 굳습니다. '푼 다음'을 진행해야 반복되지 않습니다. 그래서 푼 다음 수업이 숙제가 아니라, 유지 설계가 됩니다.</p>
+        </article>
+      </div>
+
+      <div class="sec-label" style="margin-top:36px">After Class</div>
+      <h2 class="sec-title">이 교육을 듣고 나면</h2>
+      <p class="sec-desc">테크닉 목록이 늘는 자리가 아닙니다. 케이스 앞에서 순서를 말하고, 회원에게 이유를 설명할 수 있게 됩니다.</p>
+      <div class="pillars is-3">
+        <article class="pillar">
+          <div class="n">판단</div>
+          <h3>순서를 말할 수 있습니다</h3>
+          <p>케이스 앞에서 테크닉을 고르는 게 아니라, 평가로 오늘 어디부터인지를 말할 수 있습니다.</p>
+        </article>
+        <article class="pillar">
+          <div class="n">설명</div>
+          <h3>회원에게 이유를 전합니다</h3>
+          <p>“왜 오늘 이 손인지, 왜 이 움직임인지”를 같은 언어로 전달할 수 있습니다.</p>
+        </article>
+        <article class="pillar">
+          <div class="n">선택</div>
+          <h3>시작점을 고릅니다</h3>
+          <p>CMT·IFC·Re:Al을 따로 외우지 않고, 한 흐름 위의 시작점으로 고릅니다.</p>
         </article>
       </div>
 
       <div class="effect-box">
-        <h3>회원이 인식하는 수업의 변화</h3>
-        <p>
-          회원은 단순히 "오늘 뭘 받았는지"보다
-          <strong>"왜 이 순서로 하는지"</strong>를 이해하게 됩니다.</br>
-          본인의 몸 상태를 인지하면 자연스럽게 강사에 대한 신뢰가 생기고, 숙제·자세·운동이 납득되며,
-          재발 패턴을 스스로 조절하는 쪽으로 옮겨 갑니다.
-          강사·테라피스트에게는 <strong>같은 언어로 평가→중재→유지</strong>를 설명할 수 있는 체계가 됩니다.
-        </p>
+        <div class="gain-grid">
+          <div>
+            <h3>회원이 느끼는 변화</h3>
+            <p>회원은 단순히 “오늘 뭘 받았는지”보다 <strong>“왜 이 순서로 하는지”</strong>를 이해하게 됩니다. 본인의 몸 상태를 인지하면 강사에 대한 신뢰가 생기고, 숙제·자세·운동이 납득되며, 재발 패턴을 스스로 조절하는 쪽으로 옮겨 갑니다.</p>
+          </div>
+          <div>
+            <h3>강사가 가져가는 것</h3>
+            <p>강사·테라피스트에게는 <strong>같은 언어로 평가→중재→유지</strong>를 설명할 수 있는 체계가 됩니다. 과정이 달라도, 오늘 이 회원에게 맞는 시작점을 같은 기준으로 고를 수 있습니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="choose" style="background:rgba(11,32,72,.04); padding-bottom:56px;">
+  <section id="proof">
     <div class="wrap">
-      <div class="sec-label">Choose One</div>
-      <h2 class="sec-title">나에게 필요한 시작점을 고르세요</h2>
-      <p class="sec-desc">큰 틀을 이해했다면 세부 과정은 탭에서 확인하면 됩니다. 목표에 맞는 카드를 눌러보세요.</p>
+      <div class="sec-label">Proof</div>
+      <h2 class="sec-title">현장과 약력이 말해 줍니다</h2>
+      <p class="sec-desc">강의실에서 손으로 확인하고, 학회와 센터에서 같은 순서로 가르칩니다. 숫자로 부풀리지 않고, 실제로 진행한 교육의 장면과 수강 소감을 먼저 보여 드립니다.</p>
+      <div class="field-grid is-home">
+        <button type="button" class="field-shot" data-full="academy-photos/cmt-04.jpg" aria-label="촉진 실습 크게 보기">
+          <img src="academy-photos/cmt-04.jpg" alt="베드 주위로 모여 촉진을 배우는 현장" width="640" height="480" loading="lazy">
+        </button>
+        <button type="button" class="field-shot" data-full="academy-photos/ifc-01.jpg" aria-label="IFC 실습 크게 보기">
+          <img src="academy-photos/ifc-01.jpg" alt="얼굴 촉진 실습이 진행되는 IFC 강의실" width="640" height="480" loading="lazy">
+        </button>
+        <button type="button" class="field-shot" data-full="academy-photos/real-01.jpg" aria-label="패시브 스트레칭 실습 크게 보기">
+          <img src="academy-photos/real-01.jpg" alt="누운 자세에서 상지·하지 스트레칭을 실습하는 현장" width="640" height="480" loading="lazy">
+        </button>
+      </div>
+      <div class="voice-grid is-3">
+        <blockquote class="voice">
+          <p>학교에서 배운 이론이 실제 임상 현장에서 어떻게 적용되는지 이해할 수 있었습니다. 실습 중심 교육 덕분에 임상 자신감이 생겼습니다.</p>
+          <footer>고윤호 · 전문가 교육</footer>
+        </blockquote>
+        <blockquote class="voice">
+          <p>어려운 부분을 질문하면 강사분이 친절하게 알려주셔서 좋았습니다. 참여한 프로그램 중 만족도가 가장 높았습니다.</p>
+          <footer>이연주 · 전문가 교육</footer>
+        </blockquote>
+        <blockquote class="voice">
+          <p>학교 수업만으로는 접하기 어려웠던 실제 현장 경험을 할 수 있어 의미 있는 시간이었습니다. 실무에서 쓰는 방식과 흐름을 직접 경험했습니다.</p>
+          <footer>김예진 · 전문가 교육</footer>
+        </blockquote>
+      </div>
+      <aside class="bio-card">
+        <div class="bio-k">강사 약력</div>
+        <p>미카닥 박준규 · 미국 California DC · 한국 물리치료사. 현 CMT 임상도수치료 아카데미 부회장, IFC 국제얼굴교정학회 학회장, 대한자세교정 통합연구학회 학회장. University of Bridgeport DC · 한서대 · 대전대. 저서 Palpation 임상 가이드. 리얼무브먼트에서 PAR 시퀀스를 현장 그대로 지도합니다.</p>
+        <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+      </aside>
+    </div>
+  </section>
+
+<section id="choose" style="background:rgba(11,32,72,.04); padding-bottom:56px;">
+    <div class="wrap">
+      <div class="sec-label">For Whom</div>
+      <h2 class="sec-title">이런 분께 맞습니다</h2>
+      <p class="sec-desc">과정을 고르기 전에, 이 교육이 지금 필요한 자리인지만 먼저 보시면 됩니다.</p>
+      <div class="fit-grid">
+        <article class="fit">
+          <h3>이런 분께</h3>
+          <p>테크닉은 있는데, 케이스 앞에서 손과 움직임 중 어디부터인지가 흔들리는 분. 회원에게 “왜 오늘 이 순서인지”를 설명하고 싶은 분.</p>
+        </article>
+        <article class="fit is-out">
+          <h3>아직은 아닌 분</h3>
+          <p>테크닉을 하나 더 모으는 게 목적인 분, 평가 없이 시퀀스만 가져가려는 분은 아직 이 과정과 결이 다릅니다.</p>
+        </article>
+      </div>
+
+      <div class="sec-label" style="margin-top:28px">Choose One</div>
+      <h2 class="sec-title">같은 언어 안에서 시작점을 고르세요</h2>
+      <p class="sec-desc">손·얼굴·움직임 중, 지금 필요한 입구를 고르면 됩니다. 세부 과정은 탭에서 이어서 확인할 수 있습니다.</p>
 
       <div class="choose-grid">
         <button type="button" class="choose-card" data-go="cmt">
@@ -2053,7 +2172,7 @@
 
   function fromHash() {
     var h = (location.hash || '#home').replace('#', '');
-    if (h === 'why' || h === 'choose') {
+    if (h === 'why' || h === 'proof' || h === 'choose') {
       show('home', false);
       setTimeout(function () {
         var el = document.getElementById(h);
