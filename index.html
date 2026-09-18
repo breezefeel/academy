@@ -700,6 +700,141 @@
   }
   .enroll + .enroll { margin-top: 16px; }
 
+  .course-path {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mute);
+    word-break: keep-all;
+    margin: 0 0 18px;
+  }
+  .curr-days {
+    display: grid;
+    gap: 8px;
+    margin: 0 0 22px;
+  }
+  .curr-day {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 14px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+  .curr-day .d {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    color: var(--crimson);
+    padding-top: 2px;
+  }
+  .curr-day h3 {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 4px;
+    word-break: keep-all;
+  }
+  .curr-day p {
+    font-size: 13px;
+    color: var(--mute);
+    word-break: keep-all;
+  }
+  .overview-voice { margin: 4px 0 28px; }
+
+  .track-pick {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 0 0 12px;
+    position: sticky;
+    top: calc(var(--safe-t) + 112px);
+    z-index: 40;
+    background: #F3E4C4;
+    padding: 8px 2px 10px;
+  }
+  .track-door {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    min-height: 44px;
+    text-align: left;
+    padding: 11px 14px;
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    width: 100%;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .track-door:hover {
+    border-color: rgba(11,32,72,.35);
+  }
+  .track-door.is-active {
+    border-color: var(--crimson);
+    box-shadow: inset 0 0 0 1px var(--crimson);
+  }
+  .track-door .k {
+    flex: 0 0 auto;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    color: var(--crimson);
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .track-door h3 {
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0;
+    word-break: keep-all;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .track-door p {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 12px;
+    color: var(--mute);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+  }
+  .track-panel { display: none; scroll-margin-top: 120px; }
+  .track-panel.is-active { display: block; animation: panelIn .28s ease; }
+
+  .more-block {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px dashed var(--line);
+  }
+  .cross-sell {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    font-size: 13.5px;
+    color: var(--mute);
+    word-break: keep-all;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .cross-sell button,
+  .cross-sell a {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--crimson);
+    white-space: nowrap;
+  }
+  .apply { scroll-margin-top: 120px; }
+
   .field-block { margin: 8px 0 22px; }
   .field-grid {
     display: grid;
@@ -831,13 +966,16 @@
 
   @media (max-width: 780px) {
     .why-grid, .choose-grid, .facts, .fit-grid, .pillars, .pillars.is-3,
-    .gain-grid, .field-grid.is-home, .voice-grid.is-3 { grid-template-columns: 1fr; }
+    .gain-grid, .field-grid.is-home, .voice-grid.is-3,
+    .curr-day { grid-template-columns: 1fr; }
     .tabs { grid-template-columns: repeat(4, 1fr); gap: 4px; }
     .tab { font-size: 11.5px; min-height: 40px; padding: 7px 2px; }
     .tab[data-tab="home"] { font-size: 11px; }
     .kakao-mini { display: none; }
     .choose-card p { min-height: 0; }
     .leaf-parts { grid-template-columns: 1fr; }
+    .track-door { padding: 10px 12px; min-height: 42px; gap: 6px; }
+    .track-door h3 { font-size: 13px; }
   }
 
   /* ── curriculum map (탭 간 위치 안내) ── */
@@ -906,7 +1044,7 @@
 
   /* ── PAR 카드 ── */
   .par-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 22px;
   }
   .par-card { padding: 20px 16px; background: var(--navy); color: var(--sand); min-height: 140px; }
   .par-card .letter {
@@ -1042,7 +1180,17 @@
     padding-top: 4px;
   }
   .f-consent input { margin-top: 3px; flex: none; width: 16px; height: 16px; }
-  .f-submit-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .f-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .f-submit-row .f-status { flex: 1; min-width: 0; }
+  .f-submit-row .btn-back-concept {
+    margin-left: auto;
+    flex: 0 0 auto;
+  }
   .f-status { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
   .f-status.is-wait { color: var(--ink); font-weight: 800; }
   .apply-success[hidden] { display: none !important; }
@@ -1086,6 +1234,8 @@
     .price .amt { font-size: 20px; }
     .price .amt small { font-size: 11px; }
     .price .p-note { font-size: 11px; }
+    .f-submit-row { gap: 8px; }
+    .f-submit-row .btn-sm { padding-left: 12px; padding-right: 12px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -1297,7 +1447,7 @@
         <button type="button" class="choose-card" data-go="real">
           <span class="mark">Re:Al</span>
           <h3>움직임으로 유지·확장</h3>
-          <p>패시브부터 자세·기능운동까지, 치료 이후를 설계할 때.</p>
+          <p>패시브 원데이, 또는 PAR 전체 정규반 중 필요한 쪽을 고를 때.</p>
           <span class="go">Re:Al 상세 보기 →</span>
         </button>
       </div>
@@ -1315,7 +1465,7 @@
     <div class="wrap">
       <div class="mark">CMT</div>
       <h1>CMT 도수치료 과정</h1>
-      <p>평가로 근골격계 문제의 원인을 가른 뒤, 연부조직과 관절을 순서대로 다루며 임상 판단력과 치료 테크닉을 완성해갑니다.</p>
+      <p>평가로 원인을 가른 뒤, 연부조직과 관절을 손으로 다룹니다. 평가 → 손 → 움직임 흐름에서 CMT는 손(도구) 축입니다.</p>
       <div class="badge-row">
         <span class="badge badge-hot">의료인 · 의료기사만</span>
         <span class="badge">수기 / 도구</span>
@@ -1324,40 +1474,62 @@
   </div>
   <section>
     <div class="wrap">
-      <div class="sec-label" style="margin-top:0">Curriculum Map</div>
-      <h2 class="sec-title" style="font-size:22px">전문가 과정 전체에서 CMT의 위치</h2>
-      <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. CMT는 그중 손(도구)으로 연부조직·관절을 치료하는 축입니다.</p>
+      <div class="sec-label" style="margin-top:0">Overview</div>
+      <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
+      <p class="sec-desc">의료인·의료기사가 평가와 함께 도수 테크닉을 부위별로 익히는 과정입니다. 컨셉 탭의 PAR 전체를 다시 다루지 않고, CMT에서 실제로 배우는 손 테크닉만 정리했습니다.</p>
+      <p class="course-path">평가 → <strong>손(CMT)</strong> → 움직임</p>
+      <div class="facts">
+        <div class="fact"><div class="k">일정</div><div class="v">매년 3월 / 9월 시작<br>8시간씩 6일</div></div>
+        <div class="fact"><div class="k">장소</div><div class="v">삼육보건대학교<br>(서울 동대문구)</div></div>
+        <div class="fact"><div class="k">수강료</div><div class="v">150만 · 얼리 135만<br>신졸/동반 120만</div></div>
+      </div>
+      <div class="fit-grid">
+        <div class="fit">
+          <h3>이런 분께</h3>
+          <p>도수·카이로 테크닉을 평가와 함께 체계화하고 싶은 의료인·의료기사</p>
+        </div>
+        <div class="fit">
+          <h3>듣고 나면</h3>
+          <p>골반·허리·흉추·경추에서 연부조직 다음 관절로 들어가는 순서를 말할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="voice-grid overview-voice">
+        <blockquote class="voice">
+          <p>학교에서 배운 이론이 실제 임상 현장에서 어떻게 적용되는지 이해할 수 있었습니다. 실습 중심 교육 덕분에 임상 자신감이 생겼습니다.</p>
+          <footer>고윤호 · 전문가 교육</footer>
+        </blockquote>
+        <blockquote class="voice">
+          <p>실제로 임상에서 사용될 만한 내용으로 구성해 주셔서, 현장에 나갔을 때 적응이 쉬울 것 같습니다.</p>
+          <footer>박준수 · 전문가 교육</footer>
+        </blockquote>
+      </div>
 
-      <div class="tree">
-        <article class="branch">
-          <div class="branch-h">
-            <h3>수기 / 도구 · 기기</h3>
-            <span>Manual · Device</span>
-          </div>
-          <div class="leaf-row">
-            <div class="leaf is-on">
-              <span class="tag">이 과정</span>
-              CMT 도수치료 과정
-              <small>Fascia → Muscle → Joint</small>
-            </div>
-            <div class="leaf is-off">IFC 얼굴교정 과정<small>Face 해부학 → 촉진 → 수기·괄사·고주파</small></div>
+      <div class="sec-label">Curriculum</div>
+      <h3 class="sec-title" style="font-size:22px">세부 커리큘럼</h3>
+      <p class="sec-desc">부위마다 같은 순서입니다. 평가 → 연부조직(Fascia → Muscle) → 관절(Joint) → 재평가.</p>
+      <div class="curr-days">
+        <article class="curr-day">
+          <div class="d">DAY 1–2</div>
+          <div>
+            <h3>골반 · 고관절</h3>
+            <p>하지·골반 정렬을 본 뒤 요추 연부조직과 관절을 연결합니다.</p>
           </div>
         </article>
-        <article class="branch">
-          <div class="branch-h">
-            <h3>운동 관리</h3>
-            <span>Movement Care</span>
+        <article class="curr-day">
+          <div class="d">DAY 3–4</div>
+          <div>
+            <h3>요추 · 흉추</h3>
+            <p>체간에서 복부를 중심으로, 부위별 평가·치료·재평가를 반복합니다.</p>
           </div>
-          <div class="leaf-row">
-            <div class="leaf is-off">Re:Al 움직임 과정<small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small></div>
+        </article>
+        <article class="curr-day">
+          <div class="d">DAY 5–6</div>
+          <div>
+            <h3>경추 · 종합</h3>
+            <p>목과 어깨, 그리고 배운 부위를 한 흐름으로 이어, 임상 케이스를 살펴봅니다.</p>
           </div>
         </article>
       </div>
-
-      <div class="sec-label">Concept</div>
-      <h3 class="sec-title" style="font-size:22px">크게 두 파트로 배웁니다</h3>
-      <p class="sec-desc">부위(골반·흉추·허리·경추)마다 같은 순서로 들어가되, 핵심은 연부조직 치료와 관절 치료입니다.</p>
-
       <div class="pillars">
         <article class="pillar">
           <div class="n">AXIS 01</div>
@@ -1371,7 +1543,7 @@
         <article class="pillar">
           <div class="n">AXIS 02</div>
           <h3>관절 치료</h3>
-          <p>관절낭 긴장·저가동성·부동에 대한 수동 기술로 가동성과 정렬을 보조합니다.</p>
+          <p>관절(Joint)의 관절낭 긴장·저가동성·부동에 대한 수동 기술로 가동성과 정렬을 보조합니다.</p>
           <ul>
             <li>연부조직 이후 Joint로 연결</li>
             <li>부위별 평가 → 교정 → 재평가</li>
@@ -1379,87 +1551,9 @@
         </article>
       </div>
 
-      <div class="sec-label">Why Different</div>
-      <h3 class="sec-title" style="font-size:22px">CMT를 선택하는 이유</h3>
-      <div class="diff-list">
-        <article class="diff">
-          <div class="n">01</div>
-          <div>
-            <h3>미국 DC · 한국 PT 면허 강사진</h3>
-            <p>두 나라 면허를 모두 가진 강사진이 임상 근거와 실전 테크닉을 함께 전달합니다.</p>
-          </div>
-        </article>
-        <article class="diff">
-          <div class="n">02</div>
-          <div>
-            <h3>골반 → 허리 → 흉추 → 경추</h3>
-            <p>부위별로 나눠 배우고 마지막에 종합하는 구조라, 임상 판단력이 단계적으로 쌓입니다.</p>
-          </div>
-        </article>
-        <article class="diff">
-          <div class="n">03</div>
-          <div>
-            <h3>재수강 가능</h3>
-            <p>세션당 2만원(대관비)만으로 재수강할 수 있어, 놓친 부위를 다시 채울 수 있습니다.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="fit-grid">
-        <div class="fit">
-          <h3>이런 분께</h3>
-          <p>도수·카이로 테크닉을 평가와 함께 체계화하고 싶은 의료인·의료기사</p>
-        </div>
-        <div class="fit">
-          <h3>Re:Al과 함께라면</h3>
-          <p>CMT + Re:Al 움직임 정규과정 통합 신청 시 278만원 → 222만원(20%↓). 신청 폼에서 "통합과정 희망"을 선택해 주세요.</p>
-        </div>
-      </div>
-
-      <div class="field-block">
-        <div class="sec-label">Field · Voice</div>
-        <h3 class="sec-title" style="font-size:22px">현장 · 후기</h3>
-        <p class="sec-desc">실제 강의·실습 현장과, 교육을 들은 분들의 이야기입니다.</p>
-        <div class="field-grid">
-          <button type="button" class="field-shot" data-full="academy-photos/cmt-01.jpg" aria-label="CMT 강의실 크게 보기">
-            <img src="academy-photos/cmt-01.jpg" alt="치료대에서 진행하는 CMT 이론 강의" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/cmt-02.jpg" aria-label="CMT 경추 실습 크게 보기">
-            <img src="academy-photos/cmt-02.jpg" alt="경추 도수 실습 중인 CMT 수업" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/cmt-03.jpg" aria-label="CMT 하지 시연 크게 보기">
-            <img src="academy-photos/cmt-03.jpg" alt="하지 정렬을 시연하는 CMT 실습" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/cmt-04.jpg" aria-label="촉진 실습 크게 보기">
-            <img src="academy-photos/cmt-04.jpg" alt="베드 주위로 모여 촉진을 배우는 현장" width="640" height="480" loading="lazy">
-          </button>
-        </div>
-        <div class="voice-grid">
-          <blockquote class="voice">
-            <p>학교에서 배운 이론이 실제 임상 현장에서 어떻게 적용되는지 이해할 수 있었습니다. 실습 중심 교육 덕분에 임상 자신감이 생겼습니다.</p>
-            <footer>고윤호 · 전문가 교육</footer>
-          </blockquote>
-          <blockquote class="voice">
-            <p>실제로 임상에서 사용될 만한 내용으로 구성해 주셔서, 현장에 나갔을 때 적응이 쉬울 것 같습니다.</p>
-            <footer>박준수 · 전문가 교육</footer>
-          </blockquote>
-        </div>
-        <aside class="bio-card">
-          <div class="bio-k">강사 약력</div>
-          <p>미카닥 박준규 · 미국 California DC · 한국 물리치료사. 현 CMT 임상도수치료 아카데미 부회장, 대한자세교정 통합연구학회 학회장. University of Bridgeport DC · 한서대 · 대전대. 저서 Palpation 임상 가이드.</p>
-          <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
-        </aside>
-      </div>
-
       <div class="enroll">
-        <h3>일정 · 모집</h3>
-        <p>신청서 제출 후 개별 연락으로 세부 일정·등록 절차를 안내드립니다. 정원은 입금 완료 순으로 마감됩니다.</p>
-        <div class="facts">
-          <div class="fact"><div class="k">일정</div><div class="v">매년 3월 / 9월 시작<br>8시간씩 6일 진행</div></div>
-          <div class="fact"><div class="k">장소</div><div class="v">삼육보건대학교 (서울 동대문구)</div></div>
-          <div class="fact"><div class="k">수강료</div><div class="v">150만 · 얼리 135만 · 신졸/동반 120만</div></div>
-        </div>
-        <p class="note" style="margin-bottom:0">얼리버드는 <strong>수업 시작 1개월 전까지 신청 완료</strong> 기준입니다. 신졸·3인 동반 신청 시 각 120만원(20%↓)이 적용됩니다.</p>
+        <h3>신청</h3>
+        <p>신청서 제출 후 개별 연락으로 세부 일정·등록 절차를 안내드립니다. 정원은 입금 완료 순으로 마감됩니다. 얼리버드는 <strong>수업 시작 1개월 전까지 신청 완료</strong> 기준입니다.</p>
       </div>
 
       <div class="apply">
@@ -1516,11 +1610,12 @@
           </div>
           <label class="f-consent">
             <input type="checkbox" name="consent" required>
-            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다. 안내 완료 후 즉시 파기됩니다. <span class="req">*</span></span>
+            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다.<span class="req">*</span></span>
           </label>
           <div class="f-submit-row">
             <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
             <span class="f-status" aria-live="polite"></span>
+            <button type="button" class="btn btn-light btn-sm btn-back-concept" data-go="home">컨셉으로 돌아가기</button>
           </div>
           <div class="apply-error" id="apply-error-cmt">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
         </form>
@@ -1528,8 +1623,91 @@
           <span class="dot">✓</span>
           <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
         </div>
-        <div class="actions" style="margin-top:14px">
-          <button type="button" class="btn btn-light btn-sm" data-go="home">컨셉으로 돌아가기</button>
+      </div>
+
+      <div class="more-block">
+        <div class="sec-label">Why Different</div>
+        <h3 class="sec-title" style="font-size:22px">CMT를 선택하는 이유</h3>
+        <div class="diff-list">
+          <article class="diff">
+            <div class="n">01</div>
+            <div>
+              <h3>미국 DC · 한국 PT 면허 강사진</h3>
+              <p>두 나라 면허를 모두 가진 강사진이 임상 근거와 실전 테크닉을 함께 전달합니다.</p>
+            </div>
+          </article>
+          <article class="diff">
+            <div class="n">02</div>
+            <div>
+              <h3>골반 → 허리 → 흉추 → 경추</h3>
+              <p>부위별로 나눠 배우고 마지막에 종합하는 구조라, 임상 판단력이 단계적으로 쌓입니다.</p>
+            </div>
+          </article>
+          <article class="diff">
+            <div class="n">03</div>
+            <div>
+              <h3>재수강 가능</h3>
+              <p>세션당 2만원(대관비)만으로 재수강할 수 있어, 놓친 부위를 다시 채울 수 있습니다.</p>
+            </div>
+          </article>
+        </div>
+        <div class="fit" style="margin:16px 0 22px">
+          <h3>Re:Al과 함께라면</h3>
+          <p>CMT + Re:Al 움직임 정규과정 통합 신청 시 278만원 → 222만원(20%↓). 신청 폼에서 "통합과정 희망"을 선택해 주세요.</p>
+        </div>
+
+        <div class="sec-label">Curriculum Map</div>
+        <h3 class="sec-title" style="font-size:22px">전문가 과정 전체에서 CMT의 위치</h3>
+        <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. CMT는 그중 손(도구)으로 연부조직·관절을 치료하는 축입니다.</p>
+        <div class="tree">
+          <article class="branch">
+            <div class="branch-h">
+              <h3>수기 / 도구 · 기기</h3>
+              <span>Manual · Device</span>
+            </div>
+            <div class="leaf-row">
+              <div class="leaf is-on">
+                <span class="tag">이 과정</span>
+                CMT 도수치료 과정
+                <small>Fascia → Muscle → Joint</small>
+              </div>
+              <div class="leaf is-off">IFC 얼굴교정 과정<small>Face 해부학 → 촉진 → 수기·괄사·고주파</small></div>
+            </div>
+          </article>
+          <article class="branch">
+            <div class="branch-h">
+              <h3>운동 관리</h3>
+              <span>Movement Care</span>
+            </div>
+            <div class="leaf-row">
+              <div class="leaf is-off">Re:Al 움직임 과정<small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="field-block">
+          <div class="sec-label">Field</div>
+          <h3 class="sec-title" style="font-size:22px">현장</h3>
+          <p class="sec-desc">실제 강의·실습 장면입니다.</p>
+          <div class="field-grid">
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-01.jpg" aria-label="CMT 강의실 크게 보기">
+              <img src="academy-photos/cmt-01.jpg" alt="치료대에서 진행하는 CMT 이론 강의" width="640" height="480" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-02.jpg" aria-label="CMT 경추 실습 크게 보기">
+              <img src="academy-photos/cmt-02.jpg" alt="경추 도수 실습 중인 CMT 수업" width="640" height="480" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-03.jpg" aria-label="CMT 하지 시연 크게 보기">
+              <img src="academy-photos/cmt-03.jpg" alt="하지 정렬을 시연하는 CMT 실습" width="640" height="480" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-04.jpg" aria-label="촉진 실습 크게 보기">
+              <img src="academy-photos/cmt-04.jpg" alt="베드 주위로 모여 촉진을 배우는 현장" width="640" height="480" loading="lazy">
+            </button>
+          </div>
+          <aside class="bio-card">
+            <div class="bio-k">강사 약력</div>
+            <p>미카닥 박준규 · 미국 California DC · 한국 물리치료사. 현 CMT 임상도수치료 아카데미 부회장, 대한자세교정 통합연구학회 학회장. University of Bridgeport DC · 한서대 · 대전대. 저서 Palpation 임상 가이드.</p>
+            <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+          </aside>
         </div>
       </div>
     </div>
@@ -1542,7 +1720,7 @@
     <div class="wrap">
       <div class="mark">IFC</div>
       <h1>IFC 얼굴교정 과정</h1>
-      <p>얼굴 해부학과 촉진으로 핵심 포인트를 찾고, 수기·괄사·고주파로 변화를 만듭니다.</p>
+      <p>얼굴 해부학과 촉진으로 핵심 포인트를 찾고, 수기·괄사·고주파로 변화를 만듭니다. 평가 → 손 → 움직임 흐름에서 IFC는 얼굴의 손(도구/기기) 축입니다.</p>
       <div class="badge-row">
         <span class="badge">누구나</span>
         <span class="badge">수기 / 도구 / 기기 관리</span>
@@ -1551,138 +1729,66 @@
   </div>
   <section>
     <div class="wrap">
-      <div class="sec-label" style="margin-top:0">Curriculum Map</div>
-      <h2 class="sec-title" style="font-size:22px">전문가 과정 전체에서 IFC의 위치</h2>
-      <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. IFC는 그중 손(도구/기기)으로 얼굴 비대칭 교정·축소를 다루는 축입니다.</p>
-
-      <div class="tree">
-        <article class="branch">
-          <div class="branch-h">
-            <h3>수기 / 도구 · 기기</h3>
-            <span>Manual · Device</span>
-          </div>
-          <div class="leaf-row">
-            <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
-            <div class="leaf is-on">
-              <span class="tag">이 과정</span>
-              IFC 얼굴교정 과정
-              <small>Face 해부학 → 촉진 → 수기·괄사·고주파</small>
-            </div>
-          </div>
-        </article>
-        <article class="branch">
-          <div class="branch-h">
-            <h3>운동 관리</h3>
-            <span>Movement Care</span>
-          </div>
-          <div class="leaf-row">
-            <div class="leaf is-off">Re:Al 움직임 과정<small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small></div>
-          </div>
-        </article>
+      <div class="sec-label" style="margin-top:0">Overview</div>
+      <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
+      <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 해부 → 촉진 → 수기·괄사·고주파 순으로 익힙니다. 컨셉 전체를 다시 설명하지 않고, 이 과정에서 배우는 얼굴 시퀀스만 정리했습니다.</p>
+      <p class="course-path">평가 → <strong>손(IFC)</strong> → 움직임</p>
+      <div class="facts">
+        <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>6시간씩 3일</div></div>
+        <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
+        <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 180만</div></div>
       </div>
-
-      <div class="sec-label">Concept</div>
-      <h3 class="sec-title" style="font-size:22px">얼굴도 평가 → 수기/기기 → 운동으로</h3>
-      <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 다루며, 이론과 도구를 함께 익히는 것이 특장점입니다.</p>
-
-      <div class="pillars is-3">
-        <article class="pillar">
-          <div class="n">01</div>
-          <h3>얼굴 해부학</h3>
-          <p>표정·대화 중 입 모양 변화까지 읽어, 문제 층을 정확히 가늠하는 기초입니다.</p>
-        </article>
-        <article class="pillar">
-          <div class="n">02</div>
-          <h3>촉진법</h3>
-          <p>회원이 핵심 포인트를 인식하게 만드는 평가. 상담과 티켓팅의 신뢰 기반이 됩니다.</p>
-        </article>
-        <article class="pillar">
-          <div class="n">03</div>
-          <h3>수기/괄사/고주파 시퀀스</h3>
-          <p>Fascia · Muscle · 간질액 테크닉을 표층→심층으로 연결하는 메인 시퀀스입니다.</p>
-        </article>
-      </div>
-
-      <div class="sec-label">Why Different</div>
-      <h3 class="sec-title" style="font-size:22px">IFC를 선택하는 이유</h3>
-      <div class="diff-list">
-        <article class="diff">
-          <div class="n">01</div>
-          <div>
-            <h3>오프라인 전 온라인 이론 제공</h3>
-            <p>현장 실습 전에 이론을 미리 학습해, 실습 시간을 손 감각을 익히는 데 온전히 씁니다.</p>
-          </div>
-        </article>
-        <article class="diff">
-          <div class="n">02</div>
-          <div>
-            <h3>해부학 → 촉진 → 축소 순서로 난이도 설계</h3>
-            <p>난이도는 있지만 순서대로 따라오면 되는 구조라 처음 배우는 분도 진입할 수 있습니다.</p>
-          </div>
-        </article>
-        <article class="diff">
-          <div class="n">03</div>
-          <div>
-            <h3>수기 + 도구(괄사·인디바)</h3>
-            <p>괄사로 수기 시퀀스를 보완하고, 인디바 고주파로 수기만으로 어려운 구간을 안전하게 확장합니다.</p>
-          </div>
-        </article>
-      </div>
-
       <div class="fit-grid">
         <div class="fit">
           <h3>이런 분께</h3>
           <p>얼굴 케어·바디 현장에서 평가 기반 수기·기기 시퀀스를 배우고 싶은 분</p>
         </div>
         <div class="fit">
-          <h3>구성</h3>
-          <p>얼굴 해부학 · 촉진법 · 수기 시퀀스(이론) + 괄사 · 인디바 고주파(도구 실습)</p>
+          <h3>듣고 나면</h3>
+          <p>핵심 포인트를 손으로 찾고, 수기·괄사·고주파를 같은 순서로 연결할 수 있습니다.</p>
         </div>
       </div>
+      <div class="voice-grid overview-voice">
+        <blockquote class="voice">
+          <p>작은 얼굴 관리를 받고 있는데 턱선과 두피에 효과가 정말 좋아요. 불편한 부분을 생활 치료로 관리하는 방법도 친절하게 설명해 주셨습니다.</p>
+          <footer>최OO · 얼굴 케어</footer>
+        </blockquote>
+        <blockquote class="voice">
+          <p>어려운 부분을 질문하면 강사분이 친절하게 알려주셔서 좋았습니다. 참여한 프로그램 중 만족도가 가장 높았습니다.</p>
+          <footer>이연주 · 전문가 교육</footer>
+        </blockquote>
+      </div>
 
-      <div class="field-block">
-        <div class="sec-label">Field · Voice</div>
-        <h3 class="sec-title" style="font-size:22px">현장 · 후기</h3>
-        <p class="sec-desc">학회·실습 현장과, 교육을 들은 분들의 이야기입니다.</p>
-        <div class="field-grid">
-          <button type="button" class="field-shot" data-full="academy-photos/ifc-01.jpg" aria-label="IFC 실습 크게 보기">
-            <img src="academy-photos/ifc-01.jpg" alt="얼굴 촉진 실습이 진행되는 IFC 강의실" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/ifc-02.jpg" aria-label="IFC 강의 크게 보기">
-            <img src="academy-photos/ifc-02.jpg" alt="스크린 앞에서 진행하는 국제얼굴교정학회 강의" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/ifc-03.jpg" aria-label="얼굴 운동 클래스 크게 보기">
-            <img src="academy-photos/ifc-03.jpg" alt="매트 위에서 얼굴 운동을 함께 익히는 클래스" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/ifc-04.jpg" aria-label="소그룹 교육 크게 보기">
-            <img src="academy-photos/ifc-04.jpg" alt="소그룹으로 기기·수기 시퀀스를 설명하는 현장" width="640" height="480" loading="lazy">
-          </button>
-        </div>
-        <div class="voice-grid">
-          <blockquote class="voice">
-            <p>작은 얼굴 관리를 받고 있는데 턱선과 두피에 효과가 정말 좋아요. 불편한 부분을 생활 치료로 관리하는 방법도 친절하게 설명해 주셨습니다.</p>
-            <footer>최OO · 얼굴 케어</footer>
-          </blockquote>
-          <blockquote class="voice">
-            <p>어려운 부분을 질문하면 강사분이 친절하게 알려주셔서 좋았습니다. 참여한 프로그램 중 만족도가 가장 높았습니다.</p>
-            <footer>이연주 · 전문가 교육</footer>
-          </blockquote>
-        </div>
-        <aside class="bio-card">
-          <div class="bio-k">강사 약력</div>
-          <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 현 IFC 국제얼굴교정학회 학회장. 얼굴 해부학·촉진·수기 시퀀스를 학회 교육과 실습으로 이어 갑니다.</p>
-          <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
-        </aside>
+      <div class="sec-label">Curriculum</div>
+      <h3 class="sec-title" style="font-size:22px">세부 커리큘럼</h3>
+      <p class="sec-desc">오프라인 전에 온라인 이론을 먼저 봅니다. 실습 3일은 손 감각과 테크닉에 집중합니다.</p>
+      <div class="curr-days">
+        <article class="curr-day">
+          <div class="d">DAY 1</div>
+          <div>
+            <h3>얼굴 해부학</h3>
+            <p>표정·대화 중 입 모양 변화까지 읽어, 문제 원인을 가늠하는 기초입니다.</p>
+          </div>
+        </article>
+        <article class="curr-day">
+          <div class="d">DAY 2</div>
+          <div>
+            <h3>촉진법</h3>
+            <p>니즈(needs) 해결을 위한 핵심 포인트를 스스로 인식하게 만드는 평가. 상담과 티켓팅의 신뢰 기반입니다.</p>
+          </div>
+        </article>
+        <article class="curr-day">
+          <div class="d">DAY 3</div>
+          <div>
+            <h3>수기 · 괄사 · 고주파</h3>
+            <p>Fascia · Muscle · 간질액 테크닉을 표층→심층으로 연결하는 메인 시퀀스입니다.</p>
+          </div>
+        </article>
       </div>
 
       <div class="enroll">
-        <h3>일정 · 모집 (정원: 6명)</h3>
-        <p>정원은 입금 완료 순입니다. 신청 정보만으로는 자리가 확정되지 않으며, 안내에 따라 입금해야 접수가 완료됩니다.</p>
-        <div class="facts">
-          <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>6시간씩 3일 진행</div></div>
-          <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
-          <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 180만</div></div>
-        </div>
+        <h3>신청</h3>
+        <p>정원은 입금 완료 순입니다. 신청 정보만으로는 자리가 확정되지 않으며, 안내에 따라 입금까지 해야 접수가 완료됩니다.</p>
       </div>
 
       <div class="apply">
@@ -1723,7 +1829,7 @@
               <select id="ifc-type" name="applyType" required>
                 <option value="">선택해 주세요</option>
                 <option value="상반기">상반기: 4월 시작</option>
-                <option value="하반기">하반기: 11월 8일/15일/22일</option>
+                <option value="하반기">하반기: 11월 8/15/22일</option>
               </select>
             </div>
           </div>
@@ -1733,11 +1839,12 @@
           </div>
           <label class="f-consent">
             <input type="checkbox" name="consent" required>
-            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다. 안내 완료 후 즉시 파기됩니다. <span class="req">*</span></span>
+            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다.<span class="req">*</span></span>
           </label>
           <div class="f-submit-row">
             <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
             <span class="f-status" aria-live="polite"></span>
+            <button type="button" class="btn btn-light btn-sm btn-back-concept" data-go="home">컨셉으로 돌아가기</button>
           </div>
           <div class="apply-error" id="apply-error-ifc">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
         </form>
@@ -1745,8 +1852,87 @@
           <span class="dot">✓</span>
           <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
         </div>
-        <div class="actions" style="margin-top:14px">
-          <button type="button" class="btn btn-light btn-sm" data-go="home">컨셉으로 돌아가기</button>
+      </div>
+
+      <div class="more-block">
+        <div class="sec-label">Why Different</div>
+        <h3 class="sec-title" style="font-size:22px">IFC를 선택하는 이유</h3>
+        <div class="diff-list">
+          <article class="diff">
+            <div class="n">01</div>
+            <div>
+              <h3>오프라인 전 온라인 이론 제공</h3>
+              <p>현장 실습 전에 이론을 미리 학습해, 실습 시간을 손 감각을 익히는 데 온전히 씁니다.</p>
+            </div>
+          </article>
+          <article class="diff">
+            <div class="n">02</div>
+            <div>
+              <h3>해부학 → 촉진 → 수기 순서로 난이도 설계</h3>
+              <p>난이도는 있지만 순서대로 따라오면 되는 구조라 처음 배우는 분도 진입할 수 있습니다.</p>
+            </div>
+          </article>
+          <article class="diff">
+            <div class="n">03</div>
+            <div>
+              <h3>수기 + 도구(괄사·인디바)</h3>
+              <p>괄사로 수기 시퀀스를 보완하고, 인디바 고주파로 수기만으로 어려운 구간을 안전하게 확장합니다.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="sec-label" style="margin-top:28px">Curriculum Map</div>
+        <h3 class="sec-title" style="font-size:22px">전문가 과정 전체에서 IFC의 위치</h3>
+        <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. IFC는 그중 손(도구/기기)으로 얼굴 비대칭 교정·축소를 다루는 축입니다.</p>
+        <div class="tree">
+          <article class="branch">
+            <div class="branch-h">
+              <h3>수기 / 도구 · 기기</h3>
+              <span>Manual · Device</span>
+            </div>
+            <div class="leaf-row">
+              <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
+              <div class="leaf is-on">
+                <span class="tag">이 과정</span>
+                IFC 얼굴교정 과정
+                <small>Face 해부학 → 촉진 → 수기·괄사·고주파</small>
+              </div>
+            </div>
+          </article>
+          <article class="branch">
+            <div class="branch-h">
+              <h3>운동 관리</h3>
+              <span>Movement Care</span>
+            </div>
+            <div class="leaf-row">
+              <div class="leaf is-off">Re:Al 움직임 과정<small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="field-block">
+          <div class="sec-label">Field</div>
+          <h3 class="sec-title" style="font-size:22px">현장</h3>
+          <p class="sec-desc">학회·실습 장면입니다.</p>
+          <div class="field-grid">
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-01.jpg" aria-label="IFC 실습 크게 보기">
+              <img src="academy-photos/ifc-01.jpg" alt="얼굴 촉진 실습이 진행되는 IFC 강의실" width="640" height="480" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-02.jpg" aria-label="IFC 강의 크게 보기">
+              <img src="academy-photos/ifc-02.jpg" alt="스크린 앞에서 진행하는 국제얼굴교정학회 강의" width="640" height="480" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-03.jpg" aria-label="얼굴 운동 클래스 크게 보기">
+              <img src="academy-photos/ifc-03.jpg" alt="매트 위에서 얼굴 운동을 함께 익히는 클래스" width="640" height="480" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-04.jpg" aria-label="소그룹 교육 크게 보기">
+              <img src="academy-photos/ifc-04.jpg" alt="소그룹으로 기기·수기 시퀀스를 설명하는 현장" width="640" height="480" loading="lazy">
+            </button>
+          </div>
+          <aside class="bio-card">
+            <div class="bio-k">강사 약력</div>
+            <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 현 IFC 국제얼굴교정학회 학회장. 얼굴 해부학·촉진·수기 시퀀스를 학회 교육과 실습으로 이어 갑니다.</p>
+            <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+          </aside>
         </div>
       </div>
     </div>
@@ -1759,7 +1945,7 @@
     <div class="wrap">
       <div class="mark">Re:Al</div>
       <h1>Re:Alignment 움직임 과정</h1>
-      <p>재:정렬하다. 잘 풀어낸 몸을 잘 쓸 수 있도록, <strong style="color:#fff">PAR</strong>과 <strong style="color:#fff">포지션</strong> 두 축으로 구분해 진행합니다.</p>
+      <p>푼 몸을 잘 쓰도록, 움직임으로 유지합니다. 원데이는 패시브 스트레칭, 정규반은 PAR 전체입니다.</p>
       <div class="badge-row">
         <span class="badge">누구나</span>
         <span class="badge">운동 관리</span>
@@ -1770,259 +1956,29 @@
 
   <section>
     <div class="wrap">
-      <div class="sec-label" style="margin-top:0">Curriculum Map</div>
-      <h2 class="sec-title" style="font-size:22px">전문가 과정 전체에서 Re:Al의 위치</h2>
-      <p class="sec-desc">모든 임상은 "평가 → 손(도구/기기) → 움직임"이라는 동일한 흐름 위에 있습니다. Re:Al은 그중 움직임으로 유지·강화하는 축입니다.</p>
-
-      <div class="tree">
-        <article class="branch">
-          <div class="branch-h">
-            <h3>수기 / 도구 · 기기</h3>
-            <span>Manual · Device</span>
-          </div>
-          <div class="leaf-row">
-            <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
-            <div class="leaf is-off">IFC 얼굴교정 과정<small>Face 해부학 → 촉진 → 수기·괄사·고주파</small></div>
-          </div>
-        </article>
-        <article class="branch">
-          <div class="branch-h">
-            <h3>운동 관리</h3>
-            <span>Movement Care</span>
-          </div>
-          <div class="leaf is-on">
-            <span class="tag">이 과정</span>
-            Re:Al 움직임 과정
-            <small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small>
-          </div>
-          <div class="leaf-parts" aria-label="PAR 구성">
-            <div class="leaf">패시브 스트레칭<small>Supine / Prone</small></div>
-            <div class="leaf">자세교정 / 생활습관<small>Active</small></div>
-            <div class="leaf">기능운동<small>Resistive</small></div>
-          </div>
-          <div class="pos-track" aria-label="포지션 진행">
-            <div class="pos-step is-focus">Supine / Prone<span>가장 안전한 자세</span></div>
-            <div class="pos-step">Quadruped / Sitting<span>중력 부하를 적용해가는 자세</span></div>
-            <div class="pos-step">Standing<span>기능으로 연결</span></div>
-          </div>
-        </article>
-      </div>
-      <p class="map-note">
-        포지션은 <strong>누운 자세 → 네발·앉기 → 서기</strong>로 하중을 올리며 진행합니다.
-        정규과정은 PAR 전체(P → AA/A → R)를 다룹니다.
-      </p>
-
-      <div class="sec-label">PAR × Position</div>
-      <h3 class="sec-title" style="font-size:22px">PAR × Position으로 나눕니다</h3>
-      <p class="sec-desc">무엇을 할지(PAR)와 어떤 자세에서 할지(Position)를 구분해, 회원 상태에 맞는 시작점을 고릅니다.</p>
-
-      <div class="par-grid">
-        <article class="par-card is-p">
-          <div class="letter">P</div>
-          <div class="name">Passive</div>
-          <p>강사가 움직임을 유도합니다. 통증·ROM을 확인하며 가동성을 회복합니다.</p>
-        </article>
-        <article class="par-card">
-          <div class="letter">A</div>
-          <div class="name">Active</div>
-          <p>회원이 스스로 움직입니다. 자세·생활습관 인지와 능동 가동으로 연결합니다.</p>
-        </article>
-        <article class="par-card">
-          <div class="letter">R</div>
-          <div class="name">Resistive</div>
-          <p>저항을 더해 근막경선·기능 패턴을 강화하고 일상에 필요한 힘으로 확장합니다.</p>
-        </article>
+      <div class="track-pick" role="tablist" aria-label="Re:Al 과정 선택">
+        <button type="button" class="track-door is-active" data-real-track="oneday" role="tab" aria-selected="true" aria-controls="real-track-oneday" id="real-door-oneday">
+          <span class="k">원데이 · 10/11</span>
+          <h3>패시브 스트레칭</h3>
+          <p>Supine / Prone</p>
+        </button>
+        <button type="button" class="track-door" data-real-track="regular" role="tab" aria-selected="false" aria-controls="real-track-regular" id="real-door-regular">
+          <span class="k">정규반 · 6·12월</span>
+          <h3>PAR 전체</h3>
+          <p>자세별 PAR</p>
+        </button>
       </div>
 
-      <div class="flow-line" style="margin-bottom:22px">
-        <span class="flow-pill is-hot">P Stretching</span>
-        <span class="flow-arrow">→</span>
-        <span class="flow-pill">AA / A-ROM</span>
-        <span class="flow-arrow">→</span>        
-        <span class="flow-pill">R 기능운동</span>
-      </div>
-
-      <div class="sec-label">Practice · 원데이 클래스</div>
-      <h3 class="sec-title" style="font-size:22px">패시브 스트레칭 4가지 실습</h3>
-      <p class="sec-desc">Supine · Prone 각각 상지/하지. 말단에서 근위로 연결하는 플로우로 배웁니다.</p>
-      <div class="prac-grid">
-        <article class="prac">
-          <div class="num">01 · SUPINE</div>
-          <h3>하지 Lower</h3>
-          <p>발 → 발목 → 무릎 → 고관절. 중력 부하를 최소화한 상태에서 하체 가동성을 엽니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">02 · SUPINE</div>
-          <h3>상지 Upper</h3>
-          <p>손가락 → 손목 → 팔꿈치 → 어깨. 누운 자세에서 상지 시퀀스를 연결합니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">03 · PRONE</div>
-          <h3>하지 Lower</h3>
-          <p>엎드린 자세에서 하체 후방 조직을 다루며, Supine과 대비되는 접근을 익힙니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">04 · PRONE</div>
-          <h3>상지 Upper</h3>
-          <p>엎드린 자세의 상지·체간 연결. 베드 위에서도 안정적으로 진행 가능한 포지션입니다.</p>
-        </article>
-      </div>
-
-      <div class="sec-label">Why Different</div>
-      <h3 class="sec-title" style="font-size:22px">다른 패시브 스트레칭과의 차별점</h3>
-      <div class="diff-list">
-        <article class="diff">
-          <div class="n">01</div>
-          <div>
-            <h3>강사가 크게 힘들이지 않는 자세</h3>
-            <p>시술자 몸의 부담을 줄인 포지션으로, 하루 종일 반복해도 지속 가능한 테크닉입니다.</p>
-          </div>
-        </article>
-        <article class="diff">
-          <div class="n">02</div>
-          <div>
-            <h3>동작을 연결한 플로우 시퀀스</h3>
-            <p>단편 동작이 아니라 다양한 움직임을 이어서, 평가와 중재가 한 흐름으로 이어집니다.</p>
-          </div>
-        </article>
-        <article class="diff">
-          <div class="n">03</div>
-          <div>
-            <h3>베드 위에서 가능 — 에스테티션도 OK</h3>
-            <p>매트뿐 아니라 베드 환경에서도 적용할 수 있어, 운동 지도자뿐 아니라 피부·바디 케어 현장에도 맞습니다.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="sec-label">Practice · AA / A</div>
-      <h3 class="sec-title" style="font-size:22px">A / AA 자세 및 생활습관 교정</h3>
-      <p class="sec-desc">푼 몸을 스스로 움직이고, 긴장을 알아채게 하는 단계입니다. 통증 없이 가동만 남으면 AA로 열고, 움직임이 되면 A-ROM으로 확인한 뒤 생활 자세로 연결합니다.</p>
-      <div class="prac-grid">
-        <article class="prac">
-          <div class="num">01 · AA</div>
-          <h3>Assisted Active</h3>
-          <p>통증은 없는데 ROM이 남을 때. CIE · Hold &amp; Relax · Pull &amp; Push로 해당 관절을 회원과 함께 회복합니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">02 · A</div>
-          <h3>A-ROM</h3>
-          <p>통증 없이 스스로 움직이는지 확인합니다. Active Stretching 시행 자체가 능동 가동범위와 움직임 질을 보는 평가입니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">03 · HABIT</div>
-          <h3>생활습관</h3>
-          <p>편안한 호흡 · 긴장 자각 · 자기 조절. 바른 형태가 목표가 아니라, 불필요한 긴장을 스스로 줄이는 것이 목표입니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">04 · POSTURE</div>
-          <h3>자세 교정</h3>
-          <p>호흡 위에 등척성 정렬을 얹습니다. 엉덩이 → 발 → 무릎 → 척추 → 어깨 → 손끝. 누운 자리에서 일상에 가져갈 인지를 만듭니다.</p>
-        </article>
-      </div>
-
-      <div class="sec-label">Practice · R</div>
-      <h3 class="sec-title" style="font-size:22px">R 기능운동</h3>
-      <p class="sec-desc">저항을 더해 근막경선을 따라 힘을 쌓고, 실제로 쓰는 동작으로 옮깁니다. 밸런스를 잡으며 천천히, 가능하면 거울로 스스로를 봅니다.</p>
-      <div class="prac-grid">
-        <article class="prac">
-          <div class="num">01 · BASIC</div>
-          <h3>근막경선 저항</h3>
-          <p>굴곡 → 신전 → 회전 → 외전 → 내전. 하지·상지 경선을 따라 관절 순으로 저항을 더합니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">02 · SUPINE</div>
-          <h3>Sit-up 분절</h3>
-          <p>전방 경선. 상체·하체를 나눠 올린 뒤 정식 Sit-up으로 연결합니다. 한 번에 말아 올리지 않습니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">03 · PRONE</div>
-          <h3>Superman 분절</h3>
-          <p>후방 경선. 허리만 젖히지 않고 경추부터 분절 순으로 듭니다. 대각선·접영·회전으로 확장합니다.</p>
-        </article>
-        <article class="prac">
-          <div class="num">04 · LIFE</div>
-          <h3>일상 동작</h3>
-          <p>보행·계단·들어올리기처럼 실제로 필요한 힘을, 통증 없는 범위에서 반복합니다. 기초 체력이 유지를 가릅니다.</p>
-        </article>
-      </div>
-
-      <div class="concept-box">
-        <div class="sec-label">My Concept</div>
-        <h3 class="sec-title">수동적으로 받을까, 움직이는 게 좋을까?</h3>
-        <div class="q-box">
-          <div class="q">중요한 것은 "무엇을"이 아니라 "누구에게, 어떤 순서로"입니다.</div>
-          <div class="a">
-            수동(Passive)과 능동(Active)은 대립이 아니라 <strong>연속된 중재 선택지</strong>입니다.
-            그 순서를 결정하는 기준은 <strong>평가</strong>에서 나옵니다.
-            통증·ROM·동작 패턴을 보고, 지금 이 회원에게 안전한 시작점이 Passive인지 Active인지를 가릅니다.
-          </div>
+      <div class="track-panel is-active" id="real-track-oneday" role="tabpanel" aria-labelledby="real-door-oneday">
+        <div class="sec-label">Overview</div>
+        <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
+        <p class="sec-desc">강사가 움직임을 유도하는 패시브 스트레칭만 다룹니다. 자세교정·기능운동은 정규반에서 확인 하실 수 있습니다.</p>
+        <p class="course-path">평가 → 손 → <strong>움직임(패시브)</strong></p>
+        <div class="facts">
+          <div class="fact"><div class="k">일정</div><div class="v">26년 10월 11일<br>10:00–17:00</div></div>
+          <div class="fact"><div class="k">장소</div><div class="v">리얼무브먼트 약수점</div></div>
+          <div class="fact"><div class="k">수강료</div><div class="v">30만 · 얼리 27만<br>동반 25만</div></div>
         </div>
-        <div class="eval-row">
-          <div class="eval-card">
-            <h4>평가가 먼저</h4>
-            <p>History · Inspection · Movement · Palpation으로 원인과 수준을 좁힙니다.</p>
-          </div>
-          <div class="eval-mid">THEN</div>
-          <div class="eval-card">
-            <h4>순서와 대상</h4>
-            <p>같은 기법도 회원마다 타이밍이 다릅니다. Passive → Active → Resistive의 진입점을 조정합니다.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="fit-grid">
-        <div class="fit">
-          <h3>이런 분께</h3>
-          <p>트레이너·필라테스·에스테티션 등, 움직임을 단계적으로 가이드하고 싶은 분</p>
-        </div>
-        <div class="fit">
-          <h3>특장점</h3>
-          <p>강사 부담이 적은 자세 · 플로우 시퀀스 · 베드 위에도 적용 가능</p>
-        </div>
-      </div>
-
-      <div class="field-block">
-        <div class="sec-label">Field · Voice</div>
-        <h3 class="sec-title" style="font-size:22px">현장 · 후기</h3>
-        <p class="sec-desc">리얼무브먼트에서 실제로 쓰는 움직임 지도와, 교육을 들은 분들의 이야기입니다.</p>
-        <div class="field-grid">
-          <button type="button" class="field-shot" data-full="academy-photos/real-01.jpg" aria-label="패시브 스트레칭 실습 크게 보기">
-            <img src="academy-photos/real-01.jpg" alt="누운 자세에서 상지·하지 스트레칭을 실습하는 현장" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/real-02.jpg" aria-label="기능운동 시연 크게 보기">
-            <img src="academy-photos/real-02.jpg" alt="런지 동작으로 기능운동을 시연하는 모습" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/real-03.jpg" aria-label="메디신볼 운동 크게 보기">
-            <img src="academy-photos/real-03.jpg" alt="메디신볼을 이용한 움직임 훈련" width="640" height="480" loading="lazy">
-          </button>
-          <button type="button" class="field-shot" data-full="academy-photos/real-04.jpg" aria-label="움직임 큐잉 크게 보기">
-            <img src="academy-photos/real-04.jpg" alt="거울 앞에서 움직임을 큐잉하는 현장" width="640" height="480" loading="lazy">
-          </button>
-        </div>
-        <div class="voice-grid">
-          <blockquote class="voice">
-            <p>촉진, 스트레칭, 임상적 내용까지 좋은 강의를 해주셔서 너무 좋았습니다.</p>
-            <footer>권혁제 · 전문가 교육</footer>
-          </blockquote>
-          <blockquote class="voice">
-            <p>학교 수업만으로는 접하기 어려웠던 실제 현장 경험을 할 수 있어 의미 있는 시간이었습니다. 실무에서 쓰는 방식과 흐름을 직접 경험했습니다.</p>
-            <footer>김예진 · 전문가 교육</footer>
-          </blockquote>
-        </div>
-        <aside class="bio-card">
-          <div class="bio-k">강사 약력</div>
-          <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 리얼무브먼트에서 PAR 움직임 시퀀스를 현장 그대로 지도합니다. 현 대한자세교정 통합연구학회 학회장.</p>
-          <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
-        </aside>
-      </div>
-
-      <div class="sec-label">Enrollment</div>
-      <h3 class="sec-title" style="font-size:22px">일정 · 모집 (정원: 6명)</h3>
-      <p class="sec-desc">원데이 클래스로 움직임 케어를 시작하거나, 정규 과정으로 PAR 전체 시퀀스를 배워보세요.</p>
-
-      <div class="enroll">
-        <h3>① 원데이 클래스 · 패시브 스트레칭</h3>
-        <p>10월 11일 · 10:00–17:00 · 리얼무브먼트 약수점</p>
         <div class="price-grid">
           <article class="price">
             <div class="p-label">정가</div>
@@ -2040,86 +1996,394 @@
             <div class="p-note">1인 기준 · 동반 수강 시</div>
           </article>
         </div>
+        <div class="fit-grid">
+          <div class="fit">
+            <h3>이런 분께</h3>
+            <p>트레이너·필라테스·에스테티션 등, 베드 위에서도 쓸 수 있는 패시브 플로우가 필요한 분</p>
+          </div>
+          <div class="fit">
+            <h3>이 원데이의 핵심</h3>
+            <p>강사 부담이 적은 자세 · 말단에서 근위로 잇는 시퀀스 · 매트와 베드 모두 가능</p>
+          </div>
+        </div>
+        <div class="voice-grid overview-voice">
+          <blockquote class="voice">
+            <p>촉진, 스트레칭, 임상적 내용까지 좋은 강의를 해주셔서 너무 좋았습니다.</p>
+            <footer>권혁제 · 전문가 교육</footer>
+          </blockquote>
+          <blockquote class="voice">
+            <p>학교 수업만으로는 접하기 어려웠던 실제 현장 경험을 할 수 있어 의미 있는 시간이었습니다.</p>
+            <footer>김예진 · 전문가 교육</footer>
+          </blockquote>
+        </div>
+
+        <div class="sec-label">Curriculum</div>
+        <h3 class="sec-title" style="font-size:22px">세부 커리큘럼</h3>
+        <p class="sec-desc">Supine · Prone 각각 상지/하지. 말단에서 근위로 연결하는 플로우입니다.</p>
+        <div class="prac-grid">
+          <article class="prac">
+            <div class="num">01 · SUPINE</div>
+            <h3>하지 Lower</h3>
+            <p>발 → 발목 → 무릎 → 고관절. 중력 부하를 최소화한 상태에서 하체 가동성을 엽니다.</p>
+          </article>
+          <article class="prac">
+            <div class="num">02 · SUPINE</div>
+            <h3>상지 Upper</h3>
+            <p>손가락 → 손목 → 팔꿈치 → 어깨. 누운 자세에서 상지 시퀀스를 연결합니다.</p>
+          </article>
+          <article class="prac">
+            <div class="num">03 · PRONE</div>
+            <h3>하지 Lower</h3>
+            <p>엎드린 자세에서 하체 후방 조직을 다루며, Supine과 대비되는 접근을 익힙니다.</p>
+          </article>
+          <article class="prac">
+            <div class="num">04 · PRONE</div>
+            <h3>상지 Upper</h3>
+            <p>엎드린 자세의 상지·체간 연결. 베드 위에서도 안정적으로 진행 가능한 포지션입니다.</p>
+          </article>
+        </div>
+
         <div class="deadline">
           <div><div style="font-size:12.5px;opacity:.75;margin-bottom:4px">얼리버드 마감</div><strong>9월 27일까지 신청 완료</strong></div>
-          <a class="btn btn-primary btn-sm" href="#real-apply">지금 신청하기</a>
+          <a class="btn btn-primary btn-sm" href="#real-oneday-apply">지금 신청하기</a>
+        </div>
+
+        <div class="apply" id="real-oneday-apply">
+          <h3>신청 정보 입력</h3>
+          <p class="apply-desc">원데이 클래스(10월 11일 10시) 신청입니다. 확인 후 개별 연락드립니다.</p>
+          <form class="apply-form" data-course="Re:Al 움직임 과정" data-course-code="real" data-success="apply-success-real-od" data-error="apply-error-real-od">
+            <input type="hidden" name="applyType" value="원데이 클래스">
+            <div class="f-row">
+              <div class="f-field">
+                <label for="real-od-name">이름 <span class="req">*</span></label>
+                <input type="text" id="real-od-name" name="name" required autocomplete="name">
+              </div>
+              <div class="f-field">
+                <label for="real-od-phone-mid">연락처 <span class="req">*</span></label>
+                <div class="phone-split">
+                  <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-mid" id="real-od-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-tail" id="real-od-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                  <input type="hidden" name="phone" class="phone-full" value="">
+                </div>
+              </div>
+            </div>
+            <div class="f-row">
+              <div class="f-field is-wide">
+                <label for="real-od-role">소속 <span class="req">*</span></label>
+                <select id="real-od-role" name="role" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="의사·한의사">의사·한의사</option>
+                  <option value="물리치료사">물리치료사</option>
+                  <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                  <option value="에스테티션">에스테티션</option>
+                  <option value="기타">기타</option>
+                </select>
+              </div>
+            </div>
+            <div class="f-field is-wide">
+              <label for="real-od-note">문의사항</label>
+              <textarea id="real-od-note" name="note" placeholder="궁금한 점을 남겨주시면 함께 안내드립니다"></textarea>
+            </div>
+            <label class="f-consent">
+              <input type="checkbox" name="consent" required>
+              <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다.<span class="req">*</span></span>
+            </label>
+            <div class="f-submit-row">
+              <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
+              <span class="f-status" aria-live="polite"></span>
+              <button type="button" class="btn btn-light btn-sm btn-back-concept" data-go="home">컨셉으로 돌아가기</button>
+            </div>
+            <div class="apply-error" id="apply-error-real-od">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+          </form>
+          <div class="apply-success" id="apply-success-real-od" hidden>
+            <span class="dot">✓</span>
+            <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+          </div>
+        </div>
+
+        <div class="more-block">
+          <div class="sec-label">Why Different</div>
+          <h3 class="sec-title" style="font-size:22px">다른 패시브 스트레칭과의 차별점</h3>
+          <div class="diff-list">
+            <article class="diff">
+              <div class="n">01</div>
+              <div>
+                <h3>강사가 크게 힘들이지 않는 자세</h3>
+                <p>시술자 몸의 부담을 줄인 포지션으로, 하루 종일 반복해도 지속 가능한 테크닉입니다.</p>
+              </div>
+            </article>
+            <article class="diff">
+              <div class="n">02</div>
+              <div>
+                <h3>동작을 연결한 플로우 시퀀스</h3>
+                <p>단편 동작이 아니라 다양한 움직임을 이어서, 평가와 중재가 한 흐름으로 이어집니다.</p>
+              </div>
+            </article>
+            <article class="diff">
+              <div class="n">03</div>
+              <div>
+                <h3>베드 위에서 가능 — 에스테티션도 OK</h3>
+                <p>매트뿐 아니라 베드 환경에서도 적용할 수 있어, 운동 지도자뿐 아니라 피부·바디 케어 현장에도 맞습니다.</p>
+              </div>
+            </article>
+          </div>
+          <div class="field-block">
+            <div class="sec-label">Field</div>
+            <h3 class="sec-title" style="font-size:22px">현장</h3>
+            <div class="field-grid">
+              <button type="button" class="field-shot" data-full="academy-photos/real-01.jpg" aria-label="패시브 스트레칭 실습 크게 보기">
+                <img src="academy-photos/real-01.jpg" alt="누운 자세에서 상지·하지 스트레칭을 실습하는 현장" width="640" height="480" loading="lazy">
+              </button>
+              <button type="button" class="field-shot" data-full="academy-photos/real-04.jpg" aria-label="움직임 큐잉 크게 보기">
+                <img src="academy-photos/real-04.jpg" alt="거울 앞에서 움직임을 큐잉하는 현장" width="640" height="480" loading="lazy">
+              </button>
+            </div>
+            <aside class="bio-card">
+              <div class="bio-k">강사 약력</div>
+              <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 리얼무브먼트에서 PAR 움직임 시퀀스를 현장 그대로 지도합니다. 현 리얼무브먼트 약수점/인천점 원장.</p>
+              <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+            </aside>
+          </div>
+        </div>
+        <div class="cross-sell">
+          <span>PAR 전체로 이어가려면 정규반(6·12월 시작, 3일 과정)이 있습니다.</span>
+          <button type="button" data-real-track="regular">정규반 보기</button>
         </div>
       </div>
 
-      <div class="enroll">
-        <h3>② 정규 과정 · PAR 전체</h3>
-        <p>PAR(P·A·R) 전체 시퀀스를 3회에 걸쳐 익힙니다.</p>
+      <div class="track-panel" id="real-track-regular" role="tabpanel" aria-labelledby="real-door-regular" hidden>
+        <div class="sec-label">Overview</div>
+        <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
+        <p class="sec-desc">누워서 → 네발·앉기 → 서서, 포지션을 올리며 각 자세에서 P · AA · A · R을 익힙니다. 패시브 스트레칭을 넘어 전체 프로토콜을 배우는 과정입니다.</p>
+        <p class="course-path">평가 → 손 → <strong>움직임(PAR 전체)</strong></p>
         <div class="facts">
-          <div class="fact"><div class="k">일정</div><div class="v">매년 6월 / 12월 시작<br>6시간씩 3일 진행</div></div>
+          <div class="fact"><div class="k">일정</div><div class="v">매년 6월 / 12월 시작<br>6시간씩 3일</div></div>
           <div class="fact"><div class="k">장소</div><div class="v">리얼무브먼트 약수점</div></div>
           <div class="fact"><div class="k">수강료</div><div class="v">128만 → 108만</div></div>
         </div>
-        <p class="note" style="margin-bottom:0">CMT와 함께 통합 신청 시 278만원 → 222만원(20%↓)이 적용됩니다. CMT 탭의 신청 폼에서 "통합과정 희망"을 선택해 주세요.</p>
-      </div>
+        <div class="par-grid">
+          <article class="par-card is-p">
+            <div class="letter">P</div>
+            <div class="name">Passive</div>
+            <p>강사가 움직임을 유도합니다. 통증·ROM을 확인하며 가동성을 회복합니다.</p>
+          </article>
+          <article class="par-card">
+            <div class="letter">AA</div>
+            <div class="name">Assisted Active</div>
+            <p>통증은 없는데 ROM이 남을 때. 회원과 함께 해당 관절을 회복합니다.</p>
+          </article>
+          <article class="par-card">
+            <div class="letter">A</div>
+            <div class="name">Active · 생활습관 · 자세교정</div>
+            <p>호흡·긴장 자각과 생활 자세. 불필요한 긴장을 스스로 줄이는 것이 목표입니다.</p>
+          </article>
+          <article class="par-card">
+            <div class="letter">R</div>
+            <div class="name">Resistive</div>
+            <p>저항을 더해 근막경선·기능 패턴을 강화하고, 일상에서 쓰는 힘으로 확장합니다.</p>
+          </article>
+        </div>
+        <div class="fit-grid">
+          <div class="fit">
+            <h3>이런 분께</h3>
+            <p>몸을 풀고난 다음을 설계하고 싶은 분. 패시브만으로는 유지가 안 되는 케이스를 다루는 분</p>
+          </div>
+          <div class="fit">
+            <h3>CMT와 함께라면</h3>
+            <p>CMT + Re:Al 정규 통합 신청 시 278만원 → 222만원(20%↓). CMT 탭에서 "통합과정 희망"을 선택해 주세요.</p>
+          </div>
+        </div>
+        <div class="voice-grid overview-voice">
+          <blockquote class="voice">
+            <p>촉진, 스트레칭, 임상적 내용까지 좋은 강의를 해주셔서 너무 좋았습니다.</p>
+            <footer>권혁제 · 전문가 교육</footer>
+          </blockquote>
+          <blockquote class="voice">
+            <p>실무에서 쓰는 방식과 흐름을 직접 경험했습니다.</p>
+            <footer>김예진 · 전문가 교육</footer>
+          </blockquote>
+        </div>
 
-      <div class="apply" id="real-apply">
-        <h3>신청 정보 입력</h3>
-        <p class="apply-desc">아래 정보를 입력해 주시면 확인 후 개별 연락드립니다.</p>
-        <form class="apply-form" data-course="Re:Al 움직임 과정" data-course-code="real" data-success="apply-success-real" data-error="apply-error-real">
-          <div class="f-row">
-            <div class="f-field">
-              <label for="real-name">이름 <span class="req">*</span></label>
-              <input type="text" id="real-name" name="name" required autocomplete="name">
+        <div class="sec-label">Curriculum</div>
+        <h3 class="sec-title" style="font-size:22px">세부 커리큘럼</h3>
+        <p class="sec-desc">3일 × 6시간. 포지션을 올리며, 각 자세에서 P · AA · A · R을 배웁니다.</p>
+        <div class="curr-days">
+          <article class="curr-day">
+            <div class="d">DAY 1</div>
+            <div>
+              <h3>Supine / Prone</h3>
+              <p>누워서·엎드려서. 가장 안전한 자세에서 P → AA → A → R을 한 흐름으로 익힙니다.</p>
             </div>
-            <div class="f-field">
-              <label for="real-phone-mid">연락처 <span class="req">*</span></label>
-              <div class="phone-split">
-                <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
-                <span class="phone-dash" aria-hidden="true">-</span>
-                <input class="phone-mid" id="real-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
-                <span class="phone-dash" aria-hidden="true">-</span>
-                <input class="phone-tail" id="real-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
-                <input type="hidden" name="phone" class="phone-full" value="">
+          </article>
+          <article class="curr-day">
+            <div class="d">DAY 2</div>
+            <div>
+              <h3>Quadruped / Sitting</h3>
+              <p>네발기기·앉아서. 중력 부하를 올리며, 같은 P → AA → A → R을 체간·사지 연결에 적용합니다.</p>
+            </div>
+          </article>
+          <article class="curr-day">
+            <div class="d">DAY 3</div>
+            <div>
+              <h3>Standing</h3>
+              <p>서서. 보행·계단·들어올리기처럼 실제로 쓰는 동작으로 P → AA → A → R을 연결합니다.</p>
+            </div>
+          </article>
+        </div>
+        <div class="prac-grid">
+          <article class="prac">
+            <div class="num">P</div>
+            <h3>Passive</h3>
+            <p>강사가 움직임을 유도합니다. 통증·ROM을 확인하며, 말단에서 근위로 잇는 패시브 스트레칭으로 가동성을 엽니다.</p>
+          </article>
+          <article class="prac">
+            <div class="num">AA</div>
+            <h3>Assisted Active</h3>
+            <p>통증은 없는데 ROM이 남을 때. CIE · Hold &amp; Relax · Pull &amp; Push로 해당 관절을 회원과 함께 회복합니다.</p>
+          </article>
+          <article class="prac">
+            <div class="num">A</div>
+            <h3>Active · 생활습관 · 자세교정</h3>
+            <p>편안한 호흡·긴장 자각·자기 조절. 호흡 위에 등척성 정렬을 얹고, 엉덩이 → 발 → 무릎 → 척추 → 어깨 → 손끝으로 일상에 가져갈 자세를 만듭니다.</p>
+          </article>
+          <article class="prac">
+            <div class="num">R</div>
+            <h3>Resistive</h3>
+            <p>근막경선 저항(굴곡 → 신전 → 회전 → 외전 → 내전)과 보행·계단·들어올리기처럼 실제로 쓰는 힘을, 통증 없는 범위에서 반복합니다.</p>
+          </article>
+        </div>
+
+        <div class="apply" id="real-regular-apply">
+          <h3>신청 정보 입력</h3>
+          <p class="apply-desc">정규 과정 신청입니다. 확인 후 개별 연락드립니다.</p>
+          <form class="apply-form" data-course="Re:Al 움직임 과정" data-course-code="real" data-success="apply-success-real-rg" data-error="apply-error-real-rg">
+            <div class="f-row">
+              <div class="f-field">
+                <label for="real-rg-name">이름 <span class="req">*</span></label>
+                <input type="text" id="real-rg-name" name="name" required autocomplete="name">
+              </div>
+              <div class="f-field">
+                <label for="real-rg-phone-mid">연락처 <span class="req">*</span></label>
+                <div class="phone-split">
+                  <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-mid" id="real-rg-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-tail" id="real-rg-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                  <input type="hidden" name="phone" class="phone-full" value="">
+                </div>
+              </div>
+            </div>
+            <div class="f-row">
+              <div class="f-field">
+                <label for="real-rg-role">소속 <span class="req">*</span></label>
+                <select id="real-rg-role" name="role" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="의사·한의사">의사·한의사</option>
+                  <option value="물리치료사">물리치료사</option>
+                  <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                  <option value="에스테티션">에스테티션</option>
+                  <option value="기타">기타</option>
+                </select>
+              </div>
+              <div class="f-field">
+                <label for="real-rg-type">신청 유형 <span class="req">*</span></label>
+                <select id="real-rg-type" name="applyType" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="하반기">6월 시작</option>
+                  <option value="상반기">12월 시작</option>
+                </select>
+              </div>
+            </div>
+            <div class="f-field is-wide">
+              <label for="real-rg-note">문의사항</label>
+              <textarea id="real-rg-note" name="note" placeholder="궁금한 점을 남겨주시면 함께 안내드립니다"></textarea>
+            </div>
+            <label class="f-consent">
+              <input type="checkbox" name="consent" required>
+              <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다.<span class="req">*</span></span>
+            </label>
+            <div class="f-submit-row">
+              <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
+              <span class="f-status" aria-live="polite"></span>
+              <button type="button" class="btn btn-light btn-sm btn-back-concept" data-go="home">컨셉으로 돌아가기</button>
+            </div>
+            <div class="apply-error" id="apply-error-real-rg">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+          </form>
+          <div class="apply-success" id="apply-success-real-rg" hidden>
+            <span class="dot">✓</span>
+            <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+          </div>
+        </div>
+
+        <div class="more-block">
+          <div class="concept-box">
+            <div class="sec-label">My Concept</div>
+            <h3 class="sec-title">수동적으로 받을까, 움직이는 게 좋을까?</h3>
+            <div class="q-box">
+              <div class="q">중요한 것은 "무엇을"이 아니라 "누구에게, 어떤 순서로"입니다.</div>
+              <div class="a">
+                수동(Passive)과 능동(Active)은 대립이 아니라 <strong>연속된 중재 선택지</strong>입니다.
+                그 순서를 결정하는 기준은 <strong>평가</strong>에서 나옵니다.
               </div>
             </div>
           </div>
-          <div class="f-row">
-            <div class="f-field">
-              <label for="real-role">소속 <span class="req">*</span></label>
-              <select id="real-role" name="role" required>
-                <option value="">선택해 주세요</option>
-                <option value="의사·한의사">의사·한의사</option>
-                <option value="물리치료사">물리치료사</option>
-                <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
-                <option value="에스테티션">에스테티션</option>
-                <option value="기타">기타</option>
-              </select>
+          <div class="sec-label" style="margin-top:28px">Curriculum Map</div>
+          <h3 class="sec-title" style="font-size:22px">전문가 과정 전체에서 Re:Al의 위치</h3>
+          <p class="sec-desc">움직임으로 유지·강화하는 축입니다. 포지션은 누운 자세 → 네발·앉기 → 서기로 하중을 올립니다.</p>
+          <div class="tree">
+            <article class="branch">
+              <div class="branch-h">
+                <h3>수기 / 도구 · 기기</h3>
+                <span>Manual · Device</span>
+              </div>
+              <div class="leaf-row">
+                <div class="leaf is-off">CMT 도수치료 과정<small>Fascia → Muscle → Joint</small></div>
+                <div class="leaf is-off">IFC 얼굴교정 과정<small>Face 해부학 → 촉진 → 수기·괄사·고주파</small></div>
+              </div>
+            </article>
+            <article class="branch">
+              <div class="branch-h">
+                <h3>운동 관리</h3>
+                <span>Movement Care</span>
+              </div>
+              <div class="leaf is-on">
+                <span class="tag">이 과정</span>
+                Re:Al 움직임 과정
+                <small>PAR: 패시브 스트레칭 · 자세교정 · 기능운동</small>
+              </div>
+            </article>
+          </div>
+          <div class="field-block">
+            <div class="sec-label">Field</div>
+            <h3 class="sec-title" style="font-size:22px">현장</h3>
+            <div class="field-grid">
+              <button type="button" class="field-shot" data-full="academy-photos/real-01.jpg" aria-label="패시브 스트레칭 실습 크게 보기">
+                <img src="academy-photos/real-01.jpg" alt="누운 자세에서 상지·하지 스트레칭을 실습하는 현장" width="640" height="480" loading="lazy">
+              </button>
+              <button type="button" class="field-shot" data-full="academy-photos/real-02.jpg" aria-label="기능운동 시연 크게 보기">
+                <img src="academy-photos/real-02.jpg" alt="런지 동작으로 기능운동을 시연하는 모습" width="640" height="480" loading="lazy">
+              </button>
+              <button type="button" class="field-shot" data-full="academy-photos/real-03.jpg" aria-label="메디신볼 운동 크게 보기">
+                <img src="academy-photos/real-03.jpg" alt="메디신볼을 이용한 움직임 훈련" width="640" height="480" loading="lazy">
+              </button>
+              <button type="button" class="field-shot" data-full="academy-photos/real-04.jpg" aria-label="움직임 큐잉 크게 보기">
+                <img src="academy-photos/real-04.jpg" alt="거울 앞에서 움직임을 큐잉하는 현장" width="640" height="480" loading="lazy">
+              </button>
             </div>
-            <div class="f-field">
-              <label for="real-type">신청 유형 <span class="req">*</span></label>
-              <select id="real-type" name="applyType" required>
-                <option value="">선택해 주세요</option>
-                <option value="하반기">상반기: 6월 시작</option>
-                <option value="상반기">하반기: 12월 시작</option>
-                <option value="원데이 클래스">원데이 클래스: 26년 10월 11일 10시 시작</option>
-              </select>
-            </div>
+            <aside class="bio-card">
+              <div class="bio-k">강사 약력</div>
+              <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 리얼무브먼트에서 PAR 움직임 시퀀스를 현장 그대로 지도합니다. 현 리얼무브먼트 약수점/인천점 원장.</p>
+              <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
+            </aside>
           </div>
-          <div class="f-field is-wide">
-            <label for="real-note">문의사항</label>
-            <textarea id="real-note" name="note" placeholder="궁금한 점을 남겨주시면 함께 안내드립니다"></textarea>
-          </div>
-          <label class="f-consent">
-            <input type="checkbox" name="consent" required>
-            <span>신청 확인 및 안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다. 안내 완료 후 즉시 파기됩니다. <span class="req">*</span></span>
-          </label>
-          <div class="f-submit-row">
-            <button type="submit" class="btn btn-primary btn-sm">신청 접수하기</button>
-            <span class="f-status" aria-live="polite"></span>
-          </div>
-          <div class="apply-error" id="apply-error-real">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
-        </form>
-        <div class="apply-success" id="apply-success-real" hidden>
-          <span class="dot">✓</span>
-          <div><strong>신청이 접수되었습니다</strong><p>확인 후 개별 연락드리겠습니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
         </div>
-        <div class="actions" style="margin-top:14px">
-          <button type="button" class="btn btn-light btn-sm" data-go="home">컨셉으로 돌아가기</button>
+        <div class="cross-sell">
+          <span>먼저 보려면 10월 11일 패시브 스트레칭 원데이가 있습니다.</span>
+          <button type="button" data-real-track="oneday">원데이 보기</button>
         </div>
       </div>
     </div>
@@ -2170,35 +2434,90 @@
     }
   }
 
+  function setRealTrack(track, push) {
+    var doors = document.querySelectorAll('.track-door[data-real-track]');
+    var trackPanels = {
+      oneday: document.getElementById('real-track-oneday'),
+      regular: document.getElementById('real-track-regular')
+    };
+    var valid = track === 'oneday' || track === 'regular';
+    Object.keys(trackPanels).forEach(function (key) {
+      var el = trackPanels[key];
+      if (!el) return;
+      var on = valid && key === track;
+      el.classList.toggle('is-active', on);
+      el.hidden = !on;
+    });
+    doors.forEach(function (btn) {
+      var on = valid && btn.getAttribute('data-real-track') === track;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (push && valid) {
+      var next = '#real-' + track;
+      if (location.hash !== next) history.pushState({ tab: 'real', track: track }, '', next);
+    }
+  }
+
+  function scrollToId(id) {
+    setTimeout(function () {
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+
   function fromHash() {
     var h = (location.hash || '#home').replace('#', '');
     if (h === 'why' || h === 'proof' || h === 'choose') {
       show('home', false);
-      setTimeout(function () {
-        var el = document.getElementById(h);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+      scrollToId(h);
       return;
     }
-    if (h === 'real-apply') {
+    if (h === 'real-oneday' || h === 'real-apply' || h === 'real-oneday-apply') {
       show('real', false);
-      setTimeout(function () {
-        var el = document.getElementById(h);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+      setRealTrack('oneday', false);
+      if (h === 'real-apply' || h === 'real-oneday-apply') scrollToId('real-oneday-apply');
+      return;
+    }
+    if (h === 'real-regular' || h === 'real-regular-apply') {
+      show('real', false);
+      setRealTrack('regular', false);
+      if (h === 'real-regular-apply') scrollToId('real-regular-apply');
+      return;
+    }
+    if (h === 'real') {
+      show('real', false);
+      setRealTrack('oneday', false);
       return;
     }
     show(h, false);
+    if (h !== 'cmt' && h !== 'ifc') setRealTrack('oneday', false);
   }
 
   tabs.forEach(function (t) {
-    t.addEventListener('click', function () { show(t.getAttribute('data-tab')); });
+    t.addEventListener('click', function () {
+      var name = t.getAttribute('data-tab');
+      show(name);
+      if (name === 'real') setRealTrack('oneday', false);
+    });
   });
 
   document.querySelectorAll('[data-go]').forEach(function (el) {
     el.addEventListener('click', function (e) {
       e.preventDefault();
-      show(el.getAttribute('data-go'));
+      var name = el.getAttribute('data-go');
+      show(name);
+      if (name === 'real') setRealTrack('oneday', false);
+    });
+  });
+
+  document.querySelectorAll('[data-real-track]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var track = el.getAttribute('data-real-track');
+      if (track !== 'oneday' && track !== 'regular') return;
+      setRealTrack(track, true);
+      var panel = document.getElementById('real-track-' + track);
+      if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
@@ -2390,6 +2709,7 @@
       submitBtn.classList.remove('btn-primary');
       submitBtn.classList.add('btn-done');
       form.querySelectorAll('input, select, textarea, button').forEach(function (el) {
+        if (el.getAttribute('data-go')) return;
         el.disabled = true;
       });
       if (successBox) successBox.hidden = false;
