@@ -66,11 +66,11 @@
   }
   .top-inner {
     max-width: 960px; margin: 0 auto;
-    padding: 10px 16px 0;
+    padding: 12px 16px 0;
   }
   .brand-row {
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .brand {
     display: flex; align-items: center; gap: 10px;
@@ -90,7 +90,7 @@
     display: grid;
     grid-template-columns: 1.1fr repeat(3, 1fr);
     gap: 6px;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
   }
   .tab {
     min-height: 42px;
@@ -119,7 +119,7 @@
   }
 
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
-  section { padding: 48px 0; scroll-margin-top: 120px; }
+  section { padding: 48px 0; scroll-margin-top: 128px; }
   .sec-label {
     font-family: Outfit, Pretendard, sans-serif;
     font-size: 12px; font-weight: 700;
@@ -180,8 +180,9 @@
     overflow: hidden;
     background: var(--navy);
     color: var(--sand);
-    min-height: min(78vh, 640px);
-    display: flex; flex-direction: column; justify-content: flex-end;
+    min-height: 0;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    padding: 20px 0 36px;
   }
   .home-hero::before {
     content: "";
@@ -200,7 +201,7 @@
     position: relative; z-index: 1;
     max-width: 960px; width: 100%;
     margin: 0 auto;
-    padding: 40px 16px 36px;
+    padding: 16px 16px 36px;
   }
   .hero-intro {
     display: grid;
@@ -490,7 +491,7 @@
   .detail-hero {
     background: var(--navy);
     color: var(--sand);
-    padding: 36px 0 28px;
+    padding: 32px 0 28px;
   }
   .detail-hero .mark {
     display: inline-flex;
@@ -749,7 +750,7 @@
     gap: 8px;
     margin: 0 0 12px;
     position: sticky;
-    top: calc(var(--safe-t) + 112px);
+    top: calc(var(--safe-t) + 120px);
     z-index: 40;
     background: #F3E4C4;
     padding: 8px 2px 10px;
@@ -968,10 +969,13 @@
     .why-grid, .choose-grid, .facts, .fit-grid, .pillars, .pillars.is-3,
     .gain-grid, .field-grid.is-home, .voice-grid.is-3,
     .curr-day { grid-template-columns: 1fr; }
+    .brand-name { font-size: 13px; }
+    .brand-sub { font-size: 10px; margin-top: 0; }
     .tabs { grid-template-columns: repeat(4, 1fr); gap: 4px; }
-    .tab { font-size: 11.5px; min-height: 40px; padding: 7px 2px; }
+    .tab { font-size: 11.5px; min-height: 34px; padding: 6px 2px; }
     .tab[data-tab="home"] { font-size: 11px; }
     .kakao-mini { display: none; }
+    .track-pick { top: calc(var(--safe-t) + 108px); }
     .choose-card p { min-height: 0; }
     .leaf-parts { grid-template-columns: 1fr; }
     .track-door { padding: 10px 12px; min-height: 42px; gap: 6px; }
@@ -1316,7 +1320,9 @@
       <div class="sec-label">Why This Works</div>
       <h2 class="sec-title">PAR 흐름이 설득력 있는 이유</h2>
       <p class="sec-desc">
-        "수동적 케어가 좋을까, 움직임이 좋을까?"는 둘 중 하나를 고르는 질문이 아닙니다.<br>
+        "수동적 케어가 좋을까, 움직임이 좋을까?"는 둘 중 하나를 고르는 질문이 아닙니다.
+      </p>
+      <p class="sec-desc">
         <strong>누구에게, 어떤 순서로</strong> 적용할지가 핵심이고, 그 기준은 평가에서 나옵니다.
       </p>
       <div class="why-grid">
@@ -1476,7 +1482,7 @@
     <div class="wrap">
       <div class="sec-label" style="margin-top:0">Overview</div>
       <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
-      <p class="sec-desc">의료인·의료기사가 평가와 함께 도수 테크닉을 부위별로 익히는 과정입니다. 컨셉 탭의 PAR 전체를 다시 다루지 않고, CMT에서 실제로 배우는 손 테크닉만 정리했습니다.</p>
+      <p class="sec-desc">의료인·의료기사가 평가와 함께 도수 테크닉을 부위별로 익히는 과정입니다. 골반부터 경추까지, 연부조직 다음 관절로 들어가는 같은 순서를 내일 베드에서 바로 꺼내 쓰게 됩니다.</p>
       <p class="course-path">평가 → <strong>손(CMT)</strong> → 움직임</p>
       <div class="facts">
         <div class="fact"><div class="k">일정</div><div class="v">매년 3월 / 9월 시작<br>8시간씩 6일</div></div>
@@ -1506,7 +1512,7 @@
 
       <div class="sec-label">Curriculum</div>
       <h3 class="sec-title" style="font-size:22px">세부 커리큘럼</h3>
-      <p class="sec-desc">부위마다 같은 순서입니다. 평가 → 연부조직(Fascia → Muscle) → 관절(Joint) → 재평가.</p>
+      <p class="sec-desc">동일한 순서로 진행합니다.</br>평가 → 연부조직(Fascia → Muscle) → 관절(Joint) → 재평가.</p>
       <div class="curr-days">
         <article class="curr-day">
           <div class="d">DAY 1–2</div>
@@ -1731,7 +1737,7 @@
     <div class="wrap">
       <div class="sec-label" style="margin-top:0">Overview</div>
       <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
-      <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 해부 → 촉진 → 수기·괄사·고주파 순으로 익힙니다. 컨셉 전체를 다시 설명하지 않고, 이 과정에서 배우는 얼굴 시퀀스만 정리했습니다.</p>
+      <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 해부 → 촉진 → 수기·괄사·고주파 순으로 익힙니다. 손으로 원인을 읽은 뒤, 수기와 기기를 같은 시퀀스로 연결하는 감각을 가져갑니다.</p>
       <p class="course-path">평가 → <strong>손(IFC)</strong> → 움직임</p>
       <div class="facts">
         <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>6시간씩 3일</div></div>
@@ -1862,7 +1868,7 @@
             <div class="n">01</div>
             <div>
               <h3>오프라인 전 온라인 이론 제공</h3>
-              <p>현장 실습 전에 이론을 미리 학습해, 실습 시간을 손 감각을 익히는 데 온전히 씁니다.</p>
+              <p>현장 실습 전에 이론을 미리 학습해, 실습 시간을 손 감각을 익히는 데 온전히 할애합니다.</p>
             </div>
           </article>
           <article class="diff">
@@ -1972,7 +1978,7 @@
       <div class="track-panel is-active" id="real-track-oneday" role="tabpanel" aria-labelledby="real-door-oneday">
         <div class="sec-label">Overview</div>
         <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
-        <p class="sec-desc">강사가 움직임을 유도하는 패시브 스트레칭만 다룹니다. 자세교정·기능운동은 정규반에서 확인 하실 수 있습니다.</p>
+        <p class="sec-desc">강사가 움직임을 유도하는 패시브 스트레칭을 하루 만에 익힙니다. 말단에서 근위로 잇는 플로우를, 매트와 베드 모두에서 부담 적은 자세로 쓸 수 있게 됩니다.</p>
         <p class="course-path">평가 → 손 → <strong>움직임(패시브)</strong></p>
         <div class="facts">
           <div class="fact"><div class="k">일정</div><div class="v">26년 10월 11일<br>10:00–17:00</div></div>
@@ -2157,7 +2163,7 @@
       <div class="track-panel" id="real-track-regular" role="tabpanel" aria-labelledby="real-door-regular" hidden>
         <div class="sec-label">Overview</div>
         <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
-        <p class="sec-desc">누워서 → 네발·앉기 → 서서, 포지션을 올리며 각 자세에서 P · AA · A · R을 익힙니다. 패시브 스트레칭을 넘어 전체 프로토콜을 배우는 과정입니다.</p>
+        <p class="sec-desc">누워서 → 네발·앉기 → 서서, 포지션을 올리며 각 자세에서 P · AA · A · R을 익힙니다. 풀어 준 몸을 생활습관·자세교정과 저항까지 이어, 유지되는 움직임으로 만듭니다.</p>
         <p class="course-path">평가 → 손 → <strong>움직임(PAR 전체)</strong></p>
         <div class="facts">
           <div class="fact"><div class="k">일정</div><div class="v">매년 6월 / 12월 시작<br>6시간씩 3일</div></div>
@@ -2173,7 +2179,7 @@
           <article class="par-card">
             <div class="letter">AA</div>
             <div class="name">Assisted Active</div>
-            <p>통증은 없는데 ROM이 남을 때. 회원과 함께 해당 관절을 회복합니다.</p>
+            <p>통증은 없는데 ROM 저하가 남아있을 때. 회원과 함께 해당 관절을 회복합니다.</p>
           </article>
           <article class="par-card">
             <div class="letter">A</div>
