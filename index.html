@@ -863,6 +863,63 @@
     object-position: center 42%;
     display: block;
   }
+  .field-video {
+    margin: 0 0 16px;
+  }
+  .field-video-link {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line);
+    background: #111;
+    overflow: hidden;
+  }
+  .field-video-link.is-custom-poster {
+    aspect-ratio: 749 / 705;
+  }
+  .field-video-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .field-video-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 32, 72, .22);
+    transition: background .2s;
+  }
+  .field-video-play {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+    margin: -32px 0 0 -32px;
+    border-radius: 50%;
+    background: var(--crimson);
+    box-shadow: 0 8px 24px rgba(11, 32, 72, .28);
+    pointer-events: none;
+  }
+  .field-video-link.is-custom-poster .field-video-play { display: none; }
+  .field-video-play::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #fff;
+    transform: translate(-50%, -50%);
+  }
+  .field-video-link:hover::after { background: rgba(11, 32, 72, .12); }
+  .field-video-link:hover .field-video-play { background: var(--crimson-deep); }
   .voice-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1709,7 +1766,14 @@
               <img src="academy-photos/cmt-04.jpg" alt="베드 주위로 모여 촉진을 배우는 현장" width="640" height="480" loading="lazy">
             </button>
           </div>
-          <aside class="bio-card">
+          
+          <div class="field-video">
+            <a class="field-video-link" href="https://youtu.be/eV_E7-B6uto" target="_blank" rel="noopener noreferrer" aria-label="세게 치는 게 아니라, 잘 벌려주는 것이 핵심입니다 유튜브에서 보기">
+              <img src="https://i.ytimg.com/vi/eV_E7-B6uto/maxresdefault.jpg" alt="세게 치는 게 아니라, 잘 벌려주는 것이 핵심입니다 영상 썸네일" width="1280" height="720" loading="lazy">
+              <span class="field-video-play" aria-hidden="true"></span>
+            </a>
+          </div>
+          	<aside class="bio-card">
             <div class="bio-k">강사 약력</div>
             <p>미카닥 박준규 · 미국 California DC · 한국 물리치료사. 현 CMT 임상도수치료 아카데미 부회장, 대한자세교정 통합연구학회 학회장. University of Bridgeport DC · 한서대 · 대전대. 저서 Palpation 임상 가이드.</p>
             <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
@@ -1934,6 +1998,13 @@
               <img src="academy-photos/ifc-04.jpg" alt="소그룹으로 기기·수기 시퀀스를 설명하는 현장" width="640" height="480" loading="lazy">
             </button>
           </div>
+          
+          <div class="field-video">
+            <a class="field-video-link" href="https://youtu.be/2zBvY4-DzyU" target="_blank" rel="noopener noreferrer" aria-label="리:얼 작은얼굴 유튜브에서 보기">
+              <img src="https://i.ytimg.com/vi/2zBvY4-DzyU/maxresdefault.jpg" alt="리:얼 작은얼굴 영상 썸네일" width="1280" height="720" loading="lazy">
+              <span class="field-video-play" aria-hidden="true"></span>
+            </a>
+          </div>
           <aside class="bio-card">
             <div class="bio-k">강사 약력</div>
             <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 현 IFC 국제얼굴교정학회 학회장. 얼굴 해부학·촉진·수기 시퀀스를 학회 교육과 실습으로 이어 갑니다.</p>
@@ -2148,8 +2219,8 @@
               </button>
             </div>
             <div class="field-video">
-              <a class="field-video-link" href="https://www.youtube.com/shorts/ZTWj1nR1868" target="_blank" rel="noopener noreferrer" aria-label="리:얼 패시브 스트레칭 유튜브에서 보기">
-                <img src="https://breezefeel.github.io/academy/패시브스트레칭.png" alt="리:얼 패시브 스트레칭 영상 썸네일" width="1280" height="720" loading="lazy">
+              <a class="field-video-link is-custom-poster" href="https://www.youtube.com/shorts/ZTWj1nR1868" target="_blank" rel="noopener noreferrer" aria-label="리:얼 패시브 스트레칭 유튜브에서 보기">
+                <img src="패시브스트레칭.png" alt="리:얼 패시브 스트레칭 영상 썸네일" width="749" height="705" loading="lazy">
                 <span class="field-video-play" aria-hidden="true"></span>
               </a>
             </div>
@@ -2385,6 +2456,12 @@
               <button type="button" class="field-shot" data-full="academy-photos/real-04.jpg" aria-label="움직임 큐잉 크게 보기">
                 <img src="academy-photos/real-04.jpg" alt="거울 앞에서 움직임을 큐잉하는 현장" width="640" height="480" loading="lazy">
               </button>
+            </div>
+            <div class="field-video">
+              <a class="field-video-link is-custom-poster" href="https://www.youtube.com/shorts/ZTWj1nR1868" target="_blank" rel="noopener noreferrer" aria-label="리:얼 패시브 스트레칭 유튜브에서 보기">
+                <img src="패시브스트레칭.png" alt="리:얼 패시브 스트레칭 영상 썸네일" width="749" height="705" loading="lazy">
+                <span class="field-video-play" aria-hidden="true"></span>
+              </a>
             </div>
             <aside class="bio-card">
               <div class="bio-k">강사 약력</div>
