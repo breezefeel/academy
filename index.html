@@ -1653,7 +1653,7 @@
               </select>
             </div>
             <div class="f-field">
-              <label for="cmt-type">신청 유형 <span class="req">*</span></label>
+              <label for="cmt-type">신청 과정 <span class="req">*</span></label>
               <select id="cmt-type" name="applyType" required>
                 <option value="">선택해 주세요</option>
                 <option value="상반기">상반기: 3월 시작</option>
@@ -1902,11 +1902,11 @@
               </select>
             </div>
             <div class="f-field">
-              <label for="ifc-type">신청 유형 <span class="req">*</span></label>
+              <label for="ifc-type">신청 과정 <span class="req">*</span></label>
               <select id="ifc-type" name="applyType" required>
                 <option value="">선택해 주세요</option>
                 <option value="상반기">상반기: 4월 시작</option>
-                <option value="하반기">하반기: 11월 8/22/29일</option>
+                <option value="하반기">하반기: 11월 8/15/22일</option>
               </select>
             </div>
           </div>
@@ -2134,9 +2134,8 @@
 
         <div class="apply" id="real-oneday-apply">
           <h3>신청 정보 입력</h3>
-          <p class="apply-desc">원데이 클래스(10월 11일 10시) 신청입니다. 확인 후 개별 연락드립니다.</p>
+          <p class="apply-desc">원데이 클래스(10월 11일 10시~17시) 신청입니다. 확인 후 개별 연락드립니다.</p>
           <form class="apply-form" data-course="Re:Al 움직임 과정" data-course-code="real" data-success="apply-success-real-od" data-error="apply-error-real-od">
-            <input type="hidden" name="applyType" value="원데이 클래스 10월 11일 10시">
             <div class="f-row">
               <div class="f-field">
                 <label for="real-od-name">이름 <span class="req">*</span></label>
@@ -2155,7 +2154,7 @@
               </div>
             </div>
             <div class="f-row">
-              <div class="f-field is-wide">
+              <div class="f-field">
                 <label for="real-od-role">소속 <span class="req">*</span></label>
                 <select id="real-od-role" name="role" required>
                   <option value="">선택해 주세요</option>
@@ -2164,6 +2163,13 @@
                   <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
                   <option value="에스테티션">에스테티션</option>
                   <option value="기타">기타</option>
+                </select>
+              </div>
+              <div class="f-field">
+                <label for="real-od-type">신청 과정 <span class="req">*</span></label>
+                <select id="real-od-type" name="applyType" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="원데이">원데이: 10월 11일 10시~17시</option>
                 </select>
               </div>
             </div>
@@ -2380,7 +2386,7 @@
                 </select>
               </div>
               <div class="f-field">
-                <label for="real-rg-type">신청 유형 <span class="req">*</span></label>
+                <label for="real-rg-type">신청 과정 <span class="req">*</span></label>
                 <select id="real-rg-type" name="applyType" required>
                   <option value="">선택해 주세요</option>
                   <option value="하반기">6월 시작</option>
