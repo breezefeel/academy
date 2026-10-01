@@ -755,6 +755,8 @@
     background: #F3E4C4;
     padding: 8px 2px 10px;
   }
+  body.tab-cmt .track-pick { background: #D7E2F3; }
+  body.tab-ifc .track-pick { background: #F8DDE3; }
   .track-door {
     display: flex;
     align-items: center;
@@ -1498,13 +1500,13 @@
         <button type="button" class="choose-card" data-go="cmt">
           <span class="mark">CMT</span>
           <h3>연부조직/관절을 손으로 다루는 치료</h3>
-          <p>의료인·의료기사가 평가부터 도수치료까지 판단력을 키울 때.</p>
+          <p>의료인·의료기사가 평가부터 도수치료까지 판단력을 키울 때. 이후에는 스터디로 이어집니다.</p>
           <span class="go">CMT 상세 보기 →</span>
         </button>
         <button type="button" class="choose-card" data-go="ifc">
           <span class="mark">IFC</span>
           <h3>얼굴·윤곽을 수기로</h3>
-          <p>비수술 얼굴 비대칭·축소를 해부→촉진→시퀀스로 배울 때.</p>
+          <p>비수술 얼굴 비대칭·축소를 해부→촉진→시퀀스로 배울 때. 학회원이 되면 연구 모임이 있습니다.</p>
           <span class="go">IFC 상세 보기 →</span>
         </button>
         <button type="button" class="choose-card" data-go="real">
@@ -1528,7 +1530,7 @@
     <div class="wrap">
       <div class="mark">CMT</div>
       <h1>CMT 도수치료 과정</h1>
-      <p>평가로 원인을 가른 뒤, 연부조직과 관절을 손으로 다룹니다.<br>평가 → 손 → 움직임 흐름에서 CMT는 손(도구) 축입니다.</p>
+      <p>평가로 원인을 가른 뒤, 연부조직과 관절을 손으로 다룹니다.<br>평가 → 손 → 움직임 흐름에서 CMT는 손(도구) 축입니다.<br>과정 이후에는 무료 재수강과 스터디 모임으로 손이 이어집니다.</p>
       <div class="badge-row">
         <span class="badge badge-hot">의료인 · 의료기사만</span>
         <span class="badge">수기 / 도구</span>
@@ -1537,6 +1539,20 @@
   </div>
   <section>
     <div class="wrap">
+      <div class="track-pick" role="tablist" aria-label="CMT 과정 선택">
+        <button type="button" class="track-door is-active" data-cmt-track="regular" role="tab" aria-selected="true" aria-controls="cmt-track-regular" id="cmt-door-regular">
+          <span class="k">정규과정 · 3·9월</span>
+          <h3>도수치료</h3>
+          <p>6일 과정</p>
+        </button>
+        <button type="button" class="track-door" data-cmt-track="study" role="tab" aria-selected="false" aria-controls="cmt-track-study" id="cmt-door-study">
+          <span class="k">이어가기</span>
+          <h3>스터디 모임</h3>
+          <p>연습 · 네트워크</p>
+        </button>
+      </div>
+
+      <div class="track-panel is-active" id="cmt-track-regular" role="tabpanel" aria-labelledby="cmt-door-regular">
       <div class="sec-label" style="margin-top:0">Overview</div>
       <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
       <p class="sec-desc">의료인·의료기사가 평가와 함께 도수 테크닉을 부위별로 익히는 과정입니다. 골반부터 경추까지, 연부조직 다음 관절로 들어가는 같은 순서를 내일 베드에서 바로 꺼내 쓰게 됩니다.</p>
@@ -1658,7 +1674,6 @@
                 <option value="">선택해 주세요</option>
                 <option value="상반기">상반기: 3월 시작</option>
                 <option value="하반기">하반기: 9월 시작</option>
-                <option value="스터디">스터디: 10월 17일(토) 4시</option>
               </select>
             </div>
           </div>
@@ -1710,10 +1725,14 @@
           <article class="diff">
             <div class="n">03</div>
             <div>
-              <h3>재수강 가능</h3>
-              <p>세션당 2만원(대관비)만으로 재수강할 수 있어, 놓친 부위를 다시 채울 수 있습니다.</p>
+              <h3>재수강은 무료입니다</h3>
+              <p>더 연습이 필요하면 언제든 수업에 다시 들어오실 수 있습니다. 가끔은 스터디 모임을 따로 열어, 최신 흐름과 서로의 손을 이어 갑니다.</p>
             </div>
           </article>
+        </div>
+        <div class="cross-sell">
+          <span>정규과정을 듣고 끝이 아닙니다. 스터디에서 연습과 네트워크가 이어집니다.</span>
+          <button type="button" data-cmt-track="study">스터디 모임 보기</button>
         </div>
         <div class="fit" style="margin:16px 0 22px">
           <h3>Re:Al과 함께라면</h3>
@@ -1781,6 +1800,110 @@
           </aside>
         </div>
       </div>
+      </div>
+
+      <div class="track-panel" id="cmt-track-study" role="tabpanel" aria-labelledby="cmt-door-study" hidden>
+        <div class="sec-label">Continue</div>
+        <h2 class="sec-title" style="font-size:22px">한 번 듣고 끝나는 교육이 아닙니다</h2>
+        <p class="sec-desc">CMT 정규과정은 손을 익히는 시작입니다. 재수강은 무료라서, 더 연습이 필요하면 언제든 수업에 다시 들어오실 수 있습니다. 가끔은 스터디 모임을 따로 열어, 최신 흐름을 나누고 서로 손을 맞춰 봅니다.</p>
+        <div class="pos-track" style="margin:4px 0 22px">
+          <div class="pos-step">정규과정<span>3월 · 9월</span></div>
+          <div class="pos-step">무료 재수강<span>필요할 때 다시</span></div>
+          <div class="pos-step is-focus">스터디 모임<span>서로 연습</span></div>
+        </div>
+        <div class="pillars is-3">
+          <article class="pillar">
+            <div class="n">01</div>
+            <h3>최신 트렌드</h3>
+            <p>현장에서 바뀌는 접근과 케이스를 같이 업데이트합니다. 한 번 배운 순서가 그 자리에 머물지 않습니다.</p>
+          </article>
+          <article class="pillar">
+            <div class="n">02</div>
+            <h3>서로 연습</h3>
+            <p>베드 위에서 손을 다시 맞춰 봅니다. 혼자 복습하면 흐려지는 감각을, 동료와 바로 확인합니다.</p>
+          </article>
+          <article class="pillar">
+            <div class="n">03</div>
+            <h3>네트워크</h3>
+            <p>같은 언어로 평가하고 치료하는 동료가 생깁니다. 케이스를 나누는 자리가 임상 판단력을 이어 줍니다.</p>
+          </article>
+        </div>
+        <div class="field-block" style="margin-top:28px">
+          <div class="sec-label">Field</div>
+          <h3 class="sec-title" style="font-size:22px">스터디 현장</h3>
+          <p class="sec-desc">강의실에서 시연을 보고, 베드마다 짝을 이뤄 손을 맞춰 보는 자리입니다.</p>
+          <div class="field-grid">
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-study-01.jpg" aria-label="CMT 시연 크게 보기">
+              <img src="academy-photos/cmt-study-01.jpg" alt="베드 앞에서 도수 테크닉을 설명하는 CMT 스터디" width="1600" height="1067" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-study-02.jpg" aria-label="CMT 짝 실습 크게 보기">
+              <img src="academy-photos/cmt-study-02.jpg" alt="여러 베드에서 서로 연습하는 CMT 스터디 현장" width="1600" height="1200" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-study-03.jpg" aria-label="CMT 경추 시연 크게 보기">
+              <img src="academy-photos/cmt-study-03.jpg" alt="경추 해부 화면을 보며 시연을 둘러보는 CMT 스터디" width="1600" height="1200" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/cmt-study-04.jpg" aria-label="CMT 베드 실습 크게 보기">
+              <img src="academy-photos/cmt-study-04.jpg" alt="여러 베드에서 짝을 이뤄 손을 맞추는 CMT 스터디" width="1600" height="1200" loading="lazy">
+            </button>
+          </div>
+        </div>
+        <div class="apply" id="cmt-study-apply">
+          <h3>스터디 모임 안내 받기</h3>
+          <p class="apply-desc">이름과 연락처를 남겨 주시면, 스터디 안내 알림톡을 보내 드립니다.</p>
+          <form class="apply-form" data-course="CMT 스터디 모임" data-course-code="cmt-study" data-success="apply-success-cmt-study" data-error="apply-error-cmt-study">
+            <div class="f-row">
+              <div class="f-field">
+                <label for="cmt-study-name">이름 <span class="req">*</span></label>
+                <input type="text" id="cmt-study-name" name="name" required autocomplete="name">
+              </div>
+              <div class="f-field">
+                <label for="cmt-study-phone-mid">연락처 <span class="req">*</span></label>
+                <div class="phone-split">
+                  <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-mid" id="cmt-study-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-tail" id="cmt-study-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                  <input type="hidden" name="phone" class="phone-full" value="">
+                </div>
+              </div>
+            </div>
+            <div class="f-field is-wide">
+              <label for="cmt-study-role">소속 <span class="req">*</span></label>
+              <select id="cmt-study-role" name="role" required>
+                <option value="">선택해 주세요</option>
+                <option value="의사·한의사">의사·한의사</option>
+                <option value="물리치료사">물리치료사</option>
+                <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                <option value="에스테티션">에스테티션</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <input type="hidden" name="applyType" value="스터디 모임">
+            <div class="f-field is-wide">
+              <label for="cmt-study-note">문의사항</label>
+              <textarea id="cmt-study-note" name="note" placeholder="참여하고 싶은 시기나 궁금한 점을 남겨 주세요"></textarea>
+            </div>
+            <label class="f-consent">
+              <input type="checkbox" name="consent" required>
+              <span>안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다.<span class="req">*</span></span>
+            </label>
+            <div class="f-submit-row">
+              <button type="submit" class="btn btn-primary btn-sm">안내 알림톡 받기</button>
+              <span class="f-status" aria-live="polite"></span>
+            </div>
+            <div class="apply-error" id="apply-error-cmt-study">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+          </form>
+          <div class="apply-success" id="apply-success-cmt-study" hidden>
+            <span class="dot">✓</span>
+            <div><strong>접수되었습니다</strong><p>스터디 안내 알림톡을 보내 드립니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+          </div>
+        </div>
+        <div class="cross-sell">
+          <span>먼저 정규과정에서 순서를 익히면, 그다음부터 재수강과 스터디가 열립니다.</span>
+          <button type="button" data-cmt-track="regular">정규과정 신청 보기</button>
+        </div>
+      </div>
     </div>
   </section>
 </div>
@@ -1791,7 +1914,7 @@
     <div class="wrap">
       <div class="mark">IFC</div>
       <h1>IFC 얼굴교정 과정</h1>
-      <p>얼굴 해부학과 촉진으로 핵심 포인트를 찾고, 수기·괄사·고주파로 변화를 만듭니다.<br>평가 → 손 → 움직임 흐름에서 IFC는 얼굴의 손(도구/기기) 축입니다.</p>
+      <p>얼굴 해부학과 촉진으로 핵심 포인트를 찾고, 수기·괄사·고주파로 변화를 만듭니다.<br>평가 → 손 → 움직임 흐름에서 IFC는 얼굴의 손(도구/기기) 축입니다.<br>종합시험을 통과하면 학회원이 되고, 두 달마다 연구 모임에 참여합니다.</p>
       <div class="badge-row">
         <span class="badge">누구나</span>
         <span class="badge">수기 / 도구 / 기기 관리</span>
@@ -1800,6 +1923,20 @@
   </div>
   <section>
     <div class="wrap">
+      <div class="track-pick" role="tablist" aria-label="IFC 과정 선택">
+        <button type="button" class="track-door is-active" data-ifc-track="regular" role="tab" aria-selected="true" aria-controls="ifc-track-regular" id="ifc-door-regular">
+          <span class="k">정규과정 · 4·11월</span>
+          <h3>얼굴교정</h3>
+          <p>3일 과정</p>
+        </button>
+        <button type="button" class="track-door" data-ifc-track="research" role="tab" aria-selected="false" aria-controls="ifc-track-research" id="ifc-door-research">
+          <span class="k">두 달마다</span>
+          <h3>연구 모임</h3>
+          <p>학회원 · 트렌드</p>
+        </button>
+      </div>
+
+      <div class="track-panel is-active" id="ifc-track-regular" role="tabpanel" aria-labelledby="ifc-door-regular">
       <div class="sec-label" style="margin-top:0">Overview</div>
       <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
       <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 해부 → 촉진 → 수기·괄사·고주파 순으로 익힙니다. 손으로 원인을 읽은 뒤, 수기와 기기를 같은 시퀀스로 연결하는 감각을 가져갑니다.</p>
@@ -1807,7 +1944,7 @@
       <div class="facts">
         <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>10:00–17:00 · 6시간씩 3일</div></div>
         <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
-        <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 210만</div></div>
+        <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 180만</div></div>
       </div>
       <div class="fit-grid">
         <div class="fit">
@@ -1953,10 +2090,14 @@
           <article class="diff">
             <div class="n">03</div>
             <div>
-              <h3>학회원이 되면 연구 모임으로 이어집니다</h3>
-              <p>과정이 끝나도 IFC 연구 모임에 주기적으로 참여하실 수 있습니다. 최신 케이스와 시퀀스를 동료와 나누며, 함께 성장합니다.</p>
+              <h3>학회원이 되면 연구 모임이 있습니다</h3>
+              <p>정규과정 이후 종합시험을 통과하면 학회원이 됩니다. 학회원은 누구나, 두 달에 한 번 연구 모임에서 업데이트된 교육과 케이스를 나눕니다.</p>
             </div>
           </article>
+        </div>
+        <div class="cross-sell">
+          <span>교육하고 끝이 아닙니다. 학회원이 되면 연구 모임이 두 달마다 열립니다.</span>
+          <button type="button" data-ifc-track="research">연구 모임 보기</button>
         </div>
 
         <div class="sec-label" style="margin-top:28px">Curriculum Map</div>
@@ -2018,6 +2159,111 @@
             <p>미카닥 박준규 · 미국 DC · 한국 물리치료사. 현 IFC 국제얼굴교정학회 학회장. 얼굴 해부학·촉진·수기 시퀀스를 학회 교육과 실습으로 이어 갑니다.</p>
             <a href="https://blog.naver.com/allenjoy/120205433765" target="_blank" rel="noopener noreferrer">약력 더 보기</a>
           </aside>
+        </div>
+      </div>
+      </div>
+
+      <div class="track-panel" id="ifc-track-research" role="tabpanel" aria-labelledby="ifc-door-research" hidden>
+        <div class="sec-label">Continue</div>
+        <h2 class="sec-title" style="font-size:22px">과정을 통과하면, 학회가 시작됩니다</h2>
+        <p class="sec-desc">IFC 정규과정을 마친 뒤 종합시험을 진행합니다. 통과하면 학회원이 됩니다. 학회원은 누구나, 두 달에 한 번 열리는 연구 모임에 참여할 수 있습니다. 최신 트렌드와 업데이트된 교육, 네트워크가 과정 이후에도 이어집니다.</p>
+        <div class="pos-track" style="margin:4px 0 22px">
+          <div class="pos-step">정규과정<span>4월 · 11월</span></div>
+          <div class="pos-step">종합시험<span>과정 이후</span></div>
+          <div class="pos-step">학회원<span>통과하면</span></div>
+          <div class="pos-step is-focus">연구 모임<span>두 달마다</span></div>
+        </div>
+        <div class="pillars is-3">
+          <article class="pillar">
+            <div class="n">01</div>
+            <h3>최신 트렌드</h3>
+            <p>얼굴 수기·기기에서 지금 쓰이는 흐름을 학회원이 함께 확인합니다. 현장의 질문이 다음 모임의 주제가 됩니다.</p>
+          </article>
+          <article class="pillar">
+            <div class="n">02</div>
+            <h3>업데이트된 교육</h3>
+            <p>정규과정에서 익힌 시퀀스가 연구 모임에서 다시 다듬어집니다. 배운 내용이 최신으로 남습니다.</p>
+          </article>
+          <article class="pillar">
+            <div class="n">03</div>
+            <h3>네트워크</h3>
+            <p>같은 시험을 통과한 동료와 케이스를 나눕니다. 학회는 수료증으로 끝나지 않고, 두 달마다 다시 만납니다.</p>
+          </article>
+        </div>
+        <div class="field-block" style="margin-top:28px">
+          <div class="sec-label">Field</div>
+          <h3 class="sec-title" style="font-size:22px">학회와 연구 현장</h3>
+          <p class="sec-desc">종합시험, 얼굴 실습, 그리고 학회원이 함께 모인 자리입니다.</p>
+          <div class="field-grid">
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-research-01.jpg" aria-label="국제얼굴교정학회 회원 사진 크게 보기">
+              <img src="academy-photos/ifc-research-01.jpg" alt="국제얼굴교정학회 현수막을 들고 모인 학회원들" width="1600" height="1200" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-research-02.jpg" aria-label="얼굴 수기 실습 크게 보기">
+              <img src="academy-photos/ifc-research-02.jpg" alt="학회 배너 앞에서 얼굴 수기를 서로 연습하는 현장" width="1200" height="1600" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-research-03.jpg" aria-label="IFC 종합시험 현장 크게 보기">
+              <img src="academy-photos/ifc-research-03.jpg" alt="국제얼굴교정학회 배너 아래에서 진행되는 종합시험" width="1600" height="1400" loading="lazy">
+            </button>
+            <button type="button" class="field-shot" data-full="academy-photos/ifc-research-04.jpg" aria-label="얼굴 수기 함께 보기 크게 보기">
+              <img src="academy-photos/ifc-research-04.jpg" alt="턱과 얼굴 수기를 가까이에서 함께 보는 연구 모임" width="1600" height="1200" loading="lazy">
+            </button>
+          </div>
+        </div>
+        <div class="apply" id="ifc-research-apply">
+          <h3>연구 모임 안내 받기</h3>
+          <p class="apply-desc">이름과 연락처를 남겨 주시면, 연구 모임 안내 알림톡을 보내 드립니다.</p>
+          <form class="apply-form" data-course="IFC 연구 모임" data-course-code="ifc-research" data-success="apply-success-ifc-research" data-error="apply-error-ifc-research">
+            <div class="f-row">
+              <div class="f-field">
+                <label for="ifc-research-name">이름 <span class="req">*</span></label>
+                <input type="text" id="ifc-research-name" name="name" required autocomplete="name">
+              </div>
+              <div class="f-field">
+                <label for="ifc-research-phone-mid">연락처 <span class="req">*</span></label>
+                <div class="phone-split">
+                  <input class="phone-head" type="text" value="010" readonly tabindex="-1" aria-hidden="true">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-mid" id="ifc-research-phone-mid" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="중간 4자리">
+                  <span class="phone-dash" aria-hidden="true">-</span>
+                  <input class="phone-tail" id="ifc-research-phone-tail" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required placeholder="0000" autocomplete="off" aria-label="뒷자리 4자리">
+                  <input type="hidden" name="phone" class="phone-full" value="">
+                </div>
+              </div>
+            </div>
+            <div class="f-field is-wide">
+              <label for="ifc-research-role">소속 <span class="req">*</span></label>
+              <select id="ifc-research-role" name="role" required>
+                <option value="">선택해 주세요</option>
+                <option value="의사·한의사">의사·한의사</option>
+                <option value="물리치료사">물리치료사</option>
+                <option value="트레이너/필라테스/요가">트레이너/필라테스/요가</option>
+                <option value="에스테티션">에스테티션</option>
+                <option value="기타">기타</option>
+              </select>
+            </div>
+            <input type="hidden" name="applyType" value="연구 모임">
+            <div class="f-field is-wide">
+              <label for="ifc-research-note">문의사항</label>
+              <textarea id="ifc-research-note" name="note" placeholder="참여하고 싶은 시기나 궁금한 점을 남겨 주세요"></textarea>
+            </div>
+            <label class="f-consent">
+              <input type="checkbox" name="consent" required>
+              <span>안내 연락 목적으로 개인정보(이름·연락처)를 수집하는 것에 동의합니다.<span class="req">*</span></span>
+            </label>
+            <div class="f-submit-row">
+              <button type="submit" class="btn btn-primary btn-sm">안내 알림톡 받기</button>
+              <span class="f-status" aria-live="polite"></span>
+            </div>
+            <div class="apply-error" id="apply-error-ifc-research">전송 중 문제가 발생했습니다. 카카오톡 상담으로 문의해 주세요.</div>
+          </form>
+          <div class="apply-success" id="apply-success-ifc-research" hidden>
+            <span class="dot">✓</span>
+            <div><strong>접수되었습니다</strong><p>연구 모임 안내 알림톡을 보내 드립니다. 급하시면 카카오톡 상담을 이용해 주세요.</p></div>
+          </div>
+        </div>
+        <div class="cross-sell">
+          <span>연구 모임은 정규과정과 종합시험을 통과한 학회원에게 열려 있습니다.</span>
+          <button type="button" data-ifc-track="regular">정규과정 신청 보기</button>
         </div>
       </div>
     </div>
@@ -2537,6 +2783,56 @@
     }
   }
 
+  function setCmtTrack(track, push) {
+    var doors = document.querySelectorAll('.track-door[data-cmt-track]');
+    var trackPanels = {
+      regular: document.getElementById('cmt-track-regular'),
+      study: document.getElementById('cmt-track-study')
+    };
+    var valid = track === 'regular' || track === 'study';
+    Object.keys(trackPanels).forEach(function (key) {
+      var el = trackPanels[key];
+      if (!el) return;
+      var on = valid && key === track;
+      el.classList.toggle('is-active', on);
+      el.hidden = !on;
+    });
+    doors.forEach(function (btn) {
+      var on = valid && btn.getAttribute('data-cmt-track') === track;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (push && valid) {
+      var next = track === 'study' ? '#cmt-study' : '#cmt';
+      if (location.hash !== next) history.pushState({ tab: 'cmt', track: track }, '', next);
+    }
+  }
+
+  function setIfcTrack(track, push) {
+    var doors = document.querySelectorAll('.track-door[data-ifc-track]');
+    var trackPanels = {
+      regular: document.getElementById('ifc-track-regular'),
+      research: document.getElementById('ifc-track-research')
+    };
+    var valid = track === 'regular' || track === 'research';
+    Object.keys(trackPanels).forEach(function (key) {
+      var el = trackPanels[key];
+      if (!el) return;
+      var on = valid && key === track;
+      el.classList.toggle('is-active', on);
+      el.hidden = !on;
+    });
+    doors.forEach(function (btn) {
+      var on = valid && btn.getAttribute('data-ifc-track') === track;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (push && valid) {
+      var next = track === 'research' ? '#ifc-research' : '#ifc';
+      if (location.hash !== next) history.pushState({ tab: 'ifc', track: track }, '', next);
+    }
+  }
+
   function setRealTrack(track, push) {
     var doors = document.querySelectorAll('.track-door[data-real-track]');
     var trackPanels = {
@@ -2593,8 +2889,28 @@
       setRealTrack('oneday', false);
       return;
     }
+    if (h === 'cmt-study') {
+      show('cmt', false);
+      setCmtTrack('study', false);
+      return;
+    }
+    if (h === 'cmt') {
+      show('cmt', false);
+      setCmtTrack('regular', false);
+      return;
+    }
+    if (h === 'ifc-research') {
+      show('ifc', false);
+      setIfcTrack('research', false);
+      return;
+    }
+    if (h === 'ifc') {
+      show('ifc', false);
+      setIfcTrack('regular', false);
+      return;
+    }
     show(h, false);
-    if (h !== 'cmt' && h !== 'ifc') setRealTrack('oneday', false);
+    setRealTrack('oneday', false);
   }
 
   tabs.forEach(function (t) {
@@ -2602,6 +2918,8 @@
       var name = t.getAttribute('data-tab');
       show(name);
       if (name === 'real') setRealTrack('oneday', false);
+      if (name === 'cmt') setCmtTrack('regular', false);
+      if (name === 'ifc') setIfcTrack('regular', false);
     });
   });
 
@@ -2611,6 +2929,8 @@
       var name = el.getAttribute('data-go');
       show(name);
       if (name === 'real') setRealTrack('oneday', false);
+      if (name === 'cmt') setCmtTrack('regular', false);
+      if (name === 'ifc') setIfcTrack('regular', false);
     });
   });
 
@@ -2620,6 +2940,26 @@
       if (track !== 'oneday' && track !== 'regular') return;
       setRealTrack(track, true);
       var panel = document.getElementById('real-track-' + track);
+      if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('[data-cmt-track]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var track = el.getAttribute('data-cmt-track');
+      if (track !== 'regular' && track !== 'study') return;
+      setCmtTrack(track, true);
+      var panel = document.getElementById('cmt-track-' + track);
+      if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('[data-ifc-track]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var track = el.getAttribute('data-ifc-track');
+      if (track !== 'regular' && track !== 'research') return;
+      setIfcTrack(track, true);
+      var panel = document.getElementById('ifc-track-' + track);
       if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
@@ -2772,6 +3112,8 @@
 
   function academyCourseShort_(form) {
     var code = String(form.getAttribute('data-course-code') || '').toLowerCase().replace(/[^a-z]/g, '');
+    if (code === 'cmtstudy') return 'CMT 스터디';
+    if (code === 'ifcresearch') return 'IFC 연구';
     if (code === 'cmt') return 'CMT';
     if (code === 'ifc') return 'IFC';
     if (code === 'real') return 'Re:Al';
