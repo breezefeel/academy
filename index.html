@@ -539,6 +539,66 @@
     gap: 8px;
     margin-bottom: 20px;
   }
+  .prep-value {
+    margin: 0 0 20px;
+    padding: 16px 16px 14px;
+    background: linear-gradient(135deg, rgba(11,32,72,.06), rgba(246,228,196,.35));
+    border: 1px solid var(--line);
+  }
+  .prep-value h3 {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+  }
+  .prep-value ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+    margin: 0;
+  }
+  .prep-value li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 13.5px;
+    color: var(--mute);
+    word-break: keep-all;
+    line-height: 1.5;
+  }
+  .prep-value li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .55em;
+    width: 6px;
+    height: 6px;
+    background: var(--navy);
+  }
+  .tuition-block {
+    margin: 8px 0 16px;
+    padding: 16px 16px 14px;
+    background: var(--white);
+    border: 1px solid var(--line);
+  }
+  .tuition-block h3 {
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0 0 6px;
+  }
+  .tuition-block .tuition-amt {
+    font-family: Outfit, Pretendard, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 6px;
+  }
+  .tuition-block p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--mute);
+    word-break: keep-all;
+    line-height: 1.5;
+  }
   .fact {
     padding: 14px 12px;
     background: var(--white);
@@ -1509,19 +1569,19 @@
         <button type="button" class="choose-card" data-go="cmt">
           <span class="mark">CMT</span>
           <h3>연부조직/관절을 손으로 다루는 치료</h3>
-          <p>의료인·의료기사가 평가부터 도수치료까지 판단력을 키울 때. 이후에는 스터디로 이어집니다.</p>
+          <p>의료인·의료기사 전용. 병원·클리닉에서 쓰는 평가→손 순서를 체계화할 때. 이후 무료 재수강·스터디.</p>
           <span class="go">CMT 상세 보기 →</span>
         </button>
         <button type="button" class="choose-card" data-go="ifc">
           <span class="mark">IFC</span>
           <h3>얼굴·윤곽을 수기로</h3>
-          <p>비수술 얼굴 비대칭·축소를 해부→촉진→시퀀스로 배울 때. 학회원이 되면 연구 모임이 있습니다.</p>
+          <p>누구나. 비수술 얼굴 케어 현장에서 해부→촉진→시퀀스를 배울 때. 학회원은 연구 모임.</p>
           <span class="go">IFC 상세 보기 →</span>
         </button>
         <button type="button" class="choose-card" data-go="real">
           <span class="mark">Re:Al</span>
           <h3>움직임으로 유지·확장</h3>
-          <p>패시브 원데이, 또는 PAR 전체 정규반 중 필요한 쪽을 고를 때.</p>
+          <p>누구나. 원데이(패시브)로 먼저 보거나, PAR 정규반으로 유지·확장을 배울 때.</p>
           <span class="go">Re:Al 상세 보기 →</span>
         </button>
       </div>
@@ -1566,20 +1626,28 @@
       <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
       <p class="sec-desc">의료인·의료기사가 평가와 함께 도수 테크닉을 부위별로 익히는 과정입니다. 골반부터 경추까지, 연부조직 다음 관절로 들어가는 같은 순서를 내일 베드에서 바로 꺼내 쓰게 됩니다.</p>
       <p class="course-path">평가 → <strong>손(CMT)</strong> → 움직임</p>
-      <div class="facts">
-        <div class="fact"><div class="k">일정</div><div class="v">매년 3월 / 9월 시작<br>09:00–18:00 · 8시간씩 6일</div></div>
-        <div class="fact"><div class="k">장소</div><div class="v">삼육보건대학교<br>(서울 동대문구)</div></div>
-        <div class="fact"><div class="k">수강료</div><div class="v">150만 · 얼리 135만<br>신졸/동반 120만</div></div>
-      </div>
       <div class="fit-grid">
         <div class="fit">
           <h3>이런 분께</h3>
-          <p>도수·카이로 테크닉을 평가와 함께 체계화하고 싶은 의료인·의료기사</p>
+          <p>도수·카이로 테크닉을 평가와 함께 체계화하고 싶은 <strong>의료인·의료기사</strong>. 테크닉만 모으기보다 “왜 이 순서인지”를 말하고 싶은 분.</p>
         </div>
         <div class="fit">
           <h3>듣고 나면</h3>
           <p>골반·허리·흉추·경추에서 연부조직 다음 관절로 들어가는 순서를 말할 수 있습니다.</p>
         </div>
+      </div>
+      <div class="prep-value">
+        <h3>신청 전에 먼저 확인하세요</h3>
+        <ul>
+          <li>대상: 의료인·의료기사만. 비의료 직군은 Re:Al·IFC를 먼저 보시면 됩니다.</li>
+          <li>병원·클리닉과 다른 점: 테크닉 나열이 아니라 평가 → 손 → 재평가 순서로 판단력을 쌓습니다.</li>
+          <li>과정 이후: 무료 재수강 + 스터디로 손이 이어집니다. (정규 이수 후)</li>
+        </ul>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="k">일정</div><div class="v">매년 3월 / 9월 시작<br>09:00–18:00 · 8시간씩 6일</div></div>
+        <div class="fact"><div class="k">장소</div><div class="v">삼육보건대학교<br>(서울 동대문구)</div></div>
+        <div class="fact"><div class="k">대상</div><div class="v">의료인 · 의료기사만<br>신졸·동반 할인 있음</div></div>
       </div>
       <div class="voice-grid overview-voice">
         <blockquote class="voice">
@@ -1639,9 +1707,14 @@
         </article>
       </div>
 
+      <div class="tuition-block">
+        <h3>수강료</h3>
+        <div class="tuition-amt">150만 · 얼리 135만 · 신졸/동반 120만</div>
+        <p>얼리버드는 <strong>수업 시작 1개월 전까지 신청 완료</strong> 기준입니다. 세부 일정·입금은 신청 후 개별 안내드립니다.</p>
+      </div>
       <div class="enroll">
         <h3>신청</h3>
-        <p>신청서 제출 후 개별 연락으로 세부 일정·등록 절차를 안내드립니다. 정원은 입금 완료 순으로 마감됩니다. 얼리버드는 <strong>수업 시작 1개월 전까지 신청 완료</strong> 기준입니다.</p>
+        <p>신청서 제출 후 개별 연락으로 세부 일정·등록 절차를 안내드립니다. 정원은 입금 완료 순으로 마감됩니다.</p>
       </div>
 
       <div class="apply">
@@ -1939,20 +2012,28 @@
       <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
       <p class="sec-desc">비수술 얼굴 윤곽·비대칭을 해부 → 촉진 → 수기·괄사·고주파 순으로 익힙니다. 손으로 원인을 읽은 뒤, 수기와 기기를 같은 시퀀스로 연결하는 감각을 가져갑니다.</p>
       <p class="course-path">평가 → <strong>손(IFC)</strong> → 움직임</p>
-      <div class="facts">
-        <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>10:00–17:00 · 6시간씩 3일</div></div>
-        <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
-        <div class="fact"><div class="k">수강료</div><div class="v">240만 · 얼리버드 210만</div></div>
-      </div>
       <div class="fit-grid">
         <div class="fit">
           <h3>이런 분께</h3>
-          <p>얼굴 케어·바디 현장에서 평가 기반 수기·기기 시퀀스를 배우고 싶은 분</p>
+          <p>얼굴 케어·바디 현장에서 평가 기반 수기·기기 시퀀스를 배우고 싶은 분. <strong>비의료인도 가능</strong>합니다.</p>
         </div>
         <div class="fit">
           <h3>듣고 나면</h3>
           <p>핵심 포인트를 손으로 찾고, 수기·괄사·고주파를 같은 순서로 연결할 수 있습니다.</p>
         </div>
+      </div>
+      <div class="prep-value">
+        <h3>신청 전에 먼저 확인하세요</h3>
+        <ul>
+          <li>DAY 0 해부학(온라인)은 현장 4주 전 시작을 권장합니다. 과제가 있어 준비 시간이 필요합니다.</li>
+          <li>병원·성형과 다른 점: 수술·시술이 아니라 촉진으로 원인을 읽고 수기·기기로 시퀀스를 만듭니다.</li>
+          <li>과정 이후: 종합시험 통과 시 학회원 → 두 달마다 연구 모임(업데이트·케이스).</li>
+        </ul>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="k">일정</div><div class="v">매년 4월 / 11월 시작<br>10:00–17:00 · 6시간씩 3일</div></div>
+        <div class="fact"><div class="k">장소</div><div class="v">약수역 도보 약 3분</div></div>
+        <div class="fact"><div class="k">대상</div><div class="v">누구나<br>학회원·연구 모임 연계</div></div>
       </div>
       <div class="voice-grid overview-voice">
         <blockquote class="voice">
@@ -1999,9 +2080,14 @@
         </article>
       </div>
 
+      <div class="tuition-block">
+        <h3>수강료</h3>
+        <div class="tuition-amt">240만 · 얼리버드 210만</div>
+        <p>정원은 입금 완료 순입니다. 신청만으로는 자리가 확정되지 않으며, 안내에 따라 입금까지 해야 접수가 완료됩니다.</p>
+      </div>
       <div class="enroll">
         <h3>신청</h3>
-        <p>정원은 입금 완료 순입니다. 신청 정보만으로는 자리가 확정되지 않으며, 안내에 따라 입금까지 해야 접수가 완료됩니다.</p>
+        <p>신청 정보 제출 후 개별 연락으로 등록·입금 절차를 안내드립니다.</p>
       </div>
 
       <div class="apply">
@@ -2324,6 +2410,7 @@
             <p>강사 부담이 적은 자세 · 말단에서 근위로 잇는 시퀀스 · 캐딜락·샵 베드에서도 가능</p>
           </div>
         </div>
+        <p class="note" style="margin-bottom:20px">원데이는 일정·가격을 먼저 보신 뒤, 맞으면 바로 신청하시면 됩니다. PAR 전체는 정규반(6·12월)에서 이어갑니다.</p>
         <div class="voice-grid overview-voice">
           <blockquote class="voice">
             <p>촉진, 스트레칭, 임상적 내용까지 좋은 강의를 해주셔서 너무 좋았습니다.</p>
@@ -2489,10 +2576,28 @@
         <h2 class="sec-title" style="font-size:22px">이 과정은</h2>
         <p class="sec-desc">누워서 → 네발·앉기 → 서서, 포지션을 올리며 각 자세에서 P · AA · A · R을 익힙니다. 풀어 준 몸을 생활습관·자세교정과 저항까지 이어, 유지되는 움직임으로 만듭니다.</p>
         <p class="course-path">평가 → 손 → <strong>움직임(PAR 전체)</strong></p>
+        <div class="fit-grid">
+          <div class="fit">
+            <h3>이런 분께</h3>
+            <p>몸을 풀고난 다음을 설계하고 싶은 분. 패시브만으로는 유지가 안 되는 케이스를 다루는 분</p>
+          </div>
+          <div class="fit">
+            <h3>듣고 나면</h3>
+            <p>각 자세에서 P→AA→A→R을 연결하고, 일상·저항까지 유지되는 움직임으로 가져갈 수 있습니다.</p>
+          </div>
+        </div>
+        <div class="prep-value">
+          <h3>신청 전에 먼저 확인하세요</h3>
+          <ul>
+            <li>원데이(패시브)만 필요하면 10/11 원데이를, PAR 전체가 필요하면 이 정규반을 고르세요.</li>
+            <li>평가 후 움직임으로 유지하는 축이라, 테크닉 나열이 아니라 포지션을 올리며 같은 순서를 반복합니다.</li>
+            <li>CMT와 함께면 통합 신청(278만→222만)이 있습니다. CMT 탭에서 “통합과정 희망”을 선택하세요.</li>
+          </ul>
+        </div>
         <div class="facts">
           <div class="fact"><div class="k">일정</div><div class="v">매년 6월 / 12월 시작<br>10:00–17:00 · 6시간씩 3일</div></div>
           <div class="fact"><div class="k">장소</div><div class="v">리얼무브먼트 약수점</div></div>
-          <div class="fact"><div class="k">수강료</div><div class="v">128만 → 108만</div></div>
+          <div class="fact"><div class="k">대상</div><div class="v">누구나<br>PAR 전체 3일</div></div>
         </div>
         <div class="par-grid">
           <article class="par-card is-p">
@@ -2515,16 +2620,6 @@
             <div class="name">Resistive</div>
             <p>저항을 더해 근막경선·기능 패턴을 강화하고, 일상에서 쓰는 힘으로 확장합니다.</p>
           </article>
-        </div>
-        <div class="fit-grid">
-          <div class="fit">
-            <h3>이런 분께</h3>
-            <p>몸을 풀고난 다음을 설계하고 싶은 분. 패시브만으로는 유지가 안 되는 케이스를 다루는 분</p>
-          </div>
-          <div class="fit">
-            <h3>CMT와 함께라면</h3>
-            <p>CMT + Re:Al 정규 통합 신청 시 278만원 → 222만원(20%↓). CMT 탭에서 "통합과정 희망"을 선택해 주세요.</p>
-          </div>
         </div>
         <div class="voice-grid overview-voice">
           <blockquote class="voice">
@@ -2586,6 +2681,11 @@
           </article>
         </div>
 
+        <div class="tuition-block">
+          <h3>수강료</h3>
+          <div class="tuition-amt">128만 → 108만</div>
+          <p>CMT + Re:Al 정규 통합 시 278만 → 222만(20%↓). 통합은 CMT 탭에서 “통합과정 희망”을 선택해 주세요.</p>
+        </div>
         <div class="apply" id="real-regular-apply">
           <h3>신청 정보 입력</h3>
           <p class="apply-desc">정규 과정 신청입니다. 확인 후 개별 연락드립니다.</p>
